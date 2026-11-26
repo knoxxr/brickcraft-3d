@@ -168,9 +168,9 @@
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg>
           <span class="hidden sm:inline">삭제</span>
         </button>
-        <button data-mode="select" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="다중 선택·이동·복제 (4)">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" stroke-dasharray="3 2"/></svg>
-          <span class="hidden sm:inline">선택</span>
+        <button data-mode="select" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="브릭 드래그 이동 · 다중 선택 · 복제 (4)">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20"/></svg>
+          <span class="hidden sm:inline">이동·선택</span>
         </button>
         <button data-mode="eyedropper" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="스포이드: 브릭 종류·색상 복사 (I / Alt+클릭)">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22l5-1 11-11-4-4L3 17l-1 5z"/><path d="M15 5l4 4"/></svg>
@@ -332,18 +332,19 @@
         <div id="selection-bar" class="hidden absolute bottom-14 left-1/2 -translate-x-1/2 bg-[var(--card)]/95 backdrop-blur-sm border border-[var(--primary)] rounded-xl px-2.5 py-1.5 shadow-lg flex items-center gap-1.5 text-xs flex-wrap justify-center max-w-[94%] z-10">
           <span id="sel-count-label" class="font-semibold text-[var(--primary)] px-1">0개 선택</span>
           <div class="w-px h-4 bg-[var(--border)]"></div>
-          <button data-sel="mx-" class="sel-act tool-btn px-1.5 py-1 rounded hover:bg-[var(--accent)] cursor-pointer" title="X- 이동">←</button>
-          <button data-sel="mx+" class="sel-act tool-btn px-1.5 py-1 rounded hover:bg-[var(--accent)] cursor-pointer" title="X+ 이동">→</button>
-          <button data-sel="mz-" class="sel-act tool-btn px-1.5 py-1 rounded hover:bg-[var(--accent)] cursor-pointer" title="Z- 이동">↑</button>
-          <button data-sel="mz+" class="sel-act tool-btn px-1.5 py-1 rounded hover:bg-[var(--accent)] cursor-pointer" title="Z+ 이동">↓</button>
-          <button data-sel="my+" class="sel-act tool-btn px-1.5 py-1 rounded hover:bg-[var(--accent)] cursor-pointer font-mono" title="1층 위로">Y+</button>
-          <button data-sel="my-" class="sel-act tool-btn px-1.5 py-1 rounded hover:bg-[var(--accent)] cursor-pointer font-mono" title="1층 아래로">Y−</button>
+          <button data-sel="mx-" class="sel-act tool-btn px-1.5 py-1 rounded hover:bg-[var(--accent)] cursor-pointer" title="X- 이동 (A)">←</button>
+          <button data-sel="mx+" class="sel-act tool-btn px-1.5 py-1 rounded hover:bg-[var(--accent)] cursor-pointer" title="X+ 이동 (D)">→</button>
+          <button data-sel="mz-" class="sel-act tool-btn px-1.5 py-1 rounded hover:bg-[var(--accent)] cursor-pointer" title="Z- 이동 (W)">↑</button>
+          <button data-sel="mz+" class="sel-act tool-btn px-1.5 py-1 rounded hover:bg-[var(--accent)] cursor-pointer" title="Z+ 이동 (S)">↓</button>
+          <button data-sel="my+" class="sel-act tool-btn px-1.5 py-1 rounded hover:bg-[var(--accent)] cursor-pointer font-mono" title="위로 올리기 (E)">Y+</button>
+          <button data-sel="my-" class="sel-act tool-btn px-1.5 py-1 rounded hover:bg-[var(--accent)] cursor-pointer font-mono" title="아래로 내리기 (Q)">Y−</button>
+          <button data-sel="rot" class="sel-act tool-btn px-2 py-1 rounded bg-[var(--accent)] hover:opacity-90 font-medium cursor-pointer" title="선택 브릭 90° 회전 (R)">회전</button>
           <div class="w-px h-4 bg-[var(--border)]"></div>
           <button data-sel="dup" class="sel-act tool-btn px-2 py-1 rounded bg-[var(--accent)] hover:opacity-90 font-medium cursor-pointer" title="위로 복제 (Ctrl+D)">복제</button>
           <button data-sel="paint" class="sel-act tool-btn px-2 py-1 rounded bg-[var(--accent)] hover:opacity-90 font-medium cursor-pointer" title="현재 색상 일괄 적용">색상적용</button>
           <button data-sel="group" class="sel-act tool-btn px-2 py-1 rounded bg-[var(--accent)] hover:opacity-90 font-medium cursor-pointer" title="선택 브릭을 같은 커스텀 스텝으로 묶기">스텝묶기</button>
           <button data-sel="del" class="sel-act tool-btn px-2 py-1 rounded text-[var(--error)] hover:bg-[var(--accent)] font-medium cursor-pointer">삭제</button>
-          <button data-sel="clear" class="sel-act tool-btn px-1.5 py-1 rounded text-[var(--muted-foreground)] hover:bg-[var(--accent)] cursor-pointer" title="선택 해제">✕</button>
+          <button data-sel="clear" class="sel-act tool-btn px-1.5 py-1 rounded text-[var(--muted-foreground)] hover:bg-[var(--accent)] cursor-pointer" title="선택 해제 (Esc)">✕</button>
         </div>
 
         <!-- Bottom-Left Camera & Render Style Controls -->
@@ -2335,13 +2336,15 @@
     return { t: tMin, point: [origin[0] + dir[0] * tMin, origin[1] + dir[1] * tMin, origin[2] + dir[2] * tMin], normal: [nx, ny, nz] };
   }
 
-  function raycastScene(clientX, clientY) {
+  function raycastScene(clientX, clientY, ignoreIds = null) {
     const { origin, dir } = screenToRay(clientX, clientY);
     let best = null;
     const visible = getVisibleBricks();
     const half = state.gridSize * 0.5;
     for (let i = 0; i < visible.length; i++) {
-      const b = visible[i], dims = getBrickDims(b.type, b.rot);
+      const b = visible[i];
+      if (ignoreIds && ignoreIds.has(b.id)) continue;
+      const dims = getBrickDims(b.type, b.rot);
       const hit = intersectAABB(origin, dir, [b.x - half, b.y * PLATE_H, b.z - half], [b.x + dims.w - half, (b.y + dims.h) * PLATE_H, b.z + dims.d - half]);
       if (hit && (!best || hit.t < best.t)) best = { ...hit, brick: b, isBaseplate: false };
     }
@@ -2357,9 +2360,9 @@
     return best;
   }
 
-  function computePlacementFromHit(hit) {
+  function computePlacementFromHit(hit, type = state.selectedType, rot = state.rotation, ignoreIds = null) {
     if (!hit) return null;
-    const dims = getBrickDims(state.selectedType, state.rotation);
+    const dims = getBrickDims(type, rot);
     const half = state.gridSize * 0.5;
     const [nx, ny, nz] = hit.normal;
     const px = hit.point[0] + nx * 0.05, py = hit.point[1] + ny * 0.05, pz = hit.point[2] + nz * 0.05;
@@ -2380,12 +2383,13 @@
     gz = Math.max(0, Math.min(state.gridSize - dims.d, gz));
     gy = Math.max(0, gy);
 
-    const cand = { type: state.selectedType, x: gx, y: gy, z: gz, rot: state.rotation };
+    const cand = { type, x: gx, y: gy, z: gz, rot };
     let guard = 0;
-    while (hasCollision(cand) && guard < 45) {
+    while (hasCollision(cand, ignoreIds) && guard < 45) {
       let maxTop = cand.y + 1;
       const visible = getVisibleBricks();
       for (let i = 0; i < visible.length; i++) {
+        if (ignoreIds && ignoreIds.has(visible[i].id)) continue;
         if (bricksOverlap(cand, visible[i])) {
           const top = visible[i].y + getBrickDims(visible[i].type, visible[i].rot).h;
           if (top > maxTop) maxTop = top;
@@ -2710,7 +2714,7 @@
       build: `${def.name} (${state.rotation * 90}°)`,
       paint: '색칠 모드',
       delete: '삭제 모드',
-      select: '다중 선택 (클릭으로 토글)',
+      select: '이동·선택 (드래그: 이동 · 클릭: 선택 · WASD/R)',
       eyedropper: '스포이드 (브릭 클릭)',
     };
     $('hud-tool-info').textContent = modeNames[state.mode];
@@ -2883,6 +2887,66 @@
   let dragMoved = false, downX = 0, downY = 0, lastX = 0, lastY = 0, dragButton = 0, panMode = false;
   let lastPinchDist = 0, lastPinchMid = null;
 
+  // Direct 3D brick drag-to-move state (in 'select' Move & Select mode)
+  let dragSession = null; // { anchor, group, origMap, ignoreIds, started }
+
+  function applyDragGroupToTarget(clientX, clientY) {
+    if (!dragSession) return;
+    const { anchor, group, origMap, ignoreIds } = dragSession;
+    const hit = raycastScene(clientX, clientY, ignoreIds);
+    if (!hit) return;
+    const pl = computePlacementFromHit(hit, anchor.type, anchor.rot, ignoreIds);
+    if (!pl || !pl.valid) return;
+
+    const anchorOrig = origMap.get(anchor.id);
+    if (group.length === 1) {
+      if (anchor.x !== pl.x || anchor.y !== pl.y || anchor.z !== pl.z) {
+        anchor.x = pl.x; anchor.y = pl.y; anchor.z = pl.z;
+        $('hud-coords').textContent = `X:${anchor.x} Y:${anchor.y} Z:${anchor.z}`;
+      }
+      return;
+    }
+
+    // Multi-brick group drag: keep relative offsets intact, clamp inside baseplate, auto-stack above obstacles
+    let dx = pl.x - anchorOrig.x;
+    let dz = pl.z - anchorOrig.z;
+    let dy = pl.y - anchorOrig.y;
+
+    for (const b of group) {
+      const orig = origMap.get(b.id);
+      const d = getBrickDims(b.type, b.rot);
+      if (orig.x + dx < 0) dx = -orig.x;
+      if (orig.x + dx + d.w > state.gridSize) dx = state.gridSize - d.w - orig.x;
+      if (orig.z + dz < 0) dz = -orig.z;
+      if (orig.z + dz + d.d > state.gridSize) dz = state.gridSize - d.d - orig.z;
+      if (orig.y + dy < 0) dy = -orig.y;
+    }
+
+    let guard = 0;
+    while (guard < 45) {
+      let bumped = false;
+      for (const b of group) {
+        const orig = origMap.get(b.id);
+        const cand = { ...b, x: orig.x + dx, y: orig.y + dy, z: orig.z + dz };
+        if (hasCollision(cand, ignoreIds)) {
+          dy++;
+          bumped = true;
+          break;
+        }
+      }
+      if (!bumped) break;
+      guard++;
+    }
+
+    for (const b of group) {
+      const orig = origMap.get(b.id);
+      b.x = orig.x + dx;
+      b.y = orig.y + dy;
+      b.z = orig.z + dz;
+    }
+    $('hud-coords').textContent = `X:${anchor.x} Y:${anchor.y} Z:${anchor.z}`;
+  }
+
   canvas.addEventListener('contextmenu', e => e.preventDefault());
 
   canvas.addEventListener('pointerdown', e => {
@@ -2893,8 +2957,24 @@
       downX = lastX = e.clientX; downY = lastY = e.clientY;
       dragButton = e.button;
       panMode = e.shiftKey || e.button === 1;
+      dragSession = null;
+
+      // In Move & Select mode: pressing left button on a brick prepares direct 3D drag-to-move!
+      if (state.mode === 'select' && e.button === 0 && !panMode && !e.altKey && !state.isPlaying && state.visibleStep >= getAssemblySteps().length) {
+        const hit = raycastScene(e.clientX, e.clientY);
+        if (hit && hit.brick) {
+          const anchor = hit.brick;
+          const group = state.selectedIds.has(anchor.id)
+            ? state.bricks.filter(b => state.selectedIds.has(b.id))
+            : [anchor];
+          const origMap = new Map(group.map(b => [b.id, { x: b.x, y: b.y, z: b.z, rot: b.rot }]));
+          const ignoreIds = new Set(group.map(b => b.id));
+          dragSession = { anchor, group, origMap, ignoreIds, started: false };
+        }
+      }
     } else if (activePointers.size === 2) {
       dragMoved = true;
+      dragSession = null;
       const pts = Array.from(activePointers.values());
       lastPinchDist = Math.hypot(pts[1].x - pts[0].x, pts[1].y - pts[0].y);
       lastPinchMid = { x: (pts[0].x + pts[1].x) * 0.5, y: (pts[0].y + pts[1].y) * 0.5 };
@@ -2927,6 +3007,24 @@
 
       const dx = e.clientX - lastX, dy = e.clientY - lastY;
       if (Math.hypot(e.clientX - downX, e.clientY - downY) > 5) dragMoved = true;
+
+      // Active 3D brick drag-to-move!
+      if (dragSession && dragMoved) {
+        if (!dragSession.started) {
+          dragSession.started = true;
+          pushUndo();
+          if (!state.selectedIds.has(dragSession.anchor.id)) {
+            state.selectedIds.clear();
+            state.selectedIds.add(dragSession.anchor.id);
+            updateSelectionBar();
+          }
+          canvas.style.cursor = 'grabbing';
+        }
+        applyDragGroupToTarget(e.clientX, e.clientY);
+        lastX = e.clientX; lastY = e.clientY;
+        return;
+      }
+
       if (dragMoved) {
         if (panMode) {
           const basis = getCameraBasis(), scale = state.cam.dist * 0.0014;
@@ -2951,6 +3049,9 @@
     } else {
       state.hoverPlacement = null;
       state.hoverBrickId = hit && hit.brick ? hit.brick.id : null;
+      if (state.mode === 'select') {
+        canvas.style.cursor = state.hoverBrickId ? 'grab' : 'default';
+      }
     }
     updateHUD();
   });
@@ -2975,6 +3076,18 @@
     const wasSingle = activePointers.size === 1;
     activePointers.delete(e.pointerId);
     if (activePointers.size < 2) { lastPinchDist = 0; lastPinchMid = null; }
+
+    // Finish direct 3D brick drag-to-move
+    if (dragSession && dragSession.started) {
+      dragSession = null;
+      canvas.style.cursor = 'grab';
+      SoundFX.playSnap();
+      state.visibleStep = getAssemblySteps().length;
+      syncUI();
+      return;
+    }
+    dragSession = null;
+
     const wasClick = wasSingle && !dragMoved && dragButton === 0;
     if (!wasClick) return;
     if (state.isPlaying) { stopPlayback(); return; }
@@ -3050,14 +3163,14 @@
     }
   });
 
-  canvas.addEventListener('pointercancel', e => activePointers.delete(e.pointerId));
+  canvas.addEventListener('pointercancel', e => { activePointers.delete(e.pointerId); dragSession = null; });
   canvas.addEventListener('pointerleave', () => { state.hoverPlacement = null; state.hoverBrickId = null; });
   canvas.addEventListener('wheel', e => {
     e.preventDefault();
     state.cam.dist = Math.max(7, Math.min(68, state.cam.dist * (e.deltaY > 0 ? 1.09 : 0.92)));
   }, { passive: false });
 
-  // Multi-selection actions (Move, Duplicate, Batch Paint, Group Step, Delete)
+  // Multi-selection actions (Move, Rotate, Duplicate, Batch Paint, Group Step, Delete)
   function runSelectionAction(act) {
     if (!state.selectedIds.size) return;
     if (act === 'clear') { state.selectedIds.clear(); updateSelectionBar(); return; }
@@ -3072,6 +3185,57 @@
       SoundFX.playDelete();
       syncUI();
       showToast(`${selBricks.length}개 브릭 삭제됨`);
+      return;
+    }
+
+    if (act === 'rot') {
+      // Rotate selected brick(s) 90 deg clockwise in place
+      if (selBricks.length === 1) {
+        const b = selBricks[0];
+        const oldD = getBrickDims(b.type, b.rot);
+        const newRot = (b.rot + 1) % 4;
+        const newD = getBrickDims(b.type, newRot);
+        const cx = b.x + oldD.w * 0.5, cz = b.z + oldD.d * 0.5;
+        let nx = Math.round(cx - newD.w * 0.5);
+        let nz = Math.round(cz - newD.d * 0.5);
+        nx = Math.max(0, Math.min(state.gridSize - newD.w, nx));
+        nz = Math.max(0, Math.min(state.gridSize - newD.d, nz));
+        if (hasCollision({ ...b, x: nx, z: nz, rot: newRot }, state.selectedIds)) {
+          showToast('회전 시 다른 브릭과 충돌합니다');
+          return;
+        }
+        pushUndo();
+        b.x = nx; b.z = nz; b.rot = newRot;
+        SoundFX.playTick(); syncUI();
+        return;
+      }
+      // Multi-brick group 90° rotation around group bounding center
+      let minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
+      selBricks.forEach(b => {
+        const d = getBrickDims(b.type, b.rot);
+        minX = Math.min(minX, b.x); maxX = Math.max(maxX, b.x + d.w);
+        minZ = Math.min(minZ, b.z); maxZ = Math.max(maxZ, b.z + d.d);
+      });
+      const gcx = (minX + maxX) * 0.5, gcz = (minZ + maxZ) * 0.5;
+      const proposed = selBricks.map(b => {
+        const oldD = getBrickDims(b.type, b.rot);
+        const newRot = (b.rot + 1) % 4;
+        const newD = getBrickDims(b.type, newRot);
+        const bcx = b.x + oldD.w * 0.5 - gcx, bcz = b.z + oldD.d * 0.5 - gcz;
+        const rcx = gcx + bcz, rcz = gcz - bcx;
+        return { b, x: Math.round(rcx - newD.w * 0.5), z: Math.round(rcz - newD.d * 0.5), rot: newRot, d: newD };
+      });
+      for (const p of proposed) {
+        if (p.x < 0 || p.z < 0 || p.x + p.d.w > state.gridSize || p.z + p.d.d > state.gridSize) {
+          showToast('회전 시 베이스판 범위를 벗어납니다'); return;
+        }
+        if (hasCollision({ ...p.b, x: p.x, z: p.z, rot: p.rot }, state.selectedIds)) {
+          showToast('회전 시 다른 브릭과 충돌합니다'); return;
+        }
+      }
+      pushUndo();
+      proposed.forEach(p => { p.b.x = p.x; p.b.z = p.z; p.b.rot = p.rot; });
+      SoundFX.playTick(); syncUI();
       return;
     }
 
@@ -3116,7 +3280,6 @@
     // Move delta
     const deltas = { 'mx-': [-1,0,0], 'mx+': [1,0,0], 'mz-': [0,0,-1], 'mz+': [0,0,1], 'my+': [0,1,0], 'my-': [0,-1,0] };
     const [dx, dy, dz] = deltas[act] || [0,0,0];
-    // Validate bounds & collision against non-selected bricks
     for (const b of selBricks) {
       const d = getBrickDims(b.type, b.rot);
       const nx = b.x + dx, ny = b.y + dy, nz = b.z + dz;
@@ -3135,6 +3298,18 @@
     syncUI();
   }
 
+  // Camera-relative WASD nudge helper (maps W/A/S/D to nearest horizontal grid axis relative to camera yaw)
+  function nudgeSelectedCameraRelative(dirKey) {
+    const basis = getCameraBasis();
+    let vx = 0, vz = 0;
+    if (dirKey === 'w') { vx = basis.forward[0]; vz = basis.forward[2]; }
+    else if (dirKey === 's') { vx = -basis.forward[0]; vz = -basis.forward[2]; }
+    else if (dirKey === 'd') { vx = basis.right[0]; vz = basis.right[2]; }
+    else if (dirKey === 'a') { vx = -basis.right[0]; vz = -basis.right[2]; }
+    if (Math.abs(vx) >= Math.abs(vz)) runSelectionAction(vx >= 0 ? 'mx+' : 'mx-');
+    else runSelectionAction(vz >= 0 ? 'mz+' : 'mz-');
+  }
+
   document.querySelectorAll('.sel-act').forEach(btn => btn.addEventListener('click', () => runSelectionAction(btn.dataset.sel)));
 
   window.addEventListener('keydown', e => {
@@ -3148,11 +3323,28 @@
       updateSelectionBar(); return;
     }
     const k = e.key.toLowerCase();
-    if (k === 'r') { state.rotation = (state.rotation + 1) % 4; SoundFX.playTick(); updateHUD(); }
-    else if (k === '1') setMode('build');
+    if (k === 'r') {
+      if (dragSession && dragSession.started && dragSession.group.length === 1) {
+        dragSession.anchor.rot = (dragSession.anchor.rot + 1) % 4;
+        SoundFX.playTick();
+      } else if (state.mode === 'select' && state.selectedIds.size) {
+        runSelectionAction('rot');
+      } else {
+        state.rotation = (state.rotation + 1) % 4;
+        SoundFX.playTick();
+        updateHUD();
+      }
+      return;
+    }
+    if (state.selectedIds.size) {
+      if (k === 'w' || k === 'a' || k === 's' || k === 'd') { e.preventDefault(); nudgeSelectedCameraRelative(k); return; }
+      if (k === 'e') { e.preventDefault(); runSelectionAction('my+'); return; }
+      if (k === 'q') { e.preventDefault(); runSelectionAction('my-'); return; }
+    }
+    if (k === '1') setMode('build');
     else if (k === '2') setMode('paint');
     else if (k === '3') setMode('delete');
-    else if (k === '4') setMode('select');
+    else if (k === '4' || k === 'v') setMode('select');
     else if (k === 'i') setMode('eyedropper');
     else if (k === 'm') cycleMirrorMode();
     else if (e.code === 'Space') { e.preventDefault(); togglePlayback(); }
@@ -3183,7 +3375,10 @@
   $('brick-search').addEventListener('input', e => { state.searchQuery = e.target.value; renderBrickLibrary(); });
   document.querySelectorAll('.mode-btn').forEach(btn => btn.addEventListener('click', () => setMode(btn.dataset.mode)));
   $('btn-mirror').addEventListener('click', cycleMirrorMode);
-  $('btn-rotate').addEventListener('click', () => { state.rotation = (state.rotation + 1) % 4; SoundFX.playTick(); updateHUD(); });
+  $('btn-rotate').addEventListener('click', () => {
+    if (state.mode === 'select' && state.selectedIds.size) runSelectionAction('rot');
+    else { state.rotation = (state.rotation + 1) % 4; SoundFX.playTick(); updateHUD(); }
+  });
   $('btn-undo').addEventListener('click', undo);
   $('btn-redo').addEventListener('click', redo);
 
