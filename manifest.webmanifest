@@ -1,0 +1,23 @@
+{
+  "name": "BrickCraft 3D — 레고 3D 조립 & GIF 스튜디오",
+  "short_name": "BrickCraft 3D",
+  "description": "102종의 레고 브릭·미니피규어로 3D 모델을 조립하고 GIF·영상·설명서로 내보내는 3D 스튜디오",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f5f7",
+  "theme_color": "#e3000b",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
