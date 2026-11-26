@@ -249,7 +249,7 @@
           <input id="brick-search" type="text" placeholder="브릭 검색 (아치, 바퀴, 테크닉...)" class="w-full bg-[var(--card)] text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] border border-[var(--border)] rounded-md pl-7 pr-2 py-1 text-xs focus:outline-none focus:border-[var(--primary)]" />
           <svg class="w-3.5 h-3.5 text-[var(--muted-foreground)] absolute left-2 top-1/2 -translate-y-1/2 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
         </div>
-        <div id="cat-tabs" class="grid grid-cols-4 gap-1 text-xs">
+        <div id="cat-tabs" class="grid grid-cols-3 gap-1 text-xs">
           <button data-cat="all" class="cat-btn py-1 rounded text-center font-medium cursor-pointer">전체</button>
           <button data-cat="brick" class="cat-btn py-1 rounded text-center font-medium cursor-pointer">브릭</button>
           <button data-cat="plate" class="cat-btn py-1 rounded text-center font-medium cursor-pointer">플레이트</button>
@@ -258,6 +258,7 @@
           <button data-cat="arch" class="cat-btn py-1 rounded text-center font-medium cursor-pointer">아치·건축</button>
           <button data-cat="technic" class="cat-btn py-1 rounded text-center font-medium cursor-pointer">테크닉</button>
           <button data-cat="vehicle" class="cat-btn py-1 rounded text-center font-medium cursor-pointer">차량·자연</button>
+          <button data-cat="figure" class="cat-btn py-1 rounded text-center font-medium cursor-pointer">피규어</button>
         </div>
       </div>
 
@@ -724,6 +725,17 @@
     foliage_2x2:  { name: '2×2 덤불 나뭇잎',  short: '나뭇잎 2×2', cat: 'vehicle', w: 2, d: 2, h: 2, shape: 'foliage', studs: true },
     pine_2x2:     { name: '2×2×4 소나무',     short: '소나무 2×2', cat: 'vehicle', w: 2, d: 2, h: 12, shape: 'pine', studs: false },
     crystal_1x1:  { name: '1×1 크리스탈 보석',short: '크리스탈',   cat: 'vehicle', w: 1, d: 1, h: 3, shape: 'crystal', studs: false },
+
+    // --- 8. LEGO MINIFIGURE CHARACTERS & PETS (9) ---
+    fig_classic:  { name: '클래식 미니피규어',short: '미니피규어', cat: 'figure', w: 2, d: 1, h: 10, shape: 'fig_classic', studs: false },
+    fig_cap:      { name: '캡모자 캐릭터',    short: '캡모자',     cat: 'figure', w: 2, d: 1, h: 10, shape: 'fig_cap', studs: false },
+    fig_astro:    { name: '우주비행사',       short: '우주비행사', cat: 'figure', w: 2, d: 1, h: 11, shape: 'fig_astro', studs: false },
+    fig_knight:   { name: '중세 기사 (검)',   short: '중세 기사',  cat: 'figure', w: 2, d: 1, h: 11, shape: 'fig_knight', studs: false },
+    fig_royal:    { name: '왕 · 공주 (왕관)', short: '왕·공주',    cat: 'figure', w: 2, d: 1, h: 11, shape: 'fig_royal', studs: false },
+    fig_police:   { name: '경찰관 피규어',    short: '경찰관',     cat: 'figure', w: 2, d: 1, h: 11, shape: 'fig_police', studs: false },
+    fig_robot:    { name: '로봇 피규어',      short: '로봇',       cat: 'figure', w: 2, d: 1, h: 10, shape: 'fig_robot', studs: false },
+    fig_dog:      { name: '레고 강아지',      short: '강아지',     cat: 'figure', w: 1, d: 2, h: 4, shape: 'fig_dog', studs: false },
+    fig_cat:      { name: '레고 고양이',      short: '고양이',     cat: 'figure', w: 1, d: 1, h: 4, shape: 'fig_cat', studs: false },
   };
   const BRICK_KEYS = Object.keys(BRICK_DEFS);
 
@@ -1081,6 +1093,8 @@
       add('flower_1x1', 3, 0, 11, 0, '#F5CD2F');
       add('flower_1x1', 4, 0, 11, 0, '#FC97AC');
       add('flower_1x1', 12, 0, 11, 0, '#AC78BA');
+      add('fig_classic', 7, 1, 12, 0, '#0055BF');
+      add('fig_dog', 10, 0, 11, 0, '#E4CD9E');
     } else if (name === 'castle') {
       state.baseplateColor = '#2E8B47';
       add('plate_6x6', 5, 0, 5, 0, '#A0A5A9');
@@ -1111,6 +1125,8 @@
       add('cyl_2x2', 7, 4, 5, 0, '#E4CD9E');
       add('dome_2x2s', 7, 7, 5, 0, '#D4AF37');
       add('crystal_1x1', 7, 10, 5, 0, '#7AD7F0');
+      add('fig_knight', 7, 0, 13, 0, '#D01012');
+      add('fig_royal', 5, 1, 8, 0, '#AC78BA');
     } else if (name === 'car') {
       state.baseplateColor = '#9DA3A8';
       add('wheel_sm', 4, 0, 6, 1, '#1B2A34');
@@ -1136,6 +1152,7 @@
       add('brick_1x1', 3, 7, 6, 0, '#1B2A34');
       add('brick_1x1', 3, 7, 9, 0, '#1B2A34');
       add('wing_1x4', 3, 10, 6, 1, '#F5CD2F');
+      add('fig_cap', 7, 0, 12, 0, '#D01012');
     } else if (name === 'rocket') {
       state.baseplateColor = '#9DA3A8';
       add('plate_4x4', 6, 0, 6, 0, '#6C6E68');
@@ -1159,6 +1176,7 @@
       add('tech_1x4', 2, 12, 7, 0, '#F5CD2F');
       add('turntable_2x2', 11, 0, 10, 0, '#6C6E68');
       add('dish_2x2', 11, 2, 10, 0, '#F4F4F4');
+      add('fig_astro', 7, 0, 12, 0, '#F4F4F4');
     } else if (name === 'duck') {
       state.baseplateColor = '#2A72B5';
       add('plate_2x2', 6, 0, 8, 0, '#FE8A18');
@@ -1953,8 +1971,270 @@
         mb.addFrustum(-0.18, PLATE_H * 0.4, 0.14, 0.16, 0.02, H * 0.62, 5, 0.86, 1.0, false);
         mb.addFrustum(0.18, PLATE_H * 0.4, -0.12, 0.15, 0.02, H * 0.54, 5, 0.86, 1.0, false);
         break;
+      default:
+        if (def.shape.startsWith('fig_')) return createCharacterMesh(def.shape);
+        mb.addBox(x0, 0, z0, x1, H, z1);
+        break;
     }
-    return mb.build();
+    const built = mb.build();
+    return { parts: [{ buf: built.buf, count: built.count, color: null, metal: null }] };
+  }
+
+  // Multi-Color 3D Procedural Lego Minifigures & Pet Companions
+  function createCharacterMesh(shape) {
+    const parts = [];
+    const addPart = (hex, metal, fn) => {
+      const m = new MeshBuilder();
+      fn(m);
+      if (m.data.length > 0) {
+        const b = m.build();
+        parts.push({ buf: b.buf, count: b.count, color: hex ? hexToRgb01(hex) : null, metal });
+      }
+    };
+
+    const addTrapezoidTorso = (m, y0 = 1.48, y1 = 2.66) => {
+      const bx = 0.46, tx = 0.36, z0 = -0.24, z1 = 0.24;
+      m.pushQuad([-tx, y1, z0], [-tx, y1, z1], [tx, y1, z1], [tx, y1, z0], [0, 1, 0]);
+      m.pushQuad([-bx, y0, z0], [bx, y0, z0], [bx, y0, z1], [-bx, y0, z1], [0, -1, 0], 0.84, 0.84, 0.84, 0.84);
+      m.pushQuad([-bx, y0, z1], [bx, y0, z1], [tx, y1, z1], [-tx, y1, z1], [0, 0, 1], 0.86, 0.86, 1, 1);
+      m.pushQuad([bx, y0, z0], [-bx, y0, z0], [-tx, y1, z0], [tx, y1, z0], [0, 0, -1], 0.86, 0.86, 1, 1);
+      m.pushQuad([bx, y0, z1], [bx, y0, z0], [tx, y1, z0], [tx, y1, z1], [0.99, 0.08, 0], 0.86, 0.86, 1, 1);
+      m.pushQuad([-bx, y0, z0], [-bx, y0, z1], [-tx, y1, z1], [-tx, y1, z0], [-0.99, 0.08, 0], 0.86, 0.86, 1, 1);
+    };
+
+    // --- PETS: DOG & CAT ---
+    if (shape === 'fig_dog') {
+      // Body, paws, ears, snout, tail (user's selected color!)
+      addPart(null, null, m => {
+        // 4 sturdy Lego paws
+        m.addBox(-0.34, 0, 0.26, -0.08, 0.56, 0.52);
+        m.addBox(0.08, 0, 0.26, 0.34, 0.56, 0.52);
+        m.addBox(-0.34, 0, -0.56, -0.08, 0.56, -0.30);
+        m.addBox(0.08, 0, -0.56, 0.34, 0.56, -0.30);
+        // Body
+        m.addBox(-0.36, 0.52, -0.60, 0.36, 1.06, 0.54);
+        // Raised head + snout
+        m.addBox(-0.32, 0.96, 0.20, 0.32, 1.54, 0.72);
+        m.addBox(-0.20, 0.98, 0.70, 0.20, 1.30, 0.94);
+        // Floppy ears
+        m.addBox(-0.42, 1.06, 0.28, -0.30, 1.52, 0.54);
+        m.addBox(0.30, 1.06, 0.28, 0.42, 1.52, 0.54);
+        // Upright wagging tail
+        m.addBox(-0.10, 1.04, -0.74, 0.10, 1.52, -0.54);
+      });
+      // Collar (bright red)
+      addPart('#D01012', 0, m => m.addBox(-0.35, 0.90, 0.24, 0.35, 1.04, 0.58));
+      // Eyes & button nose
+      addPart('#1B2A34', 0, m => {
+        m.addBox(-0.20, 1.30, 0.70, -0.10, 1.40, 0.76);
+        m.addBox(0.10, 1.30, 0.70, 0.20, 1.40, 0.76);
+        m.addBox(-0.10, 1.18, 0.92, 0.10, 1.31, 0.99);
+      });
+      return { parts };
+    }
+
+    if (shape === 'fig_cat') {
+      // Sitting Lego cat (user's selected color)
+      addPart(null, null, m => {
+        m.addBox(-0.28, 0, -0.24, 0.28, 0.88, 0.26); // sitting body
+        m.addBox(-0.28, 0, 0.24, -0.06, 0.26, 0.38); // front left paw
+        m.addBox(0.06, 0, 0.24, 0.28, 0.26, 0.38);   // front right paw
+        m.addCylinder(0, 0.86, 0.04, 0.30, 0.52, 16, 0.86, 1.0, true); // round head
+        // Pointed triangular ears
+        m.addFrustum(-0.18, 1.34, 0.04, 0.12, 0.02, 0.24, 4, 0.9, 1, false);
+        m.addFrustum(0.18, 1.34, 0.04, 0.12, 0.02, 0.24, 4, 0.9, 1, false);
+        // Curled upright tail behind
+        m.addBox(-0.08, 0.12, -0.40, 0.08, 1.05, -0.24);
+        m.addBox(-0.08, 0.95, -0.44, 0.08, 1.16, -0.26);
+      });
+      // Eyes & cute pink nose
+      addPart('#1B2A34', 0, m => {
+        m.addAxisCylinder(-0.12, 1.16, 0.33, 0.045, 0.04, 'z', 10);
+        m.addAxisCylinder(0.12, 1.16, 0.33, 0.045, 0.04, 'z', 10);
+      });
+      addPart('#FC97AC', 0, m => m.addBox(-0.06, 1.04, 0.32, 0.06, 1.11, 0.38));
+      return { parts };
+    }
+
+    // --- ROBOT MINIFIGURE ---
+    if (shape === 'fig_robot') {
+      // Metallic steel legs + hip
+      addPart('#6C6E68', 1, m => {
+        m.addBox(-0.44, 0, -0.24, -0.05, 1.32, 0.26);
+        m.addBox(0.05, 0, -0.24, 0.44, 1.32, 0.26);
+        m.addBox(-0.44, 0, 0.24, -0.05, 0.30, 0.34);
+        m.addBox(0.05, 0, 0.24, 0.44, 0.30, 0.34);
+        m.addBox(-0.45, 1.28, -0.25, 0.45, 1.48, 0.25);
+        // Mechanical pincer claws
+        m.addBox(-0.66, 1.42, 0.14, -0.48, 1.66, 0.32);
+        m.addBox(0.48, 1.42, 0.14, 0.66, 1.66, 0.32);
+      });
+      // User-colored robot chest & arms
+      addPart(null, null, m => {
+        addTrapezoidTorso(m);
+        m.addBox(-0.64, 1.64, -0.14, -0.44, 2.58, 0.16);
+        m.addBox(0.44, 1.64, -0.14, 0.64, 2.58, 0.16);
+        m.addBox(-0.63, 1.56, 0.04, -0.45, 1.98, 0.24);
+        m.addBox(0.45, 1.56, 0.04, 0.63, 1.98, 0.24);
+      });
+      // Blocky metallic head + antennas
+      addPart('#A0A5A9', 1, m => {
+        m.addCylinder(0, 2.66, 0, 0.18, 0.16, 12);
+        m.addBox(-0.36, 2.82, -0.32, 0.36, 3.56, 0.32);
+        m.addCylinder(-0.20, 3.56, 0, 0.045, 0.36, 8);
+        m.addCylinder(0.20, 3.56, 0, 0.045, 0.36, 8);
+      });
+      // Glowing cyan visor & chest power core
+      addPart('#36AEBF', 0, m => {
+        m.addBox(-0.28, 3.08, 0.31, 0.28, 3.34, 0.38);
+        m.addBox(-0.18, 1.96, 0.23, 0.18, 2.30, 0.28);
+      });
+      // Gold antenna tips
+      addPart('#D4AF37', 1, m => {
+        m.addCylinder(-0.20, 3.88, 0, 0.08, 0.12, 10);
+        m.addCylinder(0.20, 3.88, 0, 0.08, 0.12, 10);
+      });
+      return { parts };
+    }
+
+    // --- HUMAN LEGO MINIFIGURES (classic, cap, astro, knight, royal, police) ---
+    const legsColor = shape === 'fig_astro' ? '#F4F4F4'
+      : (shape === 'fig_knight' ? '#6C6E68'
+      : (shape === 'fig_police' ? '#0A3463'
+      : (shape === 'fig_royal' ? '#1B2A34' : '#0055BF')));
+    const legsMetal = shape === 'fig_knight' ? 1 : 0;
+
+    // 1. Legs & Hips
+    addPart(legsColor, legsMetal, m => {
+      m.addBox(-0.44, 0, -0.24, -0.05, 1.32, 0.26);
+      m.addBox(0.05, 0, -0.24, 0.44, 1.32, 0.26);
+      m.addBox(-0.44, 0, 0.24, -0.05, 0.30, 0.34);
+      m.addBox(0.05, 0, 0.24, 0.44, 0.30, 0.34);
+      m.addBox(-0.45, 1.28, -0.25, 0.45, 1.48, 0.25);
+    });
+
+    // 2. Torso & Arms (uses user's selected brick color!)
+    addPart(null, null, m => {
+      addTrapezoidTorso(m);
+      // Shoulders + upper arms + slight forward forearms
+      m.addBox(-0.64, 1.72, -0.14, -0.44, 2.58, 0.14);
+      m.addBox(0.44, 1.72, -0.14, 0.64, 2.58, 0.14);
+      m.addBox(-0.63, 1.54, 0.02, -0.45, 1.98, 0.26);
+      m.addBox(0.45, 1.54, 0.02, 0.63, 1.98, 0.26);
+      // Cap dome & visor for fig_cap
+      if (shape === 'fig_cap') {
+        m.addCylinder(0, 3.36, 0, 0.42, 0.34, 18, 0.84, 1.0, true);
+        m.addFrustum(0, 3.70, 0, 0.41, 0.24, 0.16, 18, 0.90, 1.0, false);
+        m.addBox(-0.34, 3.36, 0.22, 0.34, 3.46, 0.66); // cap brim visor
+      }
+      // Flowing royal cape for fig_royal
+      if (shape === 'fig_royal') {
+        m.pushQuad([-0.42, 2.62, -0.25], [0.42, 2.62, -0.25], [0.54, 0.38, -0.44], [-0.54, 0.38, -0.44], [0, 0.15, -0.98], 0.96, 0.96, 0.84, 0.84);
+        m.pushQuad([0.42, 2.62, -0.26], [-0.42, 2.62, -0.26], [-0.54, 0.38, -0.45], [0.54, 0.38, -0.45], [0, -0.15, 0.98], 0.82, 0.82, 0.74, 0.74);
+      }
+    });
+
+    // 3. Classic Yellow Head & Hands (or gloved hands for astronaut/knight)
+    const handHex = shape === 'fig_astro' ? '#6C6E68' : (shape === 'fig_knight' ? '#1B2A34' : '#F5CD2F');
+    addPart('#F5CD2F', 0, m => {
+      m.addCylinder(0, 2.66, 0, 0.19, 0.15, 14);
+      m.addCylinder(0, 2.81, 0, 0.37, 0.68, 20, 0.86, 1.0, true);
+      m.addCylinder(0, 3.49, 0, 0.20, 0.16, 14, 0.84, 1.0, false);
+      if (handHex === '#F5CD2F') {
+        m.addAxisCylinder(-0.54, 1.54, 0.28, 0.12, 0.16, 'z', 12);
+        m.addAxisCylinder(0.54, 1.54, 0.28, 0.12, 0.16, 'z', 12);
+      }
+    });
+    if (handHex !== '#F5CD2F') {
+      addPart(handHex, 0, m => {
+        m.addAxisCylinder(-0.54, 1.54, 0.28, 0.12, 0.16, 'z', 12);
+        m.addAxisCylinder(0.54, 1.54, 0.28, 0.12, 0.16, 'z', 12);
+      });
+    }
+
+    // 4. Classic Lego Eyes & Friendly Smile (when face is visible)
+    if (shape !== 'fig_astro' && shape !== 'fig_knight') {
+      addPart('#1B2A34', 0, m => {
+        m.addAxisCylinder(-0.13, 3.22, 0.365, 0.048, 0.035, 'z', 10);
+        m.addAxisCylinder(0.13, 3.22, 0.365, 0.048, 0.035, 'z', 10);
+        // Classic 3-piece curved smile
+        m.addBox(-0.13, 3.04, 0.355, -0.05, 3.09, 0.388);
+        m.addBox(-0.06, 3.01, 0.358, 0.06, 3.06, 0.392);
+        m.addBox(0.05, 3.04, 0.355, 0.13, 3.09, 0.388);
+      });
+    }
+
+    // 5. Character-Specific Headgear & Gear
+    if (shape === 'fig_classic') {
+      // Classic sculpted brown Lego hairpiece
+      addPart('#582A12', 0, m => {
+        m.addCylinder(0, 3.40, -0.02, 0.42, 0.28, 18, 0.84, 1.0, true);
+        m.addFrustum(0, 3.68, -0.02, 0.41, 0.28, 0.14, 18, 0.88, 1.0, false);
+        m.addBox(-0.42, 2.94, -0.42, 0.42, 3.52, -0.10); // back hair
+        m.addBox(-0.43, 3.08, -0.18, -0.30, 3.50, 0.18); // left sideburn
+        m.addBox(0.30, 3.08, -0.18, 0.43, 3.50, 0.18);   // right sideburn
+      });
+    } else if (shape === 'fig_astro') {
+      // White space helmet + twin oxygen tanks
+      addPart('#F4F4F4', 0, m => {
+        m.addCylinder(0, 2.86, -0.02, 0.46, 0.82, 20, 0.86, 1.0, true);
+        m.addFrustum(0, 3.68, -0.02, 0.45, 0.26, 0.22, 20, 0.90, 1.0, false);
+        // Twin oxygen tanks on back
+        m.addCylinder(-0.20, 1.60, -0.40, 0.16, 1.05, 12, 0.82, 1.0, true);
+        m.addCylinder(0.20, 1.60, -0.40, 0.16, 1.05, 12, 0.82, 1.0, true);
+      });
+      // Shimmering metallic gold space visor
+      addPart('#D4AF37', 1, m => {
+        m.addBox(-0.34, 3.02, 0.34, 0.34, 3.52, 0.49);
+      });
+    } else if (shape === 'fig_knight') {
+      // Metallic steel helmet
+      addPart('#6C6E68', 1, m => {
+        m.addCylinder(0, 2.82, 0, 0.45, 0.84, 18, 0.84, 1.0, true);
+        m.addFrustum(0, 3.66, 0, 0.44, 0.20, 0.26, 18, 0.88, 1.0, false);
+        m.addBox(-0.36, 2.92, 0.30, 0.36, 3.54, 0.48); // armored visor faceguard
+      });
+      // Visor slit
+      addPart('#1B2A34', 0, m => m.addBox(-0.28, 3.22, 0.47, 0.28, 3.32, 0.51));
+      // Red plume feather crest on top of helmet
+      addPart('#D01012', 0, m => {
+        m.addBox(-0.08, 3.86, -0.34, 0.08, 4.32, 0.22);
+        m.addBox(-0.07, 4.02, -0.52, 0.07, 4.28, -0.32);
+      });
+      // Silver broadsword held upright in right hand + gold hilt
+      addPart('#A0A5A9', 1, m => m.addBox(0.50, 1.88, 0.24, 0.58, 3.45, 0.34));
+      addPart('#D4AF37', 1, m => {
+        m.addBox(0.36, 1.78, 0.23, 0.72, 1.90, 0.35);
+        m.addBox(0.51, 1.36, 0.25, 0.57, 1.78, 0.33);
+      });
+    } else if (shape === 'fig_royal') {
+      // Brown royal hair + shimmering 5-point metallic gold crown
+      addPart('#582A12', 0, m => {
+        m.addBox(-0.42, 2.74, -0.42, 0.42, 3.48, -0.10);
+        m.addBox(-0.43, 2.86, -0.18, -0.30, 3.46, 0.16);
+        m.addBox(0.30, 2.86, -0.18, 0.43, 3.46, 0.16);
+      });
+      addPart('#D4AF37', 1, m => {
+        m.addCylinder(0, 3.44, 0, 0.42, 0.26, 18, 0.88, 1.0, true);
+        for (let i = 0; i < 5; i++) {
+          const a = (i / 5) * Math.PI * 2 + Math.PI * 0.1;
+          m.addFrustum(Math.cos(a) * 0.33, 3.70, Math.sin(a) * 0.33, 0.11, 0.02, 0.34, 6, 0.92, 1.0, false);
+        }
+      });
+    } else if (shape === 'fig_police') {
+      // Classic navy police peaked cap + black visor + gold badges
+      addPart('#0A3463', 0, m => {
+        m.addCylinder(0, 3.42, 0, 0.42, 0.24, 18, 0.86, 1.0, true);
+        m.addFrustum(0, 3.66, 0, 0.40, 0.48, 0.22, 18, 0.90, 1.0, false);
+      });
+      addPart('#1B2A34', 0, m => m.addBox(-0.36, 3.40, 0.24, 0.36, 3.50, 0.64));
+      addPart('#D4AF37', 1, m => {
+        m.addBox(-0.08, 3.66, 0.42, 0.08, 3.82, 0.49); // cap badge
+        m.addBox(0.14, 2.18, 0.23, 0.28, 2.34, 0.28);  // chest badge
+      });
+    }
+
+    return { parts };
   }
 
   // Dynamic Baseplate, Ground Shadow & Mirror Guide Bar Meshes
@@ -2142,10 +2422,13 @@
 
       for (let i = 0; i < opaque.length; i++) {
         const it = opaque[i];
-        bindMeshShadow(it.mesh);
         gl.uniform3f(SLOC.uOffset, it.cx, it.cy, it.cz);
         gl.uniform1f(SLOC.uRotY, it.rotY);
-        gl.drawArrays(gl.TRIANGLES, 0, it.mesh.count);
+        const pts = it.mesh.parts;
+        for (let p = 0; p < pts.length; p++) {
+          bindMeshShadow(pts[p]);
+          gl.drawArrays(gl.TRIANGLES, 0, pts[p].count);
+        }
       }
       gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     }
@@ -2209,15 +2492,12 @@
     gl.uniform1f(LOC.uMetal, 0);
     gl.drawArrays(gl.TRIANGLES, 0, baseplateMesh.count);
 
-    // 3. Draw opaque bricks
+    // 3. Draw opaque bricks & multi-color characters
     const drawItem = (it) => {
-      bindMeshMain(it.mesh);
       gl.uniform3f(LOC.uOffset, it.cx, it.cy, it.cz);
       gl.uniform1f(LOC.uRotY, it.rotY);
-      gl.uniform3fv(LOC.uColor, hexToRgb01(it.b.color));
       gl.uniform1f(LOC.uAlpha, it.alpha);
       gl.uniform1f(LOC.uIsGround, 0);
-      gl.uniform1f(LOC.uMetal, it.b.metal ? 1.0 : 0.0);
 
       let hl = 0;
       if (!opts.noHighlight) {
@@ -2226,7 +2506,17 @@
         else if (state.selectedStepIdx === it.stepIdx) hl = 0.65;
       }
       gl.uniform1f(LOC.uHighlight, hl);
-      gl.drawArrays(gl.TRIANGLES, 0, it.mesh.count);
+
+      const baseRgb = hexToRgb01(it.b.color);
+      const baseMetal = it.b.metal ? 1.0 : 0.0;
+      const pts = it.mesh.parts;
+      for (let p = 0; p < pts.length; p++) {
+        const part = pts[p];
+        bindMeshMain(part);
+        gl.uniform3fv(LOC.uColor, part.color || baseRgb);
+        gl.uniform1f(LOC.uMetal, part.metal !== null ? part.metal : baseMetal);
+        gl.drawArrays(gl.TRIANGLES, 0, part.count);
+      }
     };
 
     for (let i = 0; i < opaque.length; i++) drawItem(opaque[i]);
@@ -2240,10 +2530,13 @@
       gl.uniform1f(LOC.uAlpha, 1.0);
       for (let i = 0; i < opaque.length; i++) {
         const it = opaque[i];
-        bindMeshMain(it.mesh);
         gl.uniform3f(LOC.uOffset, it.cx, it.cy, it.cz);
         gl.uniform1f(LOC.uRotY, it.rotY);
-        gl.drawArrays(gl.TRIANGLES, 0, it.mesh.count);
+        const pts = it.mesh.parts;
+        for (let p = 0; p < pts.length; p++) {
+          bindMeshMain(pts[p]);
+          gl.drawArrays(gl.TRIANGLES, 0, pts[p].count);
+        }
       }
       gl.cullFace(gl.BACK);
       gl.uniform1f(LOC.uIsOutline, 0.0);
@@ -2283,9 +2576,8 @@
         const hp = state.hoverPlacement;
         const ghosts = getMirroredCandidates({ type: state.selectedType, x: hp.x, y: hp.y, z: hp.z, rot: state.rotation });
         const mesh = getBrickMesh(state.selectedType);
-        bindMeshMain(mesh);
-        gl.uniform3fv(LOC.uColor, hp.valid ? hexToRgb01(state.selectedColor) : [0.95, 0.2, 0.2]);
-        gl.uniform1f(LOC.uAlpha, hp.valid ? 0.52 : 0.45);
+        const selRgb = hexToRgb01(state.selectedColor);
+        gl.uniform1f(LOC.uAlpha, hp.valid ? 0.55 : 0.45);
         gl.uniform1f(LOC.uHighlight, hp.valid ? 0.25 : -0.8);
         gl.uniform1f(LOC.uIsGround, 0);
         gl.uniform1f(LOC.uMetal, state.selectedMetal ? 1.0 : 0.0);
@@ -2293,7 +2585,12 @@
           const gd = getBrickDims(g.type, g.rot);
           gl.uniform3f(LOC.uOffset, (g.x + gd.w * 0.5) - half, g.y * PLATE_H, (g.z + gd.d * 0.5) - half);
           gl.uniform1f(LOC.uRotY, g.rot * Math.PI * 0.5);
-          gl.drawArrays(gl.TRIANGLES, 0, mesh.count);
+          for (let p = 0; p < mesh.parts.length; p++) {
+            const part = mesh.parts[p];
+            bindMeshMain(part);
+            gl.uniform3fv(LOC.uColor, hp.valid ? (part.color || selRgb) : [0.95, 0.2, 0.2]);
+            gl.drawArrays(gl.TRIANGLES, 0, part.count);
+          }
         }
       }
 
@@ -2603,6 +2900,34 @@
     if (sh === 'dish' || sh === 'turntable') return `<svg class="${cls}" viewBox="0 0 44 34" fill="none"><ellipse cx="22" cy="16" rx="14" ry="7" fill="${c}"/><ellipse cx="22" cy="15" rx="10" ry="4.5" fill="rgba(255,255,255,0.22)"/></svg>`;
     if (sh === 'grille' || sh === 'masonry') return `<svg class="${cls}" viewBox="0 0 44 34" fill="none"><rect x="6" y="11" width="32" height="15" rx="1" fill="${c}"/><line x1="14" y1="11" x2="14" y2="26" stroke="rgba(0,0,0,0.35)" stroke-width="2"/><line x1="22" y1="11" x2="22" y2="26" stroke="rgba(0,0,0,0.35)" stroke-width="2"/><line x1="30" y1="11" x2="30" y2="26" stroke="rgba(0,0,0,0.35)" stroke-width="2"/></svg>`;
     if (sh === 'corner') return `<svg class="${cls}" viewBox="0 0 44 34" fill="none"><path d="M9 9 H35 V18 H20 V27 H9 Z" fill="${c}"/></svg>`;
+    if (sh === 'fig_dog') return `<svg class="${cls}" viewBox="0 0 44 34" fill="none"><rect x="11" y="16" width="18" height="8" rx="1" fill="${c}"/><rect x="12" y="24" width="4" height="6" fill="${c}"/><rect x="24" y="24" width="4" height="6" fill="${c}"/><rect x="24" y="9" width="10" height="9" rx="1" fill="${c}"/><rect x="33" y="12" width="5" height="5" rx="1" fill="${c}"/><rect x="8" y="10" width="4" height="7" rx="1" fill="${c}"/><rect x="24" y="16" width="6" height="2" fill="#D01012"/><circle cx="30" cy="12" r="1.2" fill="#1B2A34"/><circle cx="37" cy="13" r="1.3" fill="#1B2A34"/></svg>`;
+    if (sh === 'fig_cat') return `<svg class="${cls}" viewBox="0 0 44 34" fill="none"><rect x="16" y="17" width="12" height="12" rx="2" fill="${c}"/><circle cx="22" cy="12" r="6" fill="${c}"/><polygon points="16,9 18,3 21,8" fill="${c}"/><polygon points="28,9 26,3 23,8" fill="${c}"/><rect x="12" y="14" width="3" height="12" rx="1" fill="${c}"/><circle cx="20" cy="11.5" r="1.1" fill="#1B2A34"/><circle cx="24" cy="11.5" r="1.1" fill="#1B2A34"/><circle cx="22" cy="13.5" r="1.1" fill="#FC97AC"/></svg>`;
+    if (sh.startsWith('fig_')) {
+      const isRob = sh === 'fig_robot';
+      const headCol = isRob ? '#A0A5A9' : (sh === 'fig_astro' ? '#F4F4F4' : (sh === 'fig_knight' ? '#6C6E68' : '#F5CD2F'));
+      const legCol = sh === 'fig_astro' ? '#F4F4F4' : (sh === 'fig_knight' || isRob ? '#6C6E68' : (sh === 'fig_police' ? '#0A3463' : '#0055BF'));
+      const hatSvg = sh === 'fig_classic' ? `<path d="M16 7 Q22 2 28 7 V10 H16 Z" fill="#582A12"/>`
+        : sh === 'fig_cap' ? `<path d="M16 8 Q22 3 28 8 H32 V10 H16 Z" fill="${c}"/>`
+        : sh === 'fig_astro' ? `<rect x="17" y="7" width="10" height="5" rx="1.5" fill="#D4AF37"/>`
+        : sh === 'fig_knight' ? `<path d="M21 2 H24 V6 H21 Z" fill="#D01012"/><rect x="18" y="9" width="8" height="2" fill="#1B2A34"/><rect x="30" y="10" width="2.2" height="13" fill="#A0A5A9"/><rect x="28" y="21" width="6" height="2" fill="#D4AF37"/>`
+        : sh === 'fig_royal' ? `<polygon points="16,8 17,3 20,6 22,2 24,6 27,3 28,8" fill="#D4AF37"/>`
+        : sh === 'fig_police' ? `<rect x="15" y="4" width="14" height="4" rx="1" fill="#0A3463"/><rect x="16" y="7.5" width="14" height="1.8" fill="#1B2A34"/><circle cx="22" cy="6" r="1.2" fill="#D4AF37"/>`
+        : isRob ? `<rect x="18" y="8" width="8" height="3" rx="1" fill="#36AEBF"/><line x1="19" y1="6" x2="19" y2="3" stroke="#D4AF37" stroke-width="1.5"/><line x1="25" y1="6" x2="25" y2="3" stroke="#D4AF37" stroke-width="1.5"/>` : '';
+      const faceSvg = (!isRob && sh !== 'fig_astro' && sh !== 'fig_knight')
+        ? `<circle cx="20" cy="10.5" r="1" fill="#1B2A34"/><circle cx="24" cy="10.5" r="1" fill="#1B2A34"/><path d="M19.5 13 Q22 14.8 24.5 13" stroke="#1B2A34" stroke-width="1" fill="none" stroke-linecap="round"/>`
+        : '';
+      return `<svg class="${cls}" viewBox="0 0 44 34" fill="none">
+        <rect x="16" y="6" width="12" height="9" rx="${isRob ? 1 : 3}" fill="${headCol}" stroke="rgba(0,0,0,0.15)"/>
+        ${faceSvg}${hatSvg}
+        <polygon points="16,15 28,15 29,24 15,24" fill="${c}"/>
+        <rect x="12" y="16" width="3.5" height="7.5" rx="1" fill="${c}"/>
+        <rect x="28.5" y="16" width="3.5" height="7.5" rx="1" fill="${c}"/>
+        <circle cx="13.8" cy="24.5" r="1.6" fill="${isRob ? '#6C6E68' : '#F5CD2F'}"/>
+        <circle cx="30.2" cy="24.5" r="1.6" fill="${isRob ? '#6C6E68' : '#F5CD2F'}"/>
+        <rect x="16" y="24" width="5.3" height="8" rx="0.8" fill="${legCol}"/>
+        <rect x="22.7" y="24" width="5.3" height="8" rx="0.8" fill="${legCol}"/>
+      </svg>`;
+    }
 
     const isThin = def.h === 1, hPx = isThin ? 6 : 13, topY = isThin ? 15 : 10;
     const studsSvg = def.studs ? Array.from({ length: Math.min(def.w, 3) }, (_, i) => `<ellipse cx="${15+i*7}" cy="${topY+2+i*1.4}" rx="2.6" ry="1.3" fill="rgba(255,255,255,0.38)"/>`).join('') : '';
