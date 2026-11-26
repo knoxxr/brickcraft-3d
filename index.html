@@ -156,25 +156,34 @@
     <!-- Center: Modes + Mirror + Rotate + Undo/Redo -->
     <div class="flex items-center gap-1 overflow-x-auto thin-scroll py-0.5">
       <div class="flex items-center bg-[var(--card)] border border-[var(--border)] rounded-lg p-0.5 shrink-0" role="group" aria-label="편집 도구">
-        <button data-mode="build" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="브릭 배치 (1)">
+        <button data-mode="build" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="브릭 놓기 (B / 1)">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
           <span class="hidden sm:inline">놓기</span>
+          <kbd class="hidden xl:inline text-[10px] opacity-65 font-mono">B</kbd>
         </button>
-        <button data-mode="paint" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="브릭 색칠 (2)">
+        <button data-mode="paint" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="브릭 색칠 (P / 2)">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 11l-8-8-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0L19 11z"/><path d="M2 13h15"/></svg>
           <span class="hidden sm:inline">색칠</span>
+          <kbd class="hidden xl:inline text-[10px] opacity-65 font-mono">P</kbd>
         </button>
-        <button data-mode="delete" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="브릭 삭제 (3)">
+        <button data-mode="delete" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="브릭 지우기 (X / 3)">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg>
-          <span class="hidden sm:inline">삭제</span>
+          <span class="hidden sm:inline">지우기</span>
+          <kbd class="hidden xl:inline text-[10px] opacity-65 font-mono">X</kbd>
         </button>
-        <button data-mode="select" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="브릭 드래그 이동 · 다중 선택 · 복제 (4)">
+        <button data-mode="move" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="브릭 드래그 이동 (G / 4)">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20"/></svg>
-          <span class="hidden sm:inline">이동·선택</span>
+          <span class="hidden sm:inline">이동</span>
+          <kbd class="hidden xl:inline text-[10px] opacity-65 font-mono">G</kbd>
         </button>
-        <button data-mode="eyedropper" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="스포이드: 브릭 종류·색상 복사 (I / Alt+클릭)">
+        <button data-mode="select" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="다중 선택 · 그룹 편집 (V / 5)">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" stroke-dasharray="3 2"/></svg>
+          <span class="hidden sm:inline">선택</span>
+          <kbd class="hidden xl:inline text-[10px] opacity-65 font-mono">V</kbd>
+        </button>
+        <button data-mode="eyedropper" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="스포이드: 브릭 종류·색상 복사 (I / 6 / Alt+클릭)">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22l5-1 11-11-4-4L3 17l-1 5z"/><path d="M15 5l4 4"/></svg>
-          <span class="hidden xl:inline">스포이드</span>
+          <kbd class="hidden xl:inline text-[10px] opacity-65 font-mono">I</kbd>
         </button>
       </div>
 
@@ -2997,10 +3006,10 @@
     });
   }
 
-  function setMode(m) {
+  function setMode(m, notify = false) {
     state.mode = m;
     state.hoverPlacement = null; state.hoverBrickId = null;
-    if (m !== 'select') state.selectedIds.clear();
+    if (m !== 'select' && m !== 'move') state.selectedIds.clear();
     document.querySelectorAll('.mode-btn').forEach(btn => {
       const active = btn.dataset.mode === m;
       btn.className = `mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer ${active ? 'bg-[var(--primary)] text-[var(--primary-foreground)]' : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)]'}`;
@@ -3008,6 +3017,17 @@
     canvas.style.cursor = m === 'delete' ? 'crosshair' : (m === 'paint' || m === 'eyedropper' ? 'cell' : 'default');
     updateSelectionBar();
     updateHUD();
+    if (notify) {
+      const toastLabels = {
+        build: '놓기 모드 (B / 1)',
+        paint: '색칠 모드 (P / 2)',
+        delete: '지우기 모드 (X / 3)',
+        move: '이동 모드 (G / 4) — 브릭을 드래그해 옮기세요',
+        select: '선택 모드 (V / 5) — 클릭해 여러 브릭 선택',
+        eyedropper: '스포이드 모드 (I / 6)',
+      };
+      if (toastLabels[m]) showToast(toastLabels[m]);
+    }
   }
 
   function updateMirrorUI() {
@@ -3037,10 +3057,11 @@
     $('hud-color-dot').style.background = state.selectedColor;
     const modeNames = {
       build: `${def.name} (${state.rotation * 90}°)`,
-      paint: '색칠 모드',
-      delete: '삭제 모드',
-      select: '이동·선택 (드래그: 이동 · 클릭: 선택 · WASD/R)',
-      eyedropper: '스포이드 (브릭 클릭)',
+      paint: '색칠 모드 (P)',
+      delete: '지우기 모드 (X)',
+      move: '이동 모드 (G · 드래그/WASD/R)',
+      select: '선택 모드 (V · 클릭 다중선택)',
+      eyedropper: '스포이드 (I)',
     };
     $('hud-tool-info').textContent = modeNames[state.mode];
     $('hud-count').textContent = `${state.bricks.length} 브릭`;
@@ -3284,8 +3305,8 @@
       panMode = e.shiftKey || e.button === 1;
       dragSession = null;
 
-      // In Move & Select mode: pressing left button on a brick prepares direct 3D drag-to-move!
-      if (state.mode === 'select' && e.button === 0 && !panMode && !e.altKey && !state.isPlaying && state.visibleStep >= getAssemblySteps().length) {
+      // In Move (G) or Select (V) mode: pressing left button on a brick prepares direct 3D drag-to-move!
+      if ((state.mode === 'move' || state.mode === 'select') && e.button === 0 && !panMode && !e.altKey && !state.isPlaying && state.visibleStep >= getAssemblySteps().length) {
         const hit = raycastScene(e.clientX, e.clientY);
         if (hit && hit.brick) {
           const anchor = hit.brick;
@@ -3374,7 +3395,7 @@
     } else {
       state.hoverPlacement = null;
       state.hoverBrickId = hit && hit.brick ? hit.brick.id : null;
-      if (state.mode === 'select') {
+      if (state.mode === 'move' || state.mode === 'select') {
         canvas.style.cursor = state.hoverBrickId ? 'grab' : 'default';
       }
     }
@@ -3474,6 +3495,16 @@
         state.hoverBrickId = null; state.selectedStepIdx = null;
         SoundFX.playDelete();
         syncUI();
+      }
+    } else if (state.mode === 'move') {
+      if (hit && hit.brick) {
+        state.selectedIds.clear();
+        state.selectedIds.add(hit.brick.id);
+        SoundFX.playTick();
+        updateSelectionBar();
+      } else {
+        state.selectedIds.clear();
+        updateSelectionBar();
       }
     } else if (state.mode === 'select') {
       if (hit && hit.brick) {
@@ -3639,20 +3670,26 @@
 
   window.addEventListener('keydown', e => {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
-    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); if (e.shiftKey) redo(); else undo(); return; }
-    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') { e.preventDefault(); redo(); return; }
-    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'd' && state.selectedIds.size) { e.preventDefault(); runSelectionAction('dup'); return; }
-    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'a' && state.mode === 'select') {
+    const code = e.code;
+    const mod = e.ctrlKey || e.metaKey;
+
+    if (mod && code === 'KeyZ') { e.preventDefault(); if (e.shiftKey) redo(); else undo(); return; }
+    if (mod && code === 'KeyY') { e.preventDefault(); redo(); return; }
+    if (mod && code === 'KeyD' && state.selectedIds.size) { e.preventDefault(); runSelectionAction('dup'); return; }
+    if (mod && code === 'KeyA' && (state.mode === 'select' || state.mode === 'move')) {
       e.preventDefault();
       state.bricks.forEach(b => state.selectedIds.add(b.id));
-      updateSelectionBar(); return;
+      updateSelectionBar();
+      showToast(`전체 ${state.selectedIds.size}개 브릭 선택됨`);
+      return;
     }
-    const k = e.key.toLowerCase();
-    if (k === 'r') {
+    if (mod) return;
+
+    if (code === 'KeyR') {
       if (dragSession && dragSession.started && dragSession.group.length === 1) {
         dragSession.anchor.rot = (dragSession.anchor.rot + 1) % 4;
         SoundFX.playTick();
-      } else if (state.mode === 'select' && state.selectedIds.size) {
+      } else if ((state.mode === 'move' || state.mode === 'select') && state.selectedIds.size) {
         runSelectionAction('rot');
       } else {
         state.rotation = (state.rotation + 1) % 4;
@@ -3661,22 +3698,29 @@
       }
       return;
     }
+
     if (state.selectedIds.size) {
-      if (k === 'w' || k === 'a' || k === 's' || k === 'd') { e.preventDefault(); nudgeSelectedCameraRelative(k); return; }
-      if (k === 'e') { e.preventDefault(); runSelectionAction('my+'); return; }
-      if (k === 'q') { e.preventDefault(); runSelectionAction('my-'); return; }
+      if (code === 'KeyW') { e.preventDefault(); nudgeSelectedCameraRelative('w'); return; }
+      if (code === 'KeyA') { e.preventDefault(); nudgeSelectedCameraRelative('a'); return; }
+      if (code === 'KeyS') { e.preventDefault(); nudgeSelectedCameraRelative('s'); return; }
+      if (code === 'KeyD') { e.preventDefault(); nudgeSelectedCameraRelative('d'); return; }
+      if (code === 'KeyE') { e.preventDefault(); runSelectionAction('my+'); return; }
+      if (code === 'KeyQ') { e.preventDefault(); runSelectionAction('my-'); return; }
     }
-    if (k === '1') setMode('build');
-    else if (k === '2') setMode('paint');
-    else if (k === '3') setMode('delete');
-    else if (k === '4' || k === 'v') setMode('select');
-    else if (k === 'i') setMode('eyedropper');
-    else if (k === 'm') cycleMirrorMode();
-    else if (e.code === 'Space') { e.preventDefault(); togglePlayback(); }
-    else if (e.key === 'ArrowLeft') { stopPlayback(); setVisibleStep(state.visibleStep - 1, false); }
-    else if (e.key === 'ArrowRight') { stopPlayback(); setVisibleStep(state.visibleStep + 1, true); }
-    else if ((e.key === 'Delete' || e.key === 'Backspace') && state.selectedIds.size) { runSelectionAction('del'); }
-    else if (e.key === 'Escape') {
+
+    // Mode shortcuts (work in both English & Korean IME!)
+    if (code === 'Digit1' || code === 'KeyB') setMode('build', true);
+    else if (code === 'Digit2' || code === 'KeyP') setMode('paint', true);
+    else if (code === 'Digit3' || code === 'KeyX') setMode('delete', true);
+    else if (code === 'Digit4' || code === 'KeyG') setMode('move', true);
+    else if (code === 'Digit5' || code === 'KeyV') setMode('select', true);
+    else if (code === 'Digit6' || code === 'KeyI') setMode('eyedropper', true);
+    else if (code === 'KeyM') cycleMirrorMode();
+    else if (code === 'Space') { e.preventDefault(); togglePlayback(); }
+    else if (code === 'ArrowLeft') { stopPlayback(); setVisibleStep(state.visibleStep - 1, false); }
+    else if (code === 'ArrowRight') { stopPlayback(); setVisibleStep(state.visibleStep + 1, true); }
+    else if ((code === 'Delete' || code === 'Backspace') && state.selectedIds.size) { runSelectionAction('del'); }
+    else if (code === 'Escape') {
       $('export-modal').classList.add('hidden');
       $('manual-modal').classList.add('hidden');
       $('share-modal').classList.add('hidden');
@@ -3701,7 +3745,7 @@
   document.querySelectorAll('.mode-btn').forEach(btn => btn.addEventListener('click', () => setMode(btn.dataset.mode)));
   $('btn-mirror').addEventListener('click', cycleMirrorMode);
   $('btn-rotate').addEventListener('click', () => {
-    if (state.mode === 'select' && state.selectedIds.size) runSelectionAction('rot');
+    if ((state.mode === 'move' || state.mode === 'select') && state.selectedIds.size) runSelectionAction('rot');
     else { state.rotation = (state.rotation + 1) % 4; SoundFX.playTick(); updateHUD(); }
   });
   $('btn-undo').addEventListener('click', undo);
