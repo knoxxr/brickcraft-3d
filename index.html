@@ -142,7 +142,7 @@
         <span class="font-semibold text-sm tracking-tight hidden xl:inline">BrickCraft 3D</span>
       </div>
 
-      <select id="preset-select" class="bg-[var(--card)] text-[var(--foreground)] border border-[var(--border)] rounded-md px-2 py-1 text-xs focus:outline-none focus:border-[var(--primary)] cursor-pointer max-w-[140px] sm:max-w-[175px]">
+      <select id="preset-select" class="bg-[var(--card)] text-[var(--foreground)] border border-[var(--border)] rounded-md px-2 py-1 text-xs focus:outline-none focus:border-[var(--primary)] cursor-pointer max-w-[130px] sm:max-w-[155px]">
         <option value="house">작은 집 (창문·문)</option>
         <option value="castle">중세 성 (아치·성벽)</option>
         <option value="car">레이싱카 (바퀴·앞유리)</option>
@@ -150,6 +150,11 @@
         <option value="duck">클래식 레고 오리</option>
         <option value="empty">빈 베이스플레이트</option>
       </select>
+
+      <button id="btn-new-project" class="tool-btn bg-[var(--card)] hover:bg-[var(--accent)] border border-[var(--border)] rounded-md px-2 py-1 text-xs font-medium flex items-center gap-1 cursor-pointer shrink-0" title="새로 만들기 (판 크기·색상 선택)">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+        <span class="hidden md:inline">새로</span>
+      </button>
     </div>
 
     <!-- Center: Modes + Mirror + Rotate + Undo/Redo -->
@@ -158,31 +163,31 @@
         <button data-mode="build" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="브릭 놓기 (B / 1)">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
           <span class="hidden sm:inline">놓기</span>
-          <kbd class="hidden xl:inline text-[10px] opacity-65 font-mono">B</kbd>
+          <kbd class="hidden 2xl:inline text-[10px] opacity-65 font-mono">B</kbd>
         </button>
         <button data-mode="paint" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="브릭 색칠 (P / 2)">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 11l-8-8-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0L19 11z"/><path d="M2 13h15"/></svg>
           <span class="hidden sm:inline">색칠</span>
-          <kbd class="hidden xl:inline text-[10px] opacity-65 font-mono">P</kbd>
+          <kbd class="hidden 2xl:inline text-[10px] opacity-65 font-mono">P</kbd>
         </button>
         <button data-mode="delete" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="브릭 지우기 (X / 3)">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg>
           <span class="hidden sm:inline">지우기</span>
-          <kbd class="hidden xl:inline text-[10px] opacity-65 font-mono">X</kbd>
+          <kbd class="hidden 2xl:inline text-[10px] opacity-65 font-mono">X</kbd>
         </button>
         <button data-mode="move" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="브릭 드래그 이동 (G / 4)">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20"/></svg>
           <span class="hidden sm:inline">이동</span>
-          <kbd class="hidden xl:inline text-[10px] opacity-65 font-mono">G</kbd>
+          <kbd class="hidden 2xl:inline text-[10px] opacity-65 font-mono">G</kbd>
         </button>
-        <button data-mode="select" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="다중 선택 · 그룹 편집 (V / 5)">
+        <button data-mode="select" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="다중 선택 · 드래그 박스 선택 (V / 5)">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" stroke-dasharray="3 2"/></svg>
           <span class="hidden sm:inline">선택</span>
-          <kbd class="hidden xl:inline text-[10px] opacity-65 font-mono">V</kbd>
+          <kbd class="hidden 2xl:inline text-[10px] opacity-65 font-mono">V</kbd>
         </button>
         <button data-mode="eyedropper" class="mode-btn tool-btn px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1 cursor-pointer" title="스포이드: 브릭 종류·색상 복사 (I / 6 / Alt+클릭)">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22l5-1 11-11-4-4L3 17l-1 5z"/><path d="M15 5l4 4"/></svg>
-          <kbd class="hidden xl:inline text-[10px] opacity-65 font-mono">I</kbd>
+          <kbd class="hidden 2xl:inline text-[10px] opacity-65 font-mono">I</kbd>
         </button>
       </div>
 
@@ -207,8 +212,27 @@
       </div>
     </div>
 
-    <!-- Right: Sound, Theme, Share, Manual, Export -->
+    <!-- Right: Studio Tools, Sound, Theme, Help, Export -->
     <div class="flex items-center gap-1 shrink-0">
+      <button id="btn-open-mosaic" class="tool-btn bg-[var(--card)] hover:bg-[var(--accent)] border border-[var(--border)] rounded-md px-2 py-1 text-xs cursor-pointer hidden md:flex items-center gap-1" title="사진 → 레고 모자이크 자동 변환">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span class="hidden xl:inline">모자이크</span>
+      </button>
+
+      <button id="btn-open-gallery" class="tool-btn bg-[var(--card)] hover:bg-[var(--accent)] border border-[var(--border)] rounded-md px-2 py-1 text-xs cursor-pointer hidden sm:flex items-center gap-1" title="내 작품 갤러리 (로컬 저장/불러오기)">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <span class="hidden xl:inline">갤러리</span>
+      </button>
+
+      <button id="btn-share-url" class="tool-btn bg-[var(--card)] hover:bg-[var(--accent)] border border-[var(--border)] rounded-md px-2 py-1 text-xs cursor-pointer hidden lg:flex items-center gap-1" title="압축 링크로 모델 공유">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      </button>
+
+      <button id="btn-open-manual" class="tool-btn bg-[var(--card)] hover:bg-[var(--accent)] border border-[var(--border)] rounded-md px-2 py-1 text-xs cursor-pointer hidden sm:flex items-center gap-1" title="조립 설명서(PDF/PNG) & 부품 목록(BOM)">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        <span class="hidden xl:inline">설명서</span>
+      </button>
+
       <button id="btn-sound" class="tool-btn bg-[var(--card)] hover:bg-[var(--accent)] border border-[var(--border)] rounded-md w-7 h-7 flex items-center justify-center cursor-pointer" title="브릭 효과음 켜기/끄기">
         <svg id="icon-sound-on" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
         <svg id="icon-sound-off" class="w-3.5 h-3.5 hidden opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
@@ -219,19 +243,11 @@
         <svg id="icon-theme-moon" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
 
-      <button id="btn-share-url" class="tool-btn bg-[var(--card)] hover:bg-[var(--accent)] border border-[var(--border)] rounded-md px-2 py-1 text-xs cursor-pointer hidden md:flex items-center gap-1" title="압축 링크로 모델 공유">
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-        <span class="hidden xl:inline">공유</span>
-      </button>
+      <button id="btn-open-help" class="tool-btn bg-[var(--card)] hover:bg-[var(--accent)] border border-[var(--border)] rounded-md w-7 h-7 hidden sm:flex items-center justify-center cursor-pointer font-mono text-xs font-bold" title="단축키 안내 (?)">?</button>
 
-      <button id="btn-open-manual" class="tool-btn bg-[var(--card)] hover:bg-[var(--accent)] border border-[var(--border)] rounded-md px-2 py-1 text-xs cursor-pointer hidden sm:flex items-center gap-1" title="조립 설명서(PDF/PNG) & 부품 목록(BOM)">
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        <span class="hidden xl:inline">설명서</span>
-      </button>
-
-      <button id="btn-open-export" class="tool-btn bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 rounded-md px-2.5 py-1.5 text-xs font-semibold flex items-center gap-1.5 cursor-pointer shadow-sm">
+      <button id="btn-open-export" class="tool-btn bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 rounded-md px-2.5 py-1.5 text-xs font-semibold flex items-center gap-1.5 cursor-pointer shadow-sm" title="GIF · 60fps 영상 · 투명 PNG · 3D(.OBJ/.STL) 내보내기">
         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="4" width="20" height="16" rx="2"/><polygon points="10 9 16 12 10 15 10 9" fill="currentColor"/></svg>
-        <span>GIF·영상</span>
+        <span>내보내기</span>
       </button>
 
       <button id="btn-mobile-right" class="lg:hidden tool-btn w-8 h-8 rounded-md bg-[var(--card)] border border-[var(--border)] flex items-center justify-center cursor-pointer" title="조립 순서 열기">
@@ -356,14 +372,28 @@
           <button data-sel="clear" class="sel-act tool-btn px-1.5 py-1 rounded text-[var(--muted-foreground)] hover:bg-[var(--accent)] cursor-pointer" title="선택 해제 (Esc)">✕</button>
         </div>
 
+        <!-- Marquee Box Selection Overlay (Select Mode V) -->
+        <div id="marquee-box" class="hidden fixed pointer-events-none z-20 border-2 border-[var(--primary)] bg-[var(--primary)]/15 rounded-xs"></div>
+
+        <!-- Layer Cutaway Slider Pill (shown when Cutaway is enabled) -->
+        <div id="cutaway-bar" class="hidden absolute bottom-14 left-3 bg-[var(--card)]/95 backdrop-blur-sm border border-[var(--primary)] rounded-lg px-2.5 py-1.5 shadow-md flex items-center gap-2 text-xs z-10">
+          <span class="font-semibold text-[var(--primary)]">단면 투시</span>
+          <input id="cutaway-slider" type="range" min="1" max="36" value="12" class="w-28 cursor-pointer h-1.5" />
+          <span id="cutaway-readout" class="font-mono tabular-nums w-12 text-right">Y≤12</span>
+        </div>
+
         <!-- Bottom-Left Camera & Render Style Controls -->
-        <div class="absolute bottom-3 left-3 flex items-center gap-1 bg-[var(--card)]/90 backdrop-blur-sm border border-[var(--border)] rounded-lg p-1 shadow-sm flex-wrap">
+        <div class="absolute bottom-3 left-3 flex items-center gap-1 bg-[var(--card)]/90 backdrop-blur-sm border border-[var(--border)] rounded-lg p-1 shadow-sm flex-wrap max-w-[calc(100%-24px)]">
           <button data-cam="iso" class="cam-btn tool-btn px-2 py-1 rounded text-xs hover:bg-[var(--accent)] cursor-pointer">입체</button>
           <button data-cam="front" class="cam-btn tool-btn px-2 py-1 rounded text-xs hover:bg-[var(--accent)] cursor-pointer">정면</button>
           <button data-cam="top" class="cam-btn tool-btn px-2 py-1 rounded text-xs hover:bg-[var(--accent)] cursor-pointer">위</button>
           <div class="w-px h-3.5 bg-[var(--border)] mx-0.5"></div>
           <button id="btn-toggle-shadow" class="tool-btn px-2 py-1 rounded text-xs font-medium cursor-pointer" title="실시간 그림자 (Shadow Map)">그림자</button>
           <button id="btn-toggle-outline" class="tool-btn px-2 py-1 rounded text-xs font-medium cursor-pointer" title="모서리 윤곽선 (매뉴얼 스타일)">윤곽선</button>
+          <button id="btn-lighting-preset" class="tool-btn px-2 py-1 rounded text-xs font-medium hover:bg-[var(--accent)] cursor-pointer" title="조명 분위기 전환 (낮 / 노을 / 밤 네온)">낮</button>
+          <div class="w-px h-3.5 bg-[var(--border)] mx-0.5"></div>
+          <button id="btn-toggle-continuous" class="tool-btn px-2 py-1 rounded text-xs font-medium cursor-pointer" title="연속 그리기 배치: 놓기 모드에서 드래그로 브릭 연속 배치 (C)">연속</button>
+          <button id="btn-toggle-cutaway" class="tool-btn px-2 py-1 rounded text-xs font-medium cursor-pointer" title="층별 단면 투시: 위층을 숨겨 내부 편집">단면</button>
           <div class="w-px h-3.5 bg-[var(--border)] mx-0.5"></div>
           <button id="btn-zoom-in" class="tool-btn w-6 h-6 rounded flex items-center justify-center hover:bg-[var(--accent)] text-xs font-bold cursor-pointer" title="확대">+</button>
           <button id="btn-zoom-out" class="tool-btn w-6 h-6 rounded flex items-center justify-center hover:bg-[var(--accent)] text-xs font-bold cursor-pointer" title="축소">−</button>
@@ -371,7 +401,7 @@
 
         <!-- Bottom-Right Controls Hint -->
         <div class="absolute bottom-3 right-3 hidden 2xl:flex items-center gap-2 bg-[var(--card)]/80 backdrop-blur-sm border border-[var(--border)] rounded-lg px-2.5 py-1 text-xs text-[var(--muted-foreground)] pointer-events-none">
-          <span>클릭:배치</span><span>·</span><span>드래그:회전</span><span>·</span><span>Shift+드래그:이동</span><span>·</span><span>Alt+클릭:스포이드</span><span>·</span><span>R:회전</span><span>·</span><span>M:대칭</span><span>·</span><span>Space:재생</span>
+          <span>B:놓기</span><span>·</span><span>X:지우기</span><span>·</span><span>G:이동</span><span>·</span><span>V:박스선택</span><span>·</span><span>C:연속</span><span>·</span><span>?:단축키</span>
         </div>
       </div>
 
@@ -443,10 +473,11 @@
     <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl shadow-2xl w-full max-w-2xl max-h-[92vh] flex flex-col overflow-hidden">
       <div class="px-4 py-3 border-b border-[var(--border)] flex items-center justify-between gap-2">
         <div class="flex items-center gap-2">
-          <div class="flex items-center bg-[var(--background)] border border-[var(--border)] rounded-lg p-0.5 text-xs">
-            <button data-exptab="gif" class="exptab-btn px-2.5 py-1 rounded-md font-semibold cursor-pointer">GIF 내보내기</button>
+          <div class="flex items-center bg-[var(--background)] border border-[var(--border)] rounded-lg p-0.5 text-xs flex-wrap">
+            <button data-exptab="gif" class="exptab-btn px-2.5 py-1 rounded-md font-semibold cursor-pointer">GIF</button>
             <button data-exptab="video" class="exptab-btn px-2.5 py-1 rounded-md font-semibold cursor-pointer">60fps 영상</button>
             <button data-exptab="png" class="exptab-btn px-2.5 py-1 rounded-md font-semibold cursor-pointer">투명 PNG</button>
+            <button data-exptab="model3d" class="exptab-btn px-2.5 py-1 rounded-md font-semibold cursor-pointer">3D (.STL/.OBJ)</button>
           </div>
         </div>
         <button id="btn-close-export" class="w-7 h-7 rounded-md hover:bg-[var(--accent)] flex items-center justify-center text-[var(--muted-foreground)] cursor-pointer" aria-label="닫기">✕</button>
@@ -455,7 +486,7 @@
       <div class="p-4 overflow-y-auto thin-scroll grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- Options Column -->
         <div class="space-y-3 text-xs">
-          <div>
+          <div id="exp-res-wrap">
             <label class="block text-[var(--muted-foreground)] mb-1 font-medium">해상도</label>
             <select id="exp-res" class="w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)] rounded-md px-2.5 py-1.5 cursor-pointer">
               <option value="480x360">480 × 360 (빠름 · SNS 공유용)</option>
@@ -518,6 +549,21 @@
               <span>모서리 윤곽선 강조 적용</span>
             </label>
             <p class="text-[var(--muted-foreground)] leading-relaxed">현재 3D 시점 그대로 고해상도 PNG 이미지를 렌더링합니다. 프레젠테이션·썸네일·스티커 제작에 활용할 수 있습니다.</p>
+          </div>
+
+          <div id="exp-3d-options" class="hidden space-y-2.5">
+            <div>
+              <label class="block text-[var(--muted-foreground)] mb-1 font-medium">3D 파일 형식</label>
+              <select id="exp-3d-format" class="w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)] rounded-md px-2.5 py-1.5 cursor-pointer">
+                <option value="stl" selected>Binary .STL (3D 프린팅 · 실측 mm 규격)</option>
+                <option value="obj">Wavefront .OBJ (Blender · Unity · 3D 편집)</option>
+              </select>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input id="exp-3d-baseplate" type="checkbox" class="accent-[var(--primary)] cursor-pointer" />
+              <span>베이스플레이트 메쉬 포함</span>
+            </label>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">실제 레고 규격(1 스터드 = 8.0 mm)으로 변환된 삼각형 메쉬를 브라우저에서 즉시 추출합니다.</p>
           </div>
 
           <div class="pt-1">
@@ -604,6 +650,224 @@
           <button id="btn-copy-share" class="tool-btn px-3 py-1.5 rounded-md bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold cursor-pointer shrink-0">복사</button>
         </div>
         <div id="share-url-stats" class="text-[var(--muted-foreground)] font-mono"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- New Project Modal -->
+  <div id="new-modal" class="hidden fixed inset-0 z-50 bg-black/55 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl shadow-2xl w-full max-w-sm overflow-hidden">
+      <div class="px-4 py-3 border-b border-[var(--border)] flex items-center justify-between">
+        <h3 class="text-sm font-semibold">새 레고 프로젝트 만들기</h3>
+        <button id="btn-close-new" class="w-7 h-7 rounded-md hover:bg-[var(--accent)] flex items-center justify-center text-[var(--muted-foreground)] cursor-pointer">✕</button>
+      </div>
+      <div class="p-4 space-y-3 text-xs">
+        <div>
+          <label class="block text-[var(--muted-foreground)] mb-1 font-medium">베이스판 크기</label>
+          <select id="new-size" class="w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)] rounded-md px-2.5 py-1.5 cursor-pointer">
+            <option value="16" selected>16 × 16 (컴팩트 · 빠른 조립)</option>
+            <option value="24">24 × 24 (중형 건축물)</option>
+            <option value="32">32 × 32 (대형 디오라마 · 모자이크)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-[var(--muted-foreground)] mb-1 font-medium">베이스판 색상</label>
+          <select id="new-bp-color" class="w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)] rounded-md px-2.5 py-1.5 cursor-pointer">
+            <option value="#2E8B47" selected>그린 잔디</option>
+            <option value="#9DA3A8">라이트 그레이 (도시/도로)</option>
+            <option value="#DCC698">샌드 비치 (사막/해변)</option>
+            <option value="#2A72B5">오션 블루 (바다)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-[var(--muted-foreground)] mb-1 font-medium">조명 분위기</label>
+          <select id="new-lighting" class="w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)] rounded-md px-2.5 py-1.5 cursor-pointer">
+            <option value="day" selected>낮 스튜디오 (선명한 기본)</option>
+            <option value="sunset">따뜻한 노을 (골든아워)</option>
+            <option value="night">밤 네온 (투명·크리스탈 발광)</option>
+          </select>
+        </div>
+        <div class="pt-1 flex justify-end gap-2">
+          <button id="btn-cancel-new" class="tool-btn px-3 py-1.5 rounded-md border border-[var(--border)] hover:bg-[var(--accent)] cursor-pointer">취소</button>
+          <button id="btn-confirm-new" class="tool-btn px-4 py-1.5 rounded-md bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold hover:opacity-90 cursor-pointer">새로 시작</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- My Gallery Modal (Local Auto-Save + Named Slots) -->
+  <div id="gallery-modal" class="hidden fixed inset-0 z-50 bg-black/55 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl shadow-2xl w-full max-w-2xl max-h-[88vh] flex flex-col overflow-hidden">
+      <div class="px-4 py-3 border-b border-[var(--border)] flex items-center justify-between gap-2">
+        <div>
+          <h3 class="text-sm font-semibold">내 작품 갤러리</h3>
+          <p class="text-[11px] text-[var(--muted-foreground)]">작업 내용은 브라우저에 자동 저장되며, 원하는 작품을 슬롯에 보관할 수 있습니다.</p>
+        </div>
+        <button id="btn-close-gallery" class="w-7 h-7 rounded-md hover:bg-[var(--accent)] flex items-center justify-center text-[var(--muted-foreground)] cursor-pointer">✕</button>
+      </div>
+      <div class="p-3 border-b border-[var(--border)] bg-[var(--background)] flex items-center gap-2 text-xs">
+        <input id="gallery-save-name" type="text" placeholder="작품 이름 입력 (예: 나의 2층 별장)" class="flex-1 bg-[var(--card)] text-[var(--foreground)] border border-[var(--border)] rounded-md px-2.5 py-1.5 focus:outline-none focus:border-[var(--primary)]" />
+        <button id="btn-gallery-save" class="tool-btn px-3 py-1.5 rounded-md bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold hover:opacity-90 cursor-pointer shrink-0">현재 작품 저장</button>
+      </div>
+      <div id="gallery-grid" class="flex-1 overflow-y-auto thin-scroll p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"></div>
+    </div>
+  </div>
+
+  <!-- Photo to Lego Mosaic Converter Modal -->
+  <div id="mosaic-modal" class="hidden fixed inset-0 z-50 bg-black/55 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden">
+      <div class="px-4 py-3 border-b border-[var(--border)] flex items-center justify-between">
+        <h3 class="text-sm font-semibold">사진 → 레고 모자이크(픽셀 아트) 변환기</h3>
+        <button id="btn-close-mosaic" class="w-7 h-7 rounded-md hover:bg-[var(--accent)] flex items-center justify-center text-[var(--muted-foreground)] cursor-pointer">✕</button>
+      </div>
+      <div class="p-4 overflow-y-auto thin-scroll grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+        <div class="space-y-3">
+          <div>
+            <label class="block text-[var(--muted-foreground)] mb-1 font-medium">이미지 파일 선택</label>
+            <input id="mosaic-file" type="file" accept="image/*" class="w-full text-xs file:mr-2 file:py-1 file:px-2.5 file:rounded-md file:border file:border-[var(--border)] file:bg-[var(--background)] file:text-[var(--foreground)] file:cursor-pointer cursor-pointer" />
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-[var(--muted-foreground)] mb-1 font-medium">해상도 (스터드)</label>
+              <select id="mosaic-size" class="w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)] rounded-md px-2 py-1.5 cursor-pointer">
+                <option value="16" selected>16 × 16 (256 브릭)</option>
+                <option value="24">24 × 24 (576 브릭)</option>
+                <option value="32">32 × 32 (1024 브릭)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[var(--muted-foreground)] mb-1 font-medium">브릭 형태</label>
+              <select id="mosaic-brick" class="w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)] rounded-md px-2 py-1.5 cursor-pointer">
+                <option value="tile_1x1" selected>1×1 매끈한 타일</option>
+                <option value="plate_1x1">1×1 스터드 플레이트</option>
+                <option value="tround_1x1">1×1 원형 도트 타일</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[var(--muted-foreground)] mb-1 font-medium">배치 방향</label>
+            <select id="mosaic-orient" class="w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)] rounded-md px-2 py-1.5 cursor-pointer">
+              <option value="flat" selected>바닥 눕히기 (액자 평면 모자이크)</option>
+              <option value="wall">세워서 벽화 (수직 입체 스탠드)</option>
+            </select>
+          </div>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input id="mosaic-dither" type="checkbox" checked class="accent-[var(--primary)] cursor-pointer" />
+            <span>디더링(Floyd-Steinberg)으로 자연스러운 색 표현</span>
+          </label>
+          <button id="btn-apply-mosaic" disabled class="tool-btn w-full py-2 rounded-lg bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold hover:opacity-90 disabled:opacity-45 cursor-pointer">3D 베이스판에 모자이크 생성</button>
+        </div>
+        <div class="flex flex-col items-center justify-center bg-[var(--background)] border border-[var(--border)] rounded-lg p-3 min-h-[220px]">
+          <canvas id="mosaic-preview" width="256" height="256" class="max-w-full rounded border border-[var(--border)] hidden" style="image-rendering: pixelated;"></canvas>
+          <div id="mosaic-empty-hint" class="text-center text-[var(--muted-foreground)] space-y-1">
+            <p class="font-medium">사진·캐릭터·로고를 올려보세요</p>
+            <p>24종 레고 컬러로 자동 변환되어<br/>조립 순서 GIF까지 만들 수 있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Minifigure Builder Modal -->
+  <div id="custom-fig-modal" class="hidden fixed inset-0 z-50 bg-black/55 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl shadow-2xl w-full max-w-xl overflow-hidden">
+      <div class="px-4 py-3 border-b border-[var(--border)] flex items-center justify-between">
+        <h3 class="text-sm font-semibold">나만의 미니피규어 커스텀 빌더</h3>
+        <button id="btn-close-cfig" class="w-7 h-7 rounded-md hover:bg-[var(--accent)] flex items-center justify-center text-[var(--muted-foreground)] cursor-pointer">✕</button>
+      </div>
+      <div class="p-4 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+        <div class="space-y-2.5">
+          <div>
+            <label class="block text-[var(--muted-foreground)] mb-1 font-medium">머리 장식 (헤어 · 모자 · 헬멧)</label>
+            <select id="cfig-hat" class="w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)] rounded-md px-2 py-1.5 cursor-pointer">
+              <option value="classic">클래식 헤어</option>
+              <option value="cap">야구 캡모자</option>
+              <option value="astro">우주 헬멧</option>
+              <option value="knight">기사 투구 + 깃털</option>
+              <option value="royal">금빛 5각 왕관</option>
+              <option value="police">경찰 제복 모자</option>
+              <option value="robot">로봇 안테나 헤드</option>
+              <option value="none">없음 (기본 스터드)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[var(--muted-foreground)] mb-1 font-medium">표정</label>
+            <select id="cfig-face" class="w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)] rounded-md px-2 py-1.5 cursor-pointer">
+              <option value="smile">클래식 스마일</option>
+              <option value="cool">선글라스 (쿨가이)</option>
+              <option value="wink">윙크</option>
+              <option value="surprise">놀람 (O 입)</option>
+              <option value="visor">골드/네온 바이저</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[var(--muted-foreground)] mb-1 font-medium">소품 / 액세서리</label>
+            <select id="cfig-acc" class="w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)] rounded-md px-2 py-1.5 cursor-pointer">
+              <option value="sword">은빛 대검</option>
+              <option value="shield">기사 방패</option>
+              <option value="cape">등 뒤 망토</option>
+              <option value="oxygen">우주 산소통</option>
+              <option value="flag">깃발 스태프</option>
+              <option value="none">소품 없음</option>
+            </select>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-0.5">
+            <label class="block">
+              <span class="text-[var(--muted-foreground)] block mb-1">머리장식 색</span>
+              <select id="cfig-hat-col" class="cfig-col-sel w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)] rounded px-1.5 py-1 cursor-pointer"></select>
+            </label>
+            <label class="block">
+              <span class="text-[var(--muted-foreground)] block mb-1">얼굴/피부 색</span>
+              <select id="cfig-head-col" class="cfig-col-sel w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)] rounded px-1.5 py-1 cursor-pointer"></select>
+            </label>
+            <label class="block">
+              <span class="text-[var(--muted-foreground)] block mb-1">상의 색</span>
+              <select id="cfig-torso-col" class="cfig-col-sel w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)] rounded px-1.5 py-1 cursor-pointer"></select>
+            </label>
+            <label class="block">
+              <span class="text-[var(--muted-foreground)] block mb-1">하의 색</span>
+              <select id="cfig-legs-col" class="cfig-col-sel w-full bg-[var(--background)] text-[var(--foreground)] border border-[var(--border)] rounded px-1.5 py-1 cursor-pointer"></select>
+            </label>
+          </div>
+        </div>
+        <div class="flex flex-col justify-between gap-3">
+          <div class="flex-1 bg-[var(--background)] border border-[var(--border)] rounded-lg flex items-center justify-center p-4 min-h-[190px]">
+            <div id="cfig-preview-svg"></div>
+          </div>
+          <button id="btn-use-cfig" class="tool-btn w-full py-2 rounded-lg bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold hover:opacity-90 cursor-pointer">이 커스텀 피규어 배치하기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shortcut Cheatsheet Modal (?) -->
+  <div id="help-modal" class="hidden fixed inset-0 z-50 bg-black/55 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl shadow-2xl w-full max-w-xl overflow-hidden">
+      <div class="px-4 py-3 border-b border-[var(--border)] flex items-center justify-between">
+        <h3 class="text-sm font-semibold">단축키 & 조작 가이드 (한영 전환 불필요)</h3>
+        <button id="btn-close-help" class="w-7 h-7 rounded-md hover:bg-[var(--accent)] flex items-center justify-center text-[var(--muted-foreground)] cursor-pointer">✕</button>
+      </div>
+      <div class="p-4 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+        <div class="space-y-1.5">
+          <h4 class="font-semibold text-[var(--primary)] mb-1">편집 도구</h4>
+          <div class="flex justify-between"><span>브릭 놓기</span><kbd class="font-mono bg-[var(--background)] px-1.5 py-0.5 rounded border border-[var(--border)]">B / 1</kbd></div>
+          <div class="flex justify-between"><span>브릭 색칠</span><kbd class="font-mono bg-[var(--background)] px-1.5 py-0.5 rounded border border-[var(--border)]">P / 2</kbd></div>
+          <div class="flex justify-between"><span>브릭 지우기</span><kbd class="font-mono bg-[var(--background)] px-1.5 py-0.5 rounded border border-[var(--border)]">X / 3</kbd></div>
+          <div class="flex justify-between"><span>3D 드래그 이동</span><kbd class="font-mono bg-[var(--background)] px-1.5 py-0.5 rounded border border-[var(--border)]">G / 4</kbd></div>
+          <div class="flex justify-between"><span>다중 · 박스 선택</span><kbd class="font-mono bg-[var(--background)] px-1.5 py-0.5 rounded border border-[var(--border)]">V / 5</kbd></div>
+          <div class="flex justify-between"><span>스포이드</span><kbd class="font-mono bg-[var(--background)] px-1.5 py-0.5 rounded border border-[var(--border)]">I / Alt+클릭</kbd></div>
+          <div class="flex justify-between"><span>연속 그리기 토글</span><kbd class="font-mono bg-[var(--background)] px-1.5 py-0.5 rounded border border-[var(--border)]">C</kbd></div>
+        </div>
+        <div class="space-y-1.5">
+          <h4 class="font-semibold text-[var(--primary)] mb-1">변형 · 카메라 · 재생</h4>
+          <div class="flex justify-between"><span>90° 회전</span><kbd class="font-mono bg-[var(--background)] px-1.5 py-0.5 rounded border border-[var(--border)]">R</kbd></div>
+          <div class="flex justify-between"><span>대칭 모드 전환</span><kbd class="font-mono bg-[var(--background)] px-1.5 py-0.5 rounded border border-[var(--border)]">M</kbd></div>
+          <div class="flex justify-between"><span>선택 브릭 이동</span><kbd class="font-mono bg-[var(--background)] px-1.5 py-0.5 rounded border border-[var(--border)]">W A S D / Q E</kbd></div>
+          <div class="flex justify-between"><span>선택 복제 / 삭제</span><kbd class="font-mono bg-[var(--background)] px-1.5 py-0.5 rounded border border-[var(--border)]">Ctrl+D / Del</kbd></div>
+          <div class="flex justify-between"><span>실행취소 / 다시실행</span><kbd class="font-mono bg-[var(--background)] px-1.5 py-0.5 rounded border border-[var(--border)]">Ctrl+Z / Y</kbd></div>
+          <div class="flex justify-between"><span>조립 재생 / 단계</span><kbd class="font-mono bg-[var(--background)] px-1.5 py-0.5 rounded border border-[var(--border)]">Space / ← →</kbd></div>
+          <div class="flex justify-between"><span>카메라 회전 / 이동</span><kbd class="font-mono bg-[var(--background)] px-1.5 py-0.5 rounded border border-[var(--border)]">드래그 / Shift</kbd></div>
+        </div>
       </div>
     </div>
   </div>
@@ -744,6 +1008,7 @@
     fig_robot:    { name: '로봇 피규어',      short: '로봇',       cat: 'figure', w: 2, d: 1, h: 10, shape: 'fig_robot', studs: false },
     fig_dog:      { name: '레고 강아지',      short: '강아지',     cat: 'figure', w: 1, d: 2, h: 4, shape: 'fig_dog', studs: false },
     fig_cat:      { name: '레고 고양이',      short: '고양이',     cat: 'figure', w: 1, d: 1, h: 4, shape: 'fig_cat', studs: false },
+    fig_custom:   { name: '커스텀 미니피규어',short: '커스텀피규어',cat: 'figure', w: 2, d: 1, h: 11, shape: 'fig_custom', studs: false },
   };
   const BRICK_KEYS = Object.keys(BRICK_DEFS);
 
@@ -896,6 +1161,20 @@
     shadowsEnabled: true,
     outlineEnabled: false,
     soundEnabled: true,
+    lightingPreset: 'day',   // 'day' | 'sunset' | 'night'
+    continuousBuild: false,
+    cutawayEnabled: false,
+    cutawayY: 12,
+    stepNotes: {},           // { [stepNum]: captionString }
+    customFigConfig: {
+      hat: 'classic',
+      hatCol: '#582A12',
+      face: 'smile',
+      headCol: '#F5CD2F',
+      torsoCol: '#D01012',
+      legsCol: '#0055BF',
+      acc: 'sword',
+    },
 
     // Step grouping & Playback
     stepGroupMode: 'layer',  // 'brick' | 'layer' | 'custom'
@@ -936,9 +1215,9 @@
     });
   }
 
-  function makeBrick(type, x, y, z, rot, hex, alpha = null, metal = null, step = null) {
+  function makeBrick(type, x, y, z, rot, hex, alpha = null, metal = null, step = null, custom = null) {
     const colorObj = LEGO_COLORS.find(c => c.hex.toLowerCase() === hex.toLowerCase());
-    return {
+    const brick = {
       id: nextBrickId++,
       type,
       x, y, z,
@@ -948,6 +1227,10 @@
       metal: metal !== null ? metal : (colorObj ? colorObj.metal : 0),
       step: step !== null ? step : 0,
     };
+    if (custom && typeof custom === 'object') {
+      brick.custom = { ...custom };
+    }
+    return brick;
   }
 
   // Build assembly steps array according to grouping mode ('brick' | 'layer' | 'custom')
@@ -1243,8 +1526,18 @@
     return false;
   }
 
+  function makeSnapshot() {
+    return JSON.stringify({
+      g: state.gridSize,
+      bp: state.baseplateColor,
+      lp: state.lightingPreset,
+      sn: state.stepNotes,
+      b: state.bricks,
+    });
+  }
+
   function pushUndo() {
-    state.undoStack.push(JSON.stringify({ g: state.gridSize, bp: state.baseplateColor, b: state.bricks }));
+    state.undoStack.push(makeSnapshot());
     if (state.undoStack.length > 60) state.undoStack.shift();
     state.redoStack.length = 0;
     updateUndoButtons();
@@ -1254,6 +1547,8 @@
     const snap = JSON.parse(jsonStr);
     if (snap.g && snap.g !== state.gridSize) setGridSize(snap.g, false);
     if (snap.bp) state.baseplateColor = snap.bp;
+    if (snap.lp) state.lightingPreset = snap.lp;
+    state.stepNotes = snap.sn && typeof snap.sn === 'object' ? { ...snap.sn } : {};
     state.bricks = snap.b || [];
     state.selectedIds.clear();
     state.visibleStep = getAssemblySteps().length;
@@ -1263,7 +1558,7 @@
 
   function undo() {
     if (!state.undoStack.length) return;
-    state.redoStack.push(JSON.stringify({ g: state.gridSize, bp: state.baseplateColor, b: state.bricks }));
+    state.redoStack.push(makeSnapshot());
     applySnapshot(state.undoStack.pop());
     SoundFX.playTick();
     showToast('실행취소됨');
@@ -1271,7 +1566,7 @@
 
   function redo() {
     if (!state.redoStack.length) return;
-    state.undoStack.push(JSON.stringify({ g: state.gridSize, bp: state.baseplateColor, b: state.bricks }));
+    state.undoStack.push(makeSnapshot());
     applySnapshot(state.redoStack.pop());
     SoundFX.playTick();
     showToast('다시실행됨');
@@ -1298,14 +1593,18 @@
 
   async function encodeModelToHash() {
     const compact = {
-      v: 2,
+      v: 3,
       g: state.gridSize,
       bp: state.baseplateColor,
       m: state.stepGroupMode,
+      lp: state.lightingPreset,
+      sn: Object.keys(state.stepNotes).length ? state.stepNotes : undefined,
       b: state.bricks.map(b => {
         const ti = BRICK_KEYS.indexOf(b.type);
         const ci = LEGO_COLORS.findIndex(c => c.hex.toLowerCase() === b.color.toLowerCase());
-        return [ti >= 0 ? ti : b.type, b.x, b.y, b.z, b.rot, ci >= 0 ? ci : b.color, b.step || 0];
+        const row = [ti >= 0 ? ti : b.type, b.x, b.y, b.z, b.rot, ci >= 0 ? ci : b.color, b.step || 0];
+        if (b.custom) row.push(b.custom);
+        return row;
       }),
     };
     const raw = new TextEncoder().encode(JSON.stringify(compact));
@@ -1342,9 +1641,17 @@
       if (!BRICK_DEFS[type]) continue;
       const colObj = typeof row[5] === 'number' ? LEGO_COLORS[row[5]] : null;
       const hex = colObj ? colObj.hex : (typeof row[5] === 'string' ? row[5] : '#D01012');
-      bricks.push(makeBrick(type, row[1] | 0, row[2] | 0, row[3] | 0, row[4] | 0, hex, null, null, row[6] | 0));
+      const custom = row[7] && typeof row[7] === 'object' ? row[7] : null;
+      bricks.push(makeBrick(type, row[1] | 0, row[2] | 0, row[3] | 0, row[4] | 0, hex, null, null, row[6] | 0, custom));
     }
-    return { gridSize: d.g || 16, baseplateColor: d.bp || '#2E8B47', stepGroupMode: d.m || 'layer', bricks };
+    return {
+      gridSize: d.g || 16,
+      baseplateColor: d.bp || '#2E8B47',
+      stepGroupMode: d.m || 'layer',
+      lightingPreset: d.lp || 'day',
+      stepNotes: d.sn && typeof d.sn === 'object' ? d.sn : {},
+      bricks,
+    };
   }
 
   // =========================================================================
@@ -1441,6 +1748,10 @@
     uniform float uUseShadow;
     uniform float uIsOutline;
     uniform sampler2D uShadowMap;
+    uniform vec3 uLight1Col;
+    uniform vec3 uAmbientTop;
+    uniform vec3 uAmbientBot;
+    uniform float uEmissive;
 
     float unpackDepth(vec4 rgba) {
       return rgba.r + rgba.g / 255.0;
@@ -1483,10 +1794,10 @@
       float diff3 = max(dot(N, L3), 0.0);
 
       float hemi = N.y * 0.5 + 0.5;
-      vec3 ambient = mix(vec3(0.26, 0.27, 0.30), vec3(0.44, 0.46, 0.50), hemi);
+      vec3 ambient = mix(uAmbientBot, uAmbientTop, hemi);
 
       vec3 light = ambient
-                 + vec3(0.74, 0.73, 0.70) * diff1
+                 + uLight1Col * diff1
                  + vec3(0.20, 0.23, 0.28) * diff2
                  + vec3(0.14, 0.13, 0.12) * diff3;
 
@@ -1500,7 +1811,7 @@
       float fresnel = pow(1.0 - max(dot(N, V), 0.0), 3.0) * (uIsGround > 0.5 ? 0.04 : mix(0.11, 0.28, uMetal));
       vec3 specCol = mix(vec3(1.0), uColor * 1.15 + vec3(0.2), uMetal);
 
-      vec3 col = uColor * light * vAO + specCol * (spec1 + spec2 + fresnel);
+      vec3 col = uColor * light * vAO + specCol * (spec1 + spec2 + fresnel) + uColor * uEmissive;
 
       if (uHighlight > 1.5) {
         // Multi-selected cyan highlight
@@ -1558,6 +1869,10 @@
     uUseShadow: gl.getUniformLocation(mainProg, 'uUseShadow'),
     uIsOutline: gl.getUniformLocation(mainProg, 'uIsOutline'),
     uShadowMap: gl.getUniformLocation(mainProg, 'uShadowMap'),
+    uLight1Col: gl.getUniformLocation(mainProg, 'uLight1Col'),
+    uAmbientTop: gl.getUniformLocation(mainProg, 'uAmbientTop'),
+    uAmbientBot: gl.getUniformLocation(mainProg, 'uAmbientBot'),
+    uEmissive: gl.getUniformLocation(mainProg, 'uEmissive'),
   };
 
   // Setup 1024x1024 Shadow Map Framebuffer
@@ -1685,12 +2000,18 @@
       const buf = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, buf);
       gl.bufferData(gl.ARRAY_BUFFER, arr, gl.STATIC_DRAW);
-      return { buf, count: arr.length / 7 };
+      return { buf, count: arr.length / 7, verts: arr };
     }
   }
 
   const brickMeshes = {};
-  function getBrickMesh(type) {
+  function getBrickMesh(type, custom = null) {
+    if (type === 'fig_custom') {
+      const cfg = custom || state.customFigConfig;
+      const key = 'fig_custom:' + JSON.stringify(cfg);
+      if (!brickMeshes[key]) brickMeshes[key] = createCustomCharacterMesh(cfg);
+      return brickMeshes[key];
+    }
     if (!brickMeshes[type]) brickMeshes[type] = createBrickMesh(type);
     return brickMeshes[type];
   }
@@ -1985,18 +2306,18 @@
         break;
     }
     const built = mb.build();
-    return { parts: [{ buf: built.buf, count: built.count, color: null, metal: null }] };
+    return { parts: [{ buf: built.buf, count: built.count, verts: built.verts, color: null, metal: null }] };
   }
 
   // Multi-Color 3D Procedural Lego Minifigures & Pet Companions
   function createCharacterMesh(shape) {
     const parts = [];
-    const addPart = (hex, metal, fn) => {
+    const addPart = (hex, metal, fn, emissive = 0) => {
       const m = new MeshBuilder();
       fn(m);
       if (m.data.length > 0) {
         const b = m.build();
-        parts.push({ buf: b.buf, count: b.count, color: hex ? hexToRgb01(hex) : null, metal });
+        parts.push({ buf: b.buf, count: b.count, verts: b.verts, color: hex ? hexToRgb01(hex) : null, metal, emissive });
       }
     };
 
@@ -2245,10 +2566,193 @@
     return { parts };
   }
 
-  // Dynamic Baseplate, Ground Shadow & Mirror Guide Bar Meshes
+  // Custom Mix-and-Match 3D Lego Minifigure Builder Mesh
+  function createCustomCharacterMesh(cfg) {
+    const c = Object.assign({
+      hat: 'classic', hatCol: '#582A12', face: 'smile',
+      headCol: '#F5CD2F', torsoCol: '#D01012', legsCol: '#0055BF', acc: 'sword',
+    }, cfg || {});
+    const parts = [];
+    const addPart = (hex, metal, fn, emissive = 0) => {
+      const m = new MeshBuilder();
+      fn(m);
+      if (m.data.length > 0) {
+        const b = m.build();
+        const colObj = LEGO_COLORS.find(lc => lc.hex.toLowerCase() === (hex || '').toLowerCase());
+        const met = metal !== null ? metal : (colObj ? colObj.metal : 0);
+        parts.push({ buf: b.buf, count: b.count, verts: b.verts, color: hex ? hexToRgb01(hex) : null, metal: met, emissive });
+      }
+    };
+    const addTrapezoidTorso = (m, y0 = 1.48, y1 = 2.66) => {
+      const bx = 0.46, tx = 0.36, z0 = -0.24, z1 = 0.24;
+      m.pushQuad([-tx, y1, z0], [-tx, y1, z1], [tx, y1, z1], [tx, y1, z0], [0, 1, 0]);
+      m.pushQuad([-bx, y0, z0], [bx, y0, z0], [bx, y0, z1], [-bx, y0, z1], [0, -1, 0], 0.84, 0.84, 0.84, 0.84);
+      m.pushQuad([-bx, y0, z1], [bx, y0, z1], [tx, y1, z1], [-tx, y1, z1], [0, 0, 1], 0.86, 0.86, 1, 1);
+      m.pushQuad([bx, y0, z0], [-bx, y0, z0], [-tx, y1, z0], [tx, y1, z0], [0, 0, -1], 0.86, 0.86, 1, 1);
+      m.pushQuad([bx, y0, z1], [bx, y0, z0], [tx, y1, z0], [tx, y1, z1], [0.99, 0.08, 0], 0.86, 0.86, 1, 1);
+      m.pushQuad([-bx, y0, z0], [-bx, y0, z1], [-tx, y1, z1], [-tx, y1, z0], [-0.99, 0.08, 0], 0.86, 0.86, 1, 1);
+    };
+
+    // 1. Legs & Hips
+    addPart(c.legsCol, null, m => {
+      m.addBox(-0.44, 0, -0.24, -0.05, 1.32, 0.26);
+      m.addBox(0.05, 0, -0.24, 0.44, 1.32, 0.26);
+      m.addBox(-0.44, 0, 0.24, -0.05, 0.30, 0.34);
+      m.addBox(0.05, 0, 0.24, 0.44, 0.30, 0.34);
+      m.addBox(-0.45, 1.28, -0.25, 0.45, 1.48, 0.25);
+    });
+
+    // 2. Torso & Arms
+    addPart(c.torsoCol, null, m => {
+      addTrapezoidTorso(m);
+      m.addBox(-0.64, 1.72, -0.14, -0.44, 2.58, 0.14);
+      m.addBox(0.44, 1.72, -0.14, 0.64, 2.58, 0.14);
+      m.addBox(-0.63, 1.54, 0.02, -0.45, 1.98, 0.26);
+      m.addBox(0.45, 1.54, 0.02, 0.63, 1.98, 0.26);
+    });
+
+    // 3. Head & Hands
+    addPart(c.headCol, null, m => {
+      m.addCylinder(0, 2.66, 0, 0.19, 0.15, 14);
+      if (c.hat === 'robot') {
+        m.addBox(-0.36, 2.81, -0.32, 0.36, 3.55, 0.32);
+      } else {
+        m.addCylinder(0, 2.81, 0, 0.37, 0.68, 20, 0.86, 1.0, true);
+        m.addCylinder(0, 3.49, 0, 0.20, 0.16, 14, 0.84, 1.0, false);
+      }
+      m.addAxisCylinder(-0.54, 1.54, 0.28, 0.12, 0.16, 'z', 12);
+      m.addAxisCylinder(0.54, 1.54, 0.28, 0.12, 0.16, 'z', 12);
+    });
+
+    // 4. Face Expression
+    const faceCovered = c.hat === 'astro' || c.hat === 'knight';
+    if (!faceCovered) {
+      const fz = c.hat === 'robot' ? 0.33 : 0.365;
+      if (c.face === 'visor') {
+        addPart('#36AEBF', 0, m => m.addBox(-0.28, 3.08, fz - 0.01, 0.28, 3.32, fz + 0.06), 0.75);
+      } else if (c.face === 'cool') {
+        addPart('#1B2A34', 0, m => {
+          m.addBox(-0.28, 3.16, fz - 0.01, -0.04, 3.31, fz + 0.05);
+          m.addBox(0.04, 3.16, fz - 0.01, 0.28, 3.31, fz + 0.05);
+          m.addBox(-0.06, 3.24, fz, 0.06, 3.28, fz + 0.05);
+          m.addBox(-0.10, 3.03, fz - 0.01, 0.12, 3.08, fz + 0.03);
+        });
+      } else if (c.face === 'wink') {
+        addPart('#1B2A34', 0, m => {
+          m.addAxisCylinder(-0.13, 3.22, fz, 0.048, 0.035, 'z', 10);
+          m.addBox(0.07, 3.20, fz - 0.01, 0.20, 3.25, fz + 0.03);
+          m.addBox(-0.12, 3.03, fz - 0.01, 0.12, 3.08, fz + 0.03);
+        });
+      } else if (c.face === 'surprise') {
+        addPart('#1B2A34', 0, m => {
+          m.addAxisCylinder(-0.13, 3.24, fz, 0.05, 0.035, 'z', 10);
+          m.addAxisCylinder(0.13, 3.24, fz, 0.05, 0.035, 'z', 10);
+          m.addAxisCylinder(0, 3.03, fz, 0.075, 0.035, 'z', 12);
+        });
+      } else {
+        // classic smile
+        addPart('#1B2A34', 0, m => {
+          m.addAxisCylinder(-0.13, 3.22, fz, 0.048, 0.035, 'z', 10);
+          m.addAxisCylinder(0.13, 3.22, fz, 0.048, 0.035, 'z', 10);
+          m.addBox(-0.13, 3.04, fz - 0.01, -0.05, 3.09, fz + 0.025);
+          m.addBox(-0.06, 3.01, fz - 0.008, 0.06, 3.06, fz + 0.028);
+          m.addBox(0.05, 3.04, fz - 0.01, 0.13, 3.09, fz + 0.025);
+        });
+      }
+    }
+
+    // 5. Headgear
+    if (c.hat === 'classic') {
+      addPart(c.hatCol, null, m => {
+        m.addCylinder(0, 3.40, -0.02, 0.42, 0.28, 18, 0.84, 1.0, true);
+        m.addFrustum(0, 3.68, -0.02, 0.41, 0.28, 0.14, 18, 0.88, 1.0, false);
+        m.addBox(-0.42, 2.94, -0.42, 0.42, 3.52, -0.10);
+        m.addBox(-0.43, 3.08, -0.18, -0.30, 3.50, 0.18);
+        m.addBox(0.30, 3.08, -0.18, 0.43, 3.50, 0.18);
+      });
+    } else if (c.hat === 'cap') {
+      addPart(c.hatCol, null, m => {
+        m.addCylinder(0, 3.36, 0, 0.42, 0.34, 18, 0.84, 1.0, true);
+        m.addFrustum(0, 3.70, 0, 0.41, 0.24, 0.16, 18, 0.90, 1.0, false);
+        m.addBox(-0.34, 3.36, 0.22, 0.34, 3.46, 0.66);
+      });
+    } else if (c.hat === 'astro') {
+      addPart(c.hatCol, null, m => {
+        m.addCylinder(0, 2.86, -0.02, 0.46, 0.82, 20, 0.86, 1.0, true);
+        m.addFrustum(0, 3.68, -0.02, 0.45, 0.26, 0.22, 20, 0.90, 1.0, false);
+      });
+      addPart('#D4AF37', 1, m => m.addBox(-0.34, 3.02, 0.34, 0.34, 3.52, 0.49), 0.35);
+    } else if (c.hat === 'knight') {
+      addPart(c.hatCol, 1, m => {
+        m.addCylinder(0, 2.82, 0, 0.45, 0.84, 18, 0.84, 1.0, true);
+        m.addFrustum(0, 3.66, 0, 0.44, 0.20, 0.26, 18, 0.88, 1.0, false);
+        m.addBox(-0.36, 2.92, 0.30, 0.36, 3.54, 0.48);
+      });
+      addPart('#1B2A34', 0, m => m.addBox(-0.28, 3.22, 0.47, 0.28, 3.32, 0.51));
+      addPart('#D01012', 0, m => {
+        m.addBox(-0.08, 3.86, -0.34, 0.08, 4.32, 0.22);
+        m.addBox(-0.07, 4.02, -0.52, 0.07, 4.28, -0.32);
+      });
+    } else if (c.hat === 'royal') {
+      addPart(c.hatCol, 1, m => {
+        m.addCylinder(0, 3.44, 0, 0.42, 0.26, 18, 0.88, 1.0, true);
+        for (let i = 0; i < 5; i++) {
+          const a = (i / 5) * Math.PI * 2 + Math.PI * 0.1;
+          m.addFrustum(Math.cos(a) * 0.33, 3.70, Math.sin(a) * 0.33, 0.11, 0.02, 0.34, 6, 0.92, 1.0, false);
+        }
+      }, 0.25);
+    } else if (c.hat === 'police') {
+      addPart(c.hatCol, null, m => {
+        m.addCylinder(0, 3.42, 0, 0.42, 0.24, 18, 0.86, 1.0, true);
+        m.addFrustum(0, 3.66, 0, 0.40, 0.48, 0.22, 18, 0.90, 1.0, false);
+      });
+      addPart('#1B2A34', 0, m => m.addBox(-0.36, 3.40, 0.24, 0.36, 3.50, 0.64));
+      addPart('#D4AF37', 1, m => m.addBox(-0.08, 3.66, 0.42, 0.08, 3.82, 0.49));
+    } else if (c.hat === 'robot') {
+      addPart(c.hatCol, 1, m => {
+        m.addCylinder(-0.20, 3.55, 0, 0.045, 0.36, 8);
+        m.addCylinder(0.20, 3.55, 0, 0.045, 0.36, 8);
+      });
+      addPart('#D4AF37', 1, m => {
+        m.addCylinder(-0.20, 3.88, 0, 0.08, 0.12, 10);
+        m.addCylinder(0.20, 3.88, 0, 0.08, 0.12, 10);
+      }, 0.45);
+    }
+
+    // 6. Accessories
+    if (c.acc === 'sword') {
+      addPart('#A0A5A9', 1, m => m.addBox(0.50, 1.88, 0.24, 0.58, 3.45, 0.34));
+      addPart('#D4AF37', 1, m => {
+        m.addBox(0.36, 1.78, 0.23, 0.72, 1.90, 0.35);
+        m.addBox(0.51, 1.36, 0.25, 0.57, 1.78, 0.33);
+      });
+    } else if (c.acc === 'shield') {
+      addPart('#6C6E68', 1, m => m.addBox(-0.82, 1.15, 0.22, -0.44, 2.25, 0.34));
+      addPart(c.torsoCol, 0, m => m.addBox(-0.76, 1.30, 0.33, -0.50, 2.10, 0.38));
+      addPart('#D4AF37', 1, m => m.addBox(-0.67, 1.56, 0.37, -0.59, 1.84, 0.41));
+    } else if (c.acc === 'cape') {
+      addPart(c.hatCol, 0, m => {
+        m.pushQuad([-0.42, 2.62, -0.25], [0.42, 2.62, -0.25], [0.54, 0.38, -0.44], [-0.54, 0.38, -0.44], [0, 0.15, -0.98], 0.96, 0.96, 0.84, 0.84);
+        m.pushQuad([0.42, 2.62, -0.26], [-0.42, 2.62, -0.26], [-0.54, 0.38, -0.45], [0.54, 0.38, -0.45], [0, -0.15, 0.98], 0.82, 0.82, 0.74, 0.74);
+      });
+    } else if (c.acc === 'oxygen') {
+      addPart('#F4F4F4', 0, m => {
+        m.addCylinder(-0.20, 1.60, -0.40, 0.16, 1.05, 12, 0.82, 1.0, true);
+        m.addCylinder(0.20, 1.60, -0.40, 0.16, 1.05, 12, 0.82, 1.0, true);
+      });
+    } else if (c.acc === 'flag') {
+      addPart('#582A12', 0, m => m.addCylinder(0.54, 1.25, 0.28, 0.04, 2.75, 8));
+      addPart(c.torsoCol, 0, m => m.addBox(0.54, 3.25, 0.25, 1.22, 3.92, 0.31));
+    }
+
+    return { parts };
+  }
+
+  // Dynamic Baseplate, Ground Shadow, Mirror Guide & Alignment Crosshair Meshes
   let baseplateMesh = null, groundShadowMesh = null, mirrorBarXMesh = null, mirrorBarZMesh = null;
+  let alignBarXMesh = null, alignBarZMesh = null;
   function rebuildBaseplateMeshes(size) {
-    [baseplateMesh, groundShadowMesh, mirrorBarXMesh, mirrorBarZMesh].forEach(m => { if (m) gl.deleteBuffer(m.buf); });
+    [baseplateMesh, groundShadowMesh, mirrorBarXMesh, mirrorBarZMesh, alignBarXMesh, alignBarZMesh].forEach(m => { if (m) gl.deleteBuffer(m.buf); });
     const half = size * 0.5;
     const mb = new MeshBuilder();
     mb.addBox(-half - 0.14, -0.26, -half - 0.14, half + 0.14, 0, half + 0.14, 0.78, 0.97);
@@ -2270,6 +2774,15 @@
     const mz = new MeshBuilder();
     mz.addBox(-half, 0.02, -0.04, half, 0.26, 0.04, 1, 1);
     mirrorBarZMesh = mz.build();
+
+    // Subtle 3D Stud Alignment Crosshairs (X & Z strips spanning full baseplate)
+    const ax = new MeshBuilder();
+    ax.addBox(-0.025, 0, -half, 0.025, 0.055, half, 1, 1);
+    alignBarXMesh = ax.build();
+
+    const az = new MeshBuilder();
+    az.addBox(-half, 0, -0.025, half, 0.055, 0.025, 1, 1);
+    alignBarZMesh = az.build();
   }
   rebuildBaseplateMeshes(state.gridSize);
 
@@ -2357,6 +2870,29 @@
 
   const FOV_Y = (40 * Math.PI) / 180;
 
+  const LIGHTING_PRESETS = {
+    day:    { label: '낮',   light1: [0.74, 0.73, 0.70], ambTop: [0.44, 0.46, 0.50], ambBot: [0.26, 0.27, 0.30], bg: null, bgDark: null },
+    sunset: { label: '노을', light1: [1.02, 0.60, 0.34], ambTop: [0.50, 0.34, 0.40], ambBot: [0.22, 0.16, 0.24], bg: [0.96, 0.85, 0.76], bgDark: [0.16, 0.10, 0.14] },
+    night:  { label: '밤',   light1: [0.28, 0.38, 0.66], ambTop: [0.15, 0.20, 0.34], ambBot: [0.06, 0.08, 0.14], bg: [0.06, 0.08, 0.15], bgDark: [0.04, 0.06, 0.12] },
+  };
+
+  function projectWorldToScreen(wx, wy, wz) {
+    const rect = canvas.getBoundingClientRect();
+    const aspect = rect.width / Math.max(1, rect.height);
+    const proj = mat4Perspective(FOV_Y, aspect, 0.2, 160.0);
+    const basis = getCameraBasis(state.cam);
+    const vp = mat4Mul(proj, basis.view);
+    const x = vp[0] * wx + vp[4] * wy + vp[8] * wz + vp[12];
+    const y = vp[1] * wx + vp[5] * wy + vp[9] * wz + vp[13];
+    const w = vp[3] * wx + vp[7] * wy + vp[11] * wz + vp[15];
+    if (w <= 0.001) return null;
+    const ndcX = x / w, ndcY = y / w;
+    return {
+      x: rect.left + (ndcX * 0.5 + 0.5) * rect.width,
+      y: rect.top + (0.5 - ndcY * 0.5) * rect.height,
+    };
+  }
+
   function renderScene(opts = {}) {
     const width = opts.width || canvas.width;
     const height = opts.height || canvas.height;
@@ -2370,6 +2906,9 @@
     const useShadows = shadowSupported && (opts.shadows !== undefined ? opts.shadows : state.shadowsEnabled);
     const useOutline = opts.outline !== undefined ? opts.outline : state.outlineEnabled;
     const showGhost = opts.showGhost !== undefined ? opts.showGhost : (state.mode === 'build' && !state.isPlaying && state.visibleStep >= steps.length);
+    const lp = LIGHTING_PRESETS[state.lightingPreset] || LIGHTING_PRESETS.day;
+    const isNight = state.lightingPreset === 'night';
+    const applyCutaway = state.cutawayEnabled && !opts.ignoreCutaway;
 
     const half = state.gridSize * 0.5;
 
@@ -2381,6 +2920,7 @@
       const bs = steps[s].bricks;
       for (let j = 0; j < bs.length; j++) {
         const b = bs[j];
+        if (applyCutaway && b.y >= state.cutawayY) continue;
         const isDropping = dropProg < 1.0 && (useStepAnim ? (s === animStepIdx) : state.animatingBrickIds.has(b.id));
         const ease = isDropping ? (1 - Math.pow(1 - dropProg, 3)) : 1.0;
         const yExtra = isDropping ? (1 - ease) * 3.4 : 0;
@@ -2393,7 +2933,7 @@
           cy: b.y * PLATE_H + yExtra,
           cz: (b.z + dims.d * 0.5) - half,
           rotY: b.rot * Math.PI * 0.5,
-          mesh: getBrickMesh(b.type),
+          mesh: getBrickMesh(b.type, b.custom),
         };
         if (item.alpha < 0.99) trans.push(item);
         else opaque.push(item);
@@ -2444,8 +2984,12 @@
 
     // --- PASS 2: Main Studio Scene ---
     gl.viewport(0, 0, width, height);
-    if (transparentBg) gl.clearColor(0, 0, 0, 0);
-    else gl.clearColor(state.bgRgb[0], state.bgRgb[1], state.bgRgb[2], 1.0);
+    if (transparentBg) {
+      gl.clearColor(0, 0, 0, 0);
+    } else {
+      const bg = (state.isDark ? lp.bgDark : lp.bg) || state.bgRgb;
+      gl.clearColor(bg[0], bg[1], bg[2], 1.0);
+    }
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     gl.enable(gl.DEPTH_TEST);
@@ -2465,6 +3009,10 @@
     gl.uniform1f(LOC.uUseShadow, useShadows ? 1.0 : 0.0);
     gl.uniform1f(LOC.uIsOutline, 0.0);
     gl.uniform1f(LOC.uOutlineExtrude, 0.0);
+    gl.uniform3fv(LOC.uLight1Col, lp.light1);
+    gl.uniform3fv(LOC.uAmbientTop, lp.ambTop);
+    gl.uniform3fv(LOC.uAmbientBot, lp.ambBot);
+    gl.uniform1f(LOC.uEmissive, 0.0);
 
     if (useShadows) {
       gl.activeTexture(gl.TEXTURE0);
@@ -2481,10 +3029,11 @@
       gl.uniform3f(LOC.uOffset, 0.15, 0, 0.15);
       gl.uniform1f(LOC.uRotY, 0);
       gl.uniform3f(LOC.uColor, 0, 0, 0);
-      gl.uniform1f(LOC.uAlpha, state.isDark ? 0.35 : 0.12);
+      gl.uniform1f(LOC.uAlpha, (state.isDark || isNight) ? 0.38 : 0.12);
       gl.uniform1f(LOC.uHighlight, 0);
       gl.uniform1f(LOC.uIsGround, 1);
       gl.uniform1f(LOC.uMetal, 0);
+      gl.uniform1f(LOC.uEmissive, 0);
       gl.drawArrays(gl.TRIANGLES, 0, groundShadowMesh.count);
       gl.depthMask(true);
       gl.disable(gl.BLEND);
@@ -2499,6 +3048,7 @@
     gl.uniform1f(LOC.uHighlight, 0);
     gl.uniform1f(LOC.uIsGround, 1);
     gl.uniform1f(LOC.uMetal, 0);
+    gl.uniform1f(LOC.uEmissive, 0);
     gl.drawArrays(gl.TRIANGLES, 0, baseplateMesh.count);
 
     // 3. Draw opaque bricks & multi-color characters
@@ -2518,12 +3068,24 @@
 
       const baseRgb = hexToRgb01(it.b.color);
       const baseMetal = it.b.metal ? 1.0 : 0.0;
+      const baseEmissive = isNight
+        ? (it.b.alpha < 0.99 ? 0.78 : (it.b.type === 'crystal_1x1' ? 0.68 : (it.b.metal ? 0.24 : 0.0)))
+        : 0.0;
       const pts = it.mesh.parts;
       for (let p = 0; p < pts.length; p++) {
         const part = pts[p];
         bindMeshMain(part);
-        gl.uniform3fv(LOC.uColor, part.color || baseRgb);
-        gl.uniform1f(LOC.uMetal, part.metal !== null ? part.metal : baseMetal);
+        const col = part.color || baseRgb;
+        const met = part.metal !== null ? part.metal : baseMetal;
+        let em = baseEmissive;
+        if (isNight) {
+          if (part.emissive) em = Math.max(em, part.emissive);
+          else if (part.color && part.color[2] > 0.7 && part.color[1] > 0.6 && part.color[0] < 0.35) em = Math.max(em, 0.72); // cyan robot visors
+          else if (met > 0.5 && col[0] > 0.75 && col[1] > 0.6) em = Math.max(em, 0.26); // metallic gold
+        }
+        gl.uniform3fv(LOC.uColor, col);
+        gl.uniform1f(LOC.uMetal, met);
+        gl.uniform1f(LOC.uEmissive, em);
         gl.drawArrays(gl.TRIANGLES, 0, part.count);
       }
     };
@@ -2552,8 +3114,9 @@
       gl.uniform1f(LOC.uOutlineExtrude, 0.0);
     }
 
-    // 5. Mirror Symmetry Guide Lines + Translucent Bricks + Ghost Bricks
+    // 5. Mirror Symmetry Guides + Alignment Crosshair + Translucent Bricks + Ghost Bricks
     const showMirrorGuides = !opts.noHighlight && state.mirrorMode !== 'off';
+    const showAlignCrosshair = showGhost && state.hoverPlacement && !opts.noHighlight;
     if (trans.length || (showGhost && state.hoverPlacement) || showMirrorGuides) {
       gl.enable(gl.BLEND);
       gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
@@ -2578,18 +3141,38 @@
         gl.uniform1f(LOC.uIsOutline, 0.0);
       }
 
+      if (showAlignCrosshair) {
+        const hp = state.hoverPlacement;
+        const hd = getBrickDims(state.selectedType, state.rotation);
+        const hcx = (hp.x + hd.w * 0.5) - half;
+        const hcz = (hp.z + hd.d * 0.5) - half;
+        const hcy = hp.y * PLATE_H + 0.02;
+        gl.uniform1f(LOC.uIsOutline, 1.0);
+        gl.uniform1f(LOC.uRotY, 0);
+        gl.uniform3fv(LOC.uColor, hp.valid ? (isNight ? [0.42, 0.84, 1.0] : [0.14, 0.52, 0.96]) : [0.95, 0.25, 0.25]);
+        gl.uniform1f(LOC.uAlpha, 0.34);
+        bindMeshMain(alignBarXMesh);
+        gl.uniform3f(LOC.uOffset, hcx, hcy, 0);
+        gl.drawArrays(gl.TRIANGLES, 0, alignBarXMesh.count);
+        bindMeshMain(alignBarZMesh);
+        gl.uniform3f(LOC.uOffset, 0, hcy, hcz);
+        gl.drawArrays(gl.TRIANGLES, 0, alignBarZMesh.count);
+        gl.uniform1f(LOC.uIsOutline, 0.0);
+      }
+
       trans.sort((a, b) => Math.hypot(b.cx - basis.eye[0], b.cy - basis.eye[1], b.cz - basis.eye[2]) - Math.hypot(a.cx - basis.eye[0], a.cy - basis.eye[1], a.cz - basis.eye[2]));
       for (let i = 0; i < trans.length; i++) drawItem(trans[i]);
 
       if (showGhost && state.hoverPlacement) {
         const hp = state.hoverPlacement;
         const ghosts = getMirroredCandidates({ type: state.selectedType, x: hp.x, y: hp.y, z: hp.z, rot: state.rotation });
-        const mesh = getBrickMesh(state.selectedType);
+        const mesh = getBrickMesh(state.selectedType, state.selectedType === 'fig_custom' ? state.customFigConfig : null);
         const selRgb = hexToRgb01(state.selectedColor);
         gl.uniform1f(LOC.uAlpha, hp.valid ? 0.55 : 0.45);
         gl.uniform1f(LOC.uHighlight, hp.valid ? 0.25 : -0.8);
         gl.uniform1f(LOC.uIsGround, 0);
         gl.uniform1f(LOC.uMetal, state.selectedMetal ? 1.0 : 0.0);
+        gl.uniform1f(LOC.uEmissive, 0);
         for (const g of ghosts) {
           const gd = getBrickDims(g.type, g.rot);
           gl.uniform3f(LOC.uOffset, (g.x + gd.w * 0.5) - half, g.y * PLATE_H, (g.z + gd.d * 0.5) - half);
@@ -2650,6 +3233,7 @@
     for (let i = 0; i < visible.length; i++) {
       const b = visible[i];
       if (ignoreIds && ignoreIds.has(b.id)) continue;
+      if (state.cutawayEnabled && b.y >= state.cutawayY) continue;
       const dims = getBrickDims(b.type, b.rot);
       const hit = intersectAABB(origin, dir, [b.x - half, b.y * PLATE_H, b.z - half], [b.x + dims.w - half, (b.y + dims.h) * PLATE_H, b.z + dims.d - half]);
       if (hit && (!best || hit.t < best.t)) best = { ...hit, brick: b, isBaseplate: false };
@@ -2911,6 +3495,7 @@
     if (sh === 'corner') return `<svg class="${cls}" viewBox="0 0 44 34" fill="none"><path d="M9 9 H35 V18 H20 V27 H9 Z" fill="${c}"/></svg>`;
     if (sh === 'fig_dog') return `<svg class="${cls}" viewBox="0 0 44 34" fill="none"><rect x="11" y="16" width="18" height="8" rx="1" fill="${c}"/><rect x="12" y="24" width="4" height="6" fill="${c}"/><rect x="24" y="24" width="4" height="6" fill="${c}"/><rect x="24" y="9" width="10" height="9" rx="1" fill="${c}"/><rect x="33" y="12" width="5" height="5" rx="1" fill="${c}"/><rect x="8" y="10" width="4" height="7" rx="1" fill="${c}"/><rect x="24" y="16" width="6" height="2" fill="#D01012"/><circle cx="30" cy="12" r="1.2" fill="#1B2A34"/><circle cx="37" cy="13" r="1.3" fill="#1B2A34"/></svg>`;
     if (sh === 'fig_cat') return `<svg class="${cls}" viewBox="0 0 44 34" fill="none"><rect x="16" y="17" width="12" height="12" rx="2" fill="${c}"/><circle cx="22" cy="12" r="6" fill="${c}"/><polygon points="16,9 18,3 21,8" fill="${c}"/><polygon points="28,9 26,3 23,8" fill="${c}"/><rect x="12" y="14" width="3" height="12" rx="1" fill="${c}"/><circle cx="20" cy="11.5" r="1.1" fill="#1B2A34"/><circle cx="24" cy="11.5" r="1.1" fill="#1B2A34"/><circle cx="22" cy="13.5" r="1.1" fill="#FC97AC"/></svg>`;
+    if (sh === 'fig_custom') return customFigSVG(state.customFigConfig, cls);
     if (sh.startsWith('fig_')) {
       const isRob = sh === 'fig_robot';
       const headCol = isRob ? '#A0A5A9' : (sh === 'fig_astro' ? '#F4F4F4' : (sh === 'fig_knight' ? '#6C6E68' : '#F5CD2F'));
@@ -2943,6 +3528,43 @@
     return `<svg class="${cls}" viewBox="0 0 44 34" fill="none"><polygon points="22,${topY-3} 38,${topY+4} 22,${topY+11} 6,${topY+4}" fill="${c}"/><polygon points="22,${topY-3} 38,${topY+4} 22,${topY+11} 6,${topY+4}" fill="rgba(255,255,255,0.22)"/><polygon points="6,${topY+4} 22,${topY+11} 22,${topY+11+hPx} 6,${topY+4+hPx}" fill="${c}"/><polygon points="6,${topY+4} 22,${topY+11} 22,${topY+11+hPx} 6,${topY+4+hPx}" fill="rgba(0,0,0,0.12)"/><polygon points="22,${topY+11} 38,${topY+4} 38,${topY+4+hPx} 22,${topY+11+hPx}" fill="${c}"/><polygon points="22,${topY+11} 38,${topY+4} 38,${topY+4+hPx} 22,${topY+11+hPx}" fill="rgba(0,0,0,0.28)"/>${studsSvg}</svg>`;
   }
 
+  function customFigSVG(cfg, cls = 'w-10 h-8') {
+    const c = cfg || state.customFigConfig;
+    const isRob = c.hat === 'robot';
+    const covered = c.hat === 'astro' || c.hat === 'knight';
+    const faceSvg = covered ? ''
+      : c.face === 'visor' ? `<rect x="17.5" y="9" width="9" height="3.2" rx="1" fill="#36AEBF"/>`
+      : c.face === 'cool' ? `<rect x="17.5" y="9" width="4" height="2.6" rx="0.5" fill="#1B2A34"/><rect x="22.5" y="9" width="4" height="2.6" rx="0.5" fill="#1B2A34"/><line x1="21.5" y1="10" x2="22.5" y2="10" stroke="#1B2A34" stroke-width="1"/><path d="M20 13.2 H24" stroke="#1B2A34" stroke-width="1"/>`
+      : c.face === 'wink' ? `<circle cx="20" cy="10.5" r="1" fill="#1B2A34"/><line x1="23" y1="10.5" x2="25.5" y2="10.5" stroke="#1B2A34" stroke-width="1.2"/><path d="M19.5 13 Q22 14.8 24.5 13" stroke="#1B2A34" stroke-width="1" fill="none"/>`
+      : c.face === 'surprise' ? `<circle cx="20" cy="10" r="1.1" fill="#1B2A34"/><circle cx="24" cy="10" r="1.1" fill="#1B2A34"/><circle cx="22" cy="13" r="1.4" fill="#1B2A34"/>`
+      : `<circle cx="20" cy="10.5" r="1" fill="#1B2A34"/><circle cx="24" cy="10.5" r="1" fill="#1B2A34"/><path d="M19.5 13 Q22 14.8 24.5 13" stroke="#1B2A34" stroke-width="1" fill="none" stroke-linecap="round"/>`;
+    const hatSvg = c.hat === 'classic' ? `<path d="M15.5 7.5 Q22 2 28.5 7.5 V10 H15.5 Z" fill="${c.hatCol}"/>`
+      : c.hat === 'cap' ? `<path d="M15.5 8 Q22 3 28.5 8 H32.5 V10 H15.5 Z" fill="${c.hatCol}"/>`
+      : c.hat === 'astro' ? `<rect x="15" y="5" width="14" height="10.5" rx="4" fill="${c.hatCol}" stroke="rgba(0,0,0,0.18)"/><rect x="17.5" y="7.5" width="9" height="5" rx="1.5" fill="#D4AF37"/>`
+      : c.hat === 'knight' ? `<rect x="15" y="5.5" width="14" height="10" rx="2.5" fill="${c.hatCol}"/><path d="M21 1.5 H24 V5.5 H21 Z" fill="#D01012"/><rect x="18" y="9.5" width="8" height="2" fill="#1B2A34"/>`
+      : c.hat === 'royal' ? `<polygon points="16,7.5 17,2.5 20,5.5 22,1.5 24,5.5 27,2.5 28,7.5" fill="${c.hatCol}"/>`
+      : c.hat === 'police' ? `<rect x="15" y="4" width="14" height="4" rx="1" fill="${c.hatCol}"/><rect x="16" y="7.5" width="14" height="1.8" fill="#1B2A34"/><circle cx="22" cy="6" r="1.2" fill="#D4AF37"/>`
+      : isRob ? `<line x1="19" y1="6" x2="19" y2="2.5" stroke="${c.hatCol}" stroke-width="1.5"/><line x1="25" y1="6" x2="25" y2="2.5" stroke="${c.hatCol}" stroke-width="1.5"/><circle cx="19" cy="2.5" r="1.1" fill="#D4AF37"/><circle cx="25" cy="2.5" r="1.1" fill="#D4AF37"/>` : '';
+    const capeSvg = c.acc === 'cape' ? `<polygon points="14,15 30,15 33,31 11,31" fill="${c.hatCol}" opacity="0.82"/>` : '';
+    const oxySvg = c.acc === 'oxygen' ? `<rect x="12.5" y="15" width="3" height="9" rx="1" fill="#F4F4F4" stroke="rgba(0,0,0,0.2)"/><rect x="28.5" y="15" width="3" height="9" rx="1" fill="#F4F4F4" stroke="rgba(0,0,0,0.2)"/>` : '';
+    const accFrontSvg = c.acc === 'sword' ? `<rect x="31" y="9" width="2.2" height="14" fill="#A0A5A9"/><rect x="29" y="21.5" width="6" height="2" fill="#D4AF37"/>`
+      : c.acc === 'shield' ? `<rect x="7.5" y="15.5" width="6.5" height="10" rx="1.5" fill="#6C6E68" stroke="#D4AF37" stroke-width="1"/><rect x="9" y="17" width="3.5" height="7" fill="${c.torsoCol}"/>`
+      : c.acc === 'flag' ? `<line x1="31.5" y1="5" x2="31.5" y2="27" stroke="#582A12" stroke-width="1.5"/><rect x="31.5" y="5.5" width="8.5" height="6" fill="${c.torsoCol}"/>` : '';
+    return `<svg class="${cls}" viewBox="0 0 44 34" fill="none">
+      ${capeSvg}${oxySvg}
+      <rect x="16" y="6" width="12" height="9" rx="${isRob ? 1 : 3}" fill="${c.headCol}" stroke="rgba(0,0,0,0.16)"/>
+      ${faceSvg}${hatSvg}
+      <polygon points="16,15 28,15 29,24 15,24" fill="${c.torsoCol}"/>
+      <rect x="12" y="16" width="3.5" height="7.5" rx="1" fill="${c.torsoCol}"/>
+      <rect x="28.5" y="16" width="3.5" height="7.5" rx="1" fill="${c.torsoCol}"/>
+      <circle cx="13.8" cy="24.5" r="1.6" fill="${c.headCol}"/>
+      <circle cx="30.2" cy="24.5" r="1.6" fill="${c.headCol}"/>
+      <rect x="16" y="24" width="5.3" height="8" rx="0.8" fill="${c.legsCol}"/>
+      <rect x="22.7" y="24" width="5.3" height="8" rx="0.8" fill="${c.legsCol}"/>
+      ${accFrontSvg}
+    </svg>`;
+  }
+
   function renderBrickLibrary() {
     document.querySelectorAll('.cat-btn').forEach(btn => {
       const active = btn.dataset.cat === state.selectedCat;
@@ -2951,6 +3573,16 @@
     const q = state.searchQuery.trim().toLowerCase().replace(/×/g, 'x');
     const grid = $('brick-grid');
     grid.innerHTML = '';
+
+    // Show Custom Minifigure Builder CTA banner in Figure category
+    if (state.selectedCat === 'figure' && !q) {
+      const cbtn = document.createElement('button');
+      cbtn.className = 'col-span-2 tool-btn bg-[var(--primary)]/12 hover:bg-[var(--primary)]/20 border border-[var(--primary)]/40 text-[var(--primary)] rounded-lg px-2.5 py-2 text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer mb-0.5';
+      cbtn.innerHTML = `<span>✨ 나만의 커스텀 피규어 조립...</span>`;
+      cbtn.addEventListener('click', () => openCustomFigModal());
+      grid.appendChild(cbtn);
+    }
+
     const entries = Object.entries(BRICK_DEFS).filter(([key, def]) => {
       if (state.selectedCat !== 'all' && def.cat !== state.selectedCat) return false;
       if (q) return `${key} ${def.name} ${def.short} ${def.shape}`.toLowerCase().replace(/×/g, 'x').includes(q);
@@ -2963,9 +3595,13 @@
     entries.forEach(([key, def]) => {
       const btn = document.createElement('button');
       btn.className = `brick-card bg-[var(--card)] border border-[var(--border)] rounded-lg p-1.5 flex flex-col items-center gap-0.5 cursor-pointer ${state.selectedType === key ? 'active' : ''}`;
-      btn.title = `${def.name} (${def.w}×${def.d}, 높이 ${def.h}P)`;
+      btn.title = key === 'fig_custom' ? '클릭하여 커스텀 피규어 편집 및 배치' : `${def.name} (${def.w}×${def.d}, 높이 ${def.h}P)`;
       btn.innerHTML = `${brickThumbSVG(key, state.selectedColor)}<span class="text-xs font-medium leading-tight truncate w-full text-center">${def.short}</span>`;
       btn.addEventListener('click', () => {
+        if (key === 'fig_custom') {
+          openCustomFigModal();
+          return;
+        }
         state.selectedType = key;
         if (state.mode !== 'build') setMode('build');
         SoundFX.playTick();
@@ -3001,7 +3637,7 @@
       const btn = document.createElement('button');
       btn.className = `swatch-btn w-5 h-5 rounded-full border border-black/20 cursor-pointer ${state.baseplateColor === bp.hex ? 'active' : ''}`;
       btn.style.background = bp.hex; btn.title = `베이스판: ${bp.name}`;
-      btn.addEventListener('click', () => { state.baseplateColor = bp.hex; SoundFX.playTick(); renderColorPalette(); });
+      btn.addEventListener('click', () => { state.baseplateColor = bp.hex; SoundFX.playTick(); renderColorPalette(); scheduleAutoSave(); });
       bpWrap.appendChild(btn);
     });
   }
@@ -3023,7 +3659,7 @@
         paint: '색칠 모드 (P / 2)',
         delete: '지우기 모드 (X / 3)',
         move: '이동 모드 (G / 4) — 브릭을 드래그해 옮기세요',
-        select: '선택 모드 (V / 5) — 클릭해 여러 브릭 선택',
+        select: '선택 모드 (V / 5) — 클릭 또는 빈 공간 드래그로 박스 선택',
         eyedropper: '스포이드 모드 (I / 6)',
       };
       if (toastLabels[m]) showToast(toastLabels[m]);
@@ -3043,6 +3679,24 @@
     sBtn.className = `tool-btn px-2 py-1 rounded text-xs font-medium cursor-pointer ${state.shadowsEnabled && shadowSupported ? 'bg-[var(--primary)] text-[var(--primary-foreground)]' : 'hover:bg-[var(--accent)] text-[var(--muted-foreground)]'}`;
     const oBtn = $('btn-toggle-outline');
     oBtn.className = `tool-btn px-2 py-1 rounded text-xs font-medium cursor-pointer ${state.outlineEnabled ? 'bg-[var(--primary)] text-[var(--primary-foreground)]' : 'hover:bg-[var(--accent)] text-[var(--muted-foreground)]'}`;
+
+    const lp = LIGHTING_PRESETS[state.lightingPreset] || LIGHTING_PRESETS.day;
+    const lBtn = $('btn-lighting-preset');
+    lBtn.textContent = lp.label;
+    lBtn.className = `tool-btn px-2 py-1 rounded text-xs font-medium cursor-pointer ${state.lightingPreset !== 'day' ? 'bg-[var(--primary)] text-[var(--primary-foreground)]' : 'hover:bg-[var(--accent)] text-[var(--muted-foreground)]'}`;
+
+    const cBtn = $('btn-toggle-continuous');
+    cBtn.className = `tool-btn px-2 py-1 rounded text-xs font-medium cursor-pointer ${state.continuousBuild ? 'bg-[var(--primary)] text-[var(--primary-foreground)]' : 'hover:bg-[var(--accent)] text-[var(--muted-foreground)]'}`;
+
+    const cutBtn = $('btn-toggle-cutaway');
+    cutBtn.className = `tool-btn px-2 py-1 rounded text-xs font-medium cursor-pointer ${state.cutawayEnabled ? 'bg-[var(--primary)] text-[var(--primary-foreground)]' : 'hover:bg-[var(--accent)] text-[var(--muted-foreground)]'}`;
+    $('cutaway-bar').classList.toggle('hidden', !state.cutawayEnabled);
+    if (state.cutawayEnabled) {
+      const maxY = Math.max(12, state.bricks.reduce((m, b) => Math.max(m, b.y + getBrickDims(b.type, b.rot).h), 0));
+      $('cutaway-slider').max = String(maxY);
+      $('cutaway-slider').value = String(Math.min(state.cutawayY, maxY));
+      $('cutaway-readout').textContent = `Y<${state.cutawayY}`;
+    }
   }
 
   function updateSelectionBar() {
@@ -3056,11 +3710,11 @@
     $('selected-brick-label').textContent = def.short;
     $('hud-color-dot').style.background = state.selectedColor;
     const modeNames = {
-      build: `${def.name} (${state.rotation * 90}°)`,
+      build: `${def.name} (${state.rotation * 90}°)${state.continuousBuild ? ' · 연속' : ''}`,
       paint: '색칠 모드 (P)',
       delete: '지우기 모드 (X)',
       move: '이동 모드 (G · 드래그/WASD/R)',
-      select: '선택 모드 (V · 클릭 다중선택)',
+      select: '선택 모드 (V · 클릭/박스선택)',
       eyedropper: '스포이드 (I)',
     };
     $('hud-tool-info').textContent = modeNames[state.mode];
@@ -3073,6 +3727,7 @@
     $('btn-redo').disabled = state.redoStack.length === 0;
   }
 
+  let dragStepIdx = -1;
   function renderStepList() {
     const steps = getAssemblySteps();
     const listEl = $('step-list');
@@ -3085,29 +3740,77 @@
       return;
     }
 
+    const canReorder = state.stepGroupMode === 'brick';
     steps.forEach((st, idx) => {
       const row = document.createElement('div');
       const isActive = (idx === state.visibleStep - 1 && state.visibleStep < steps.length) || state.selectedStepIdx === idx;
       const isFuture = idx >= state.visibleStep;
       const firstBrick = st.bricks[0];
-      row.className = `step-row group flex items-center gap-1.5 px-2 py-1.5 rounded-md border border-transparent hover:bg-[var(--card)] cursor-pointer text-xs ${isActive ? 'active' : ''} ${isFuture ? 'future' : ''}`;
+      const note = state.stepNotes[idx + 1] || '';
+      row.className = `step-row group flex flex-col gap-0.5 px-2 py-1.5 rounded-md border border-transparent hover:bg-[var(--card)] cursor-pointer text-xs ${isActive ? 'active' : ''} ${isFuture ? 'future' : ''}`;
 
       const colorsPreview = st.bricks.slice(0, 3).map(b => `<span class="w-2.5 h-2.5 rounded-sm border border-black/20 shrink-0" style="background:${b.color}"></span>`).join('');
-      const canReorder = state.stepGroupMode === 'brick';
+      const escNote = note.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
       row.innerHTML = `
-        <span class="font-mono text-[11px] text-[var(--muted-foreground)] w-5 shrink-0 tabular-nums">${idx + 1}</span>
-        <div class="flex items-center -space-x-1 shrink-0">${colorsPreview}</div>
-        <span class="flex-1 truncate font-medium">${st.label}</span>
-        <span class="text-[11px] font-mono text-[var(--muted-foreground)] shrink-0">L${st.layer}</span>
-        ${canReorder ? `<div class="hidden group-hover:flex items-center gap-0.5 shrink-0">
-          <button data-act="up" class="w-4 h-4 rounded hover:bg-[var(--accent)] flex items-center justify-center">↑</button>
-          <button data-act="down" class="w-4 h-4 rounded hover:bg-[var(--accent)] flex items-center justify-center">↓</button>
-          <button data-act="del" class="w-4 h-4 rounded hover:text-[var(--error)] flex items-center justify-center">×</button>
-        </div>` : ''}
+        <div class="flex items-center gap-1.5 w-full">
+          <span class="font-mono text-[11px] text-[var(--muted-foreground)] w-5 shrink-0 tabular-nums">${canReorder ? '⋮' : ''}${idx + 1}</span>
+          <div class="flex items-center -space-x-1 shrink-0">${colorsPreview}</div>
+          <span class="flex-1 truncate font-medium">${st.label}</span>
+          <span class="text-[11px] font-mono text-[var(--muted-foreground)] shrink-0">L${st.layer}</span>
+          <div class="${note ? 'flex' : 'hidden group-hover:flex'} items-center gap-0.5 shrink-0">
+            <button data-act="note" class="w-4 h-4 rounded hover:bg-[var(--accent)] flex items-center justify-center ${note ? 'text-[var(--primary)]' : ''}" title="단계 자막/메모 편집">✎</button>
+            ${canReorder ? `<button data-act="up" class="w-4 h-4 rounded hover:bg-[var(--accent)] flex items-center justify-center">↑</button>
+            <button data-act="down" class="w-4 h-4 rounded hover:bg-[var(--accent)] flex items-center justify-center">↓</button>
+            <button data-act="del" class="w-4 h-4 rounded hover:text-[var(--error)] flex items-center justify-center">×</button>` : ''}
+          </div>
+        </div>
+        ${note ? `<div class="pl-6 text-[11px] text-[var(--primary)] truncate">${escNote}</div>` : ''}
       `;
+
+      // Drag-and-drop reordering in 1-brick-per-step mode
+      if (canReorder) {
+        row.draggable = true;
+        row.addEventListener('dragstart', e => {
+          dragStepIdx = idx;
+          row.style.opacity = '0.45';
+          e.dataTransfer.effectAllowed = 'move';
+        });
+        row.addEventListener('dragend', () => { dragStepIdx = -1; row.style.opacity = ''; });
+        row.addEventListener('dragover', e => {
+          if (dragStepIdx < 0 || dragStepIdx === idx) return;
+          e.preventDefault();
+          row.style.borderTopColor = 'var(--primary)';
+        });
+        row.addEventListener('dragleave', () => { row.style.borderTopColor = ''; });
+        row.addEventListener('drop', e => {
+          e.preventDefault();
+          row.style.borderTopColor = '';
+          if (dragStepIdx < 0 || dragStepIdx === idx) return;
+          pushUndo();
+          const [moved] = state.bricks.splice(dragStepIdx, 1);
+          state.bricks.splice(idx, 0, moved);
+          state.selectedStepIdx = idx;
+          dragStepIdx = -1;
+          SoundFX.playTick();
+          syncUI();
+        });
+      }
 
       row.addEventListener('click', (e) => {
         const act = e.target.dataset && e.target.dataset.act;
+        if (act === 'note') {
+          e.stopPropagation();
+          const cur = state.stepNotes[idx + 1] || '';
+          const res = window.prompt(`STEP ${idx + 1} 조립 자막/메모 입력 (비우면 삭제):`, cur);
+          if (res !== null) {
+            pushUndo();
+            const trimmed = res.trim();
+            if (trimmed) state.stepNotes[idx + 1] = trimmed;
+            else delete state.stepNotes[idx + 1];
+            syncUI();
+          }
+          return;
+        }
         if (act === 'up' && idx > 0) {
           e.stopPropagation(); pushUndo();
           [state.bricks[idx - 1], state.bricks[idx]] = [state.bricks[idx], state.bricks[idx - 1]];
@@ -3153,7 +3856,10 @@
     $('live-callout').classList.toggle('hidden', !showCallout);
     if (showCallout) {
       const curStep = steps[state.visibleStep - 1];
-      $('live-callout-title').textContent = `STEP ${state.visibleStep} / ${total} — ${curStep.bricks.length}개 결합`;
+      const stepNote = state.stepNotes[state.visibleStep];
+      $('live-callout-title').textContent = stepNote
+        ? `STEP ${state.visibleStep} / ${total} · ${stepNote}`
+        : `STEP ${state.visibleStep} / ${total} — ${curStep.bricks.length}개 결합`;
       const parts = tallyParts(curStep.bricks).slice(0, 4);
       $('live-callout-parts').innerHTML = parts.map(p => `
         <span class="inline-flex items-center gap-1 bg-[var(--background)] border border-[var(--border)] rounded px-1.5 py-0.5">
@@ -3206,6 +3912,7 @@
     updateTimelineUI();
     renderStepList();
     renderColorPalette();
+    scheduleAutoSave();
   }
 
   // Mobile Drawer Helpers
@@ -3293,6 +4000,40 @@
     $('hud-coords').textContent = `X:${anchor.x} Y:${anchor.y} Z:${anchor.z}`;
   }
 
+  let marquee = null;     // { x0, y0, x1, y1, active }
+  let buildStroke = null; // { active, pushedUndo, placedCount, lastKey, groupStep }
+
+  function tryPlaceStrokeAt(clientX, clientY) {
+    if (!buildStroke || !buildStroke.active) return;
+    const hit = raycastScene(clientX, clientY);
+    const pl = computePlacementFromHit(hit);
+    if (!pl || !pl.valid) return;
+    const key = `${pl.x},${pl.y},${pl.z}`;
+    if (key === buildStroke.lastKey) return;
+    const cands = getMirroredCandidates({ type: state.selectedType, x: pl.x, y: pl.y, z: pl.z, rot: state.rotation });
+    const validToPlace = [];
+    for (const c of cands) {
+      if (!hasCollision(c) && !validToPlace.some(v => bricksOverlap(v, c))) validToPlace.push(c);
+    }
+    if (!validToPlace.length) return;
+    if (!buildStroke.pushedUndo) {
+      pushUndo();
+      buildStroke.pushedUndo = true;
+      buildStroke.groupStep = state.bricks.reduce((m, b) => Math.max(m, b.step || 0), 0) + 1;
+    }
+    const customCfg = state.selectedType === 'fig_custom' ? { ...state.customFigConfig } : null;
+    for (const c of validToPlace) {
+      const nb = makeBrick(c.type, c.x, c.y, c.z, c.rot, state.selectedColor, state.selectedAlpha, state.selectedMetal, buildStroke.groupStep, customCfg);
+      state.bricks.push(nb);
+      buildStroke.placedCount++;
+    }
+    buildStroke.lastKey = key;
+    state.visibleStep = getAssemblySteps().length;
+    state.hoverPlacement = pl;
+    SoundFX.playSnap(0.95 + Math.random() * 0.16);
+    updateHUD();
+  }
+
   canvas.addEventListener('contextmenu', e => e.preventDefault());
 
   canvas.addEventListener('pointerdown', e => {
@@ -3304,9 +4045,21 @@
       dragButton = e.button;
       panMode = e.shiftKey || e.button === 1;
       dragSession = null;
+      marquee = null;
+      buildStroke = null;
 
-      // In Move (G) or Select (V) mode: pressing left button on a brick prepares direct 3D drag-to-move!
-      if ((state.mode === 'move' || state.mode === 'select') && e.button === 0 && !panMode && !e.altKey && !state.isPlaying && state.visibleStep >= getAssemblySteps().length) {
+      const isFullEdit = !state.isPlaying && state.visibleStep >= getAssemblySteps().length;
+
+      // Continuous Build Stroke in Build mode when Continuous toggle (C) is active
+      if (state.mode === 'build' && state.continuousBuild && e.button === 0 && !panMode && !e.altKey && isFullEdit) {
+        buildStroke = { active: true, pushedUndo: false, placedCount: 0, lastKey: '', groupStep: 0 };
+        tryPlaceStrokeAt(e.clientX, e.clientY);
+        return;
+      }
+
+      // In Move (G) or Select (V) mode: pressing left button on a brick prepares direct 3D drag-to-move;
+      // pressing on empty space in Select (V) mode prepares Marquee Box Selection!
+      if ((state.mode === 'move' || state.mode === 'select') && e.button === 0 && !panMode && !e.altKey && isFullEdit) {
         const hit = raycastScene(e.clientX, e.clientY);
         if (hit && hit.brick) {
           const anchor = hit.brick;
@@ -3316,11 +4069,16 @@
           const origMap = new Map(group.map(b => [b.id, { x: b.x, y: b.y, z: b.z, rot: b.rot }]));
           const ignoreIds = new Set(group.map(b => b.id));
           dragSession = { anchor, group, origMap, ignoreIds, started: false };
+        } else if (state.mode === 'select') {
+          marquee = { x0: e.clientX, y0: e.clientY, x1: e.clientX, y1: e.clientY, active: false };
         }
       }
     } else if (activePointers.size === 2) {
       dragMoved = true;
       dragSession = null;
+      marquee = null;
+      buildStroke = null;
+      $('marquee-box').classList.add('hidden');
       const pts = Array.from(activePointers.values());
       lastPinchDist = Math.hypot(pts[1].x - pts[0].x, pts[1].y - pts[0].y);
       lastPinchMid = { x: (pts[0].x + pts[1].x) * 0.5, y: (pts[0].y + pts[1].y) * 0.5 };
@@ -3351,8 +4109,34 @@
         return;
       }
 
+      // Active continuous build stroke
+      if (buildStroke && buildStroke.active) {
+        if (Math.hypot(e.clientX - downX, e.clientY - downY) > 5) dragMoved = true;
+        tryPlaceStrokeAt(e.clientX, e.clientY);
+        lastX = e.clientX; lastY = e.clientY;
+        return;
+      }
+
       const dx = e.clientX - lastX, dy = e.clientY - lastY;
       if (Math.hypot(e.clientX - downX, e.clientY - downY) > 5) dragMoved = true;
+
+      // Active Marquee Box Selection (Select Mode V)
+      if (marquee && dragMoved) {
+        marquee.active = true;
+        marquee.x1 = e.clientX; marquee.y1 = e.clientY;
+        const left = Math.min(marquee.x0, marquee.x1);
+        const top = Math.min(marquee.y0, marquee.y1);
+        const w = Math.abs(marquee.x1 - marquee.x0);
+        const h = Math.abs(marquee.y1 - marquee.y0);
+        const box = $('marquee-box');
+        box.classList.remove('hidden');
+        box.style.left = `${left}px`;
+        box.style.top = `${top}px`;
+        box.style.width = `${w}px`;
+        box.style.height = `${h}px`;
+        lastX = e.clientX; lastY = e.clientY;
+        return;
+      }
 
       // Active 3D brick drag-to-move!
       if (dragSession && dragMoved) {
@@ -3396,7 +4180,7 @@
       state.hoverPlacement = null;
       state.hoverBrickId = hit && hit.brick ? hit.brick.id : null;
       if (state.mode === 'move' || state.mode === 'select') {
-        canvas.style.cursor = state.hoverBrickId ? 'grab' : 'default';
+        canvas.style.cursor = state.hoverBrickId ? 'grab' : (state.mode === 'select' ? 'crosshair' : 'default');
       }
     }
     updateHUD();
@@ -3409,6 +4193,9 @@
     state.selectedAlpha = brick.alpha;
     state.selectedMetal = brick.metal;
     state.rotation = brick.rot;
+    if (brick.type === 'fig_custom' && brick.custom) {
+      state.customFigConfig = { ...brick.custom };
+    }
     const col = LEGO_COLORS.find(c => c.hex.toLowerCase() === brick.color.toLowerCase());
     if (col) $('selected-color-name').textContent = col.name;
     SoundFX.playTick();
@@ -3422,6 +4209,48 @@
     const wasSingle = activePointers.size === 1;
     activePointers.delete(e.pointerId);
     if (activePointers.size < 2) { lastPinchDist = 0; lastPinchMid = null; }
+
+    // Finish Continuous Build Stroke
+    if (buildStroke) {
+      const placed = buildStroke.placedCount;
+      buildStroke = null;
+      if (placed > 0) {
+        state.selectedStepIdx = null;
+        syncUI();
+      }
+      return;
+    }
+
+    // Finish Marquee Box Selection
+    if (marquee && marquee.active) {
+      const left = Math.min(marquee.x0, marquee.x1);
+      const right = Math.max(marquee.x0, marquee.x1);
+      const top = Math.min(marquee.y0, marquee.y1);
+      const bottom = Math.max(marquee.y0, marquee.y1);
+      $('marquee-box').classList.add('hidden');
+      marquee = null;
+      if (!e.shiftKey) state.selectedIds.clear();
+      const half = state.gridSize * 0.5;
+      const visible = getVisibleBricks();
+      let picked = 0;
+      for (const b of visible) {
+        if (state.cutawayEnabled && b.y >= state.cutawayY) continue;
+        const d = getBrickDims(b.type, b.rot);
+        const pt = projectWorldToScreen((b.x + d.w * 0.5) - half, (b.y + d.h * 0.5) * PLATE_H, (b.z + d.d * 0.5) - half);
+        if (pt && pt.x >= left && pt.x <= right && pt.y >= top && pt.y <= bottom) {
+          state.selectedIds.add(b.id);
+          picked++;
+        }
+      }
+      updateSelectionBar();
+      if (picked > 0) {
+        SoundFX.playTick();
+        showToast(`박스 선택: ${state.selectedIds.size}개 브릭 선택됨`);
+      }
+      return;
+    }
+    marquee = null;
+    $('marquee-box').classList.add('hidden');
 
     // Finish direct 3D brick drag-to-move
     if (dragSession && dragSession.started) {
@@ -3466,8 +4295,9 @@
           const maxStep = state.bricks.reduce((m, b) => Math.max(m, b.step || 0), 0);
           const groupStep = maxStep + 1;
           const addedIds = new Set();
+          const customCfg = state.selectedType === 'fig_custom' ? { ...state.customFigConfig } : null;
           for (const c of validToPlace) {
-            const nb = makeBrick(c.type, c.x, c.y, c.z, c.rot, state.selectedColor, state.selectedAlpha, state.selectedMetal, groupStep);
+            const nb = makeBrick(c.type, c.x, c.y, c.z, c.rot, state.selectedColor, state.selectedAlpha, state.selectedMetal, groupStep, customCfg);
             state.bricks.push(nb);
             addedIds.add(nb.id);
           }
@@ -3522,7 +4352,11 @@
     }
   });
 
-  canvas.addEventListener('pointercancel', e => { activePointers.delete(e.pointerId); dragSession = null; });
+  canvas.addEventListener('pointercancel', e => {
+    activePointers.delete(e.pointerId);
+    dragSession = null; marquee = null; buildStroke = null;
+    $('marquee-box').classList.add('hidden');
+  });
   canvas.addEventListener('pointerleave', () => { state.hoverPlacement = null; state.hoverBrickId = null; });
   canvas.addEventListener('wheel', e => {
     e.preventDefault();
@@ -3625,7 +4459,7 @@
       pushUndo();
       const newIds = new Set();
       selBricks.forEach(b => {
-        const nb = makeBrick(b.type, b.x, b.y + dy, b.z, b.rot, b.color, b.alpha, b.metal);
+        const nb = makeBrick(b.type, b.x, b.y + dy, b.z, b.rot, b.color, b.alpha, b.metal, b.step || 0, b.custom || null);
         state.bricks.push(nb);
         newIds.add(nb.id);
       });
@@ -3671,8 +4505,15 @@
 
   document.querySelectorAll('.sel-act').forEach(btn => btn.addEventListener('click', () => runSelectionAction(btn.dataset.sel)));
 
+  function closeAllModals() {
+    ['export-modal', 'manual-modal', 'share-modal', 'new-modal', 'gallery-modal', 'mosaic-modal', 'custom-fig-modal', 'help-modal'].forEach(id => {
+      if (id === 'export-modal' && isExporting) return;
+      $(id).classList.add('hidden');
+    });
+  }
+
   window.addEventListener('keydown', e => {
-    if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
     const code = e.code;
     const mod = e.ctrlKey || e.metaKey;
 
@@ -3719,14 +4560,22 @@
     else if (code === 'Digit5' || code === 'KeyV') setMode('select', true);
     else if (code === 'Digit6' || code === 'KeyI') setMode('eyedropper', true);
     else if (code === 'KeyM') cycleMirrorMode();
+    else if (code === 'KeyC') {
+      state.continuousBuild = !state.continuousBuild;
+      SoundFX.playTick();
+      updateRenderToggleUI(); updateHUD();
+      showToast(state.continuousBuild ? '연속 그리기 배치 켜짐 (좌클릭 드래그로 연속 놓기)' : '연속 그리기 배치 꺼짐');
+    }
+    else if (code === 'Slash' && (e.shiftKey || e.key === '?')) {
+      e.preventDefault();
+      $('help-modal').classList.toggle('hidden');
+    }
     else if (code === 'Space') { e.preventDefault(); togglePlayback(); }
     else if (code === 'ArrowLeft') { stopPlayback(); setVisibleStep(state.visibleStep - 1, false); }
     else if (code === 'ArrowRight') { stopPlayback(); setVisibleStep(state.visibleStep + 1, true); }
     else if ((code === 'Delete' || code === 'Backspace') && state.selectedIds.size) { runSelectionAction('del'); }
     else if (code === 'Escape') {
-      $('export-modal').classList.add('hidden');
-      $('manual-modal').classList.add('hidden');
-      $('share-modal').classList.add('hidden');
+      closeAllModals();
       state.selectedIds.clear(); updateSelectionBar();
     }
   });
@@ -3770,6 +4619,36 @@
     state.outlineEnabled = !state.outlineEnabled;
     updateRenderToggleUI();
   });
+  $('btn-lighting-preset').addEventListener('click', () => {
+    const order = ['day', 'sunset', 'night'];
+    state.lightingPreset = order[(order.indexOf(state.lightingPreset) + 1) % order.length];
+    SoundFX.playTick();
+    updateRenderToggleUI();
+    scheduleAutoSave();
+    const msgs = { day: '낮 스튜디오 조명', sunset: '따뜻한 노을 조명 (골든아워)', night: '밤 네온 조명 (투명·크리스탈 발광)' };
+    showToast(msgs[state.lightingPreset]);
+  });
+  $('btn-toggle-continuous').addEventListener('click', () => {
+    state.continuousBuild = !state.continuousBuild;
+    if (state.continuousBuild && state.mode !== 'build') setMode('build');
+    SoundFX.playTick();
+    updateRenderToggleUI(); updateHUD();
+    showToast(state.continuousBuild ? '연속 그리기 켜짐 (좌클릭 드래그로 연속 배치)' : '연속 그리기 꺼짐');
+  });
+  $('btn-toggle-cutaway').addEventListener('click', () => {
+    state.cutawayEnabled = !state.cutawayEnabled;
+    if (state.cutawayEnabled) {
+      const maxY = Math.max(6, state.bricks.reduce((m, b) => Math.max(m, b.y + getBrickDims(b.type, b.rot).h), 0));
+      state.cutawayY = Math.max(3, Math.min(state.cutawayY, Math.max(3, Math.round(maxY * 0.65))));
+    }
+    SoundFX.playTick();
+    updateRenderToggleUI();
+    showToast(state.cutawayEnabled ? `단면 투시 켜짐 (Y<${state.cutawayY})` : '단면 투시 꺼짐');
+  });
+  $('cutaway-slider').addEventListener('input', e => {
+    state.cutawayY = parseInt(e.target.value, 10);
+    $('cutaway-readout').textContent = `Y<${state.cutawayY}`;
+  });
 
   $('baseplate-size').addEventListener('change', e => {
     pushUndo();
@@ -3789,6 +4668,7 @@
   $('preset-select').addEventListener('change', e => {
     stopPlayback(); pushUndo();
     state.bricks = buildPresetModel(e.target.value);
+    state.stepNotes = {};
     state.selectedIds.clear();
     state.visibleStep = getAssemblySteps().length;
     state.selectedStepIdx = null;
@@ -3799,7 +4679,7 @@
   $('btn-clear-all').addEventListener('click', () => {
     if (!state.bricks.length) return;
     stopPlayback(); pushUndo();
-    state.bricks = []; state.selectedIds.clear(); state.visibleStep = 0; state.selectedStepIdx = null;
+    state.bricks = []; state.stepNotes = {}; state.selectedIds.clear(); state.visibleStep = 0; state.selectedStepIdx = null;
     syncUI(); showToast('베이스판을 비웠습니다');
   });
 
@@ -3855,7 +4735,15 @@
 
   // JSON Save / Load
   $('btn-save-json').addEventListener('click', () => {
-    const payload = JSON.stringify({ app: 'BrickCraft3D', version: 3, gridSize: state.gridSize, baseplateColor: state.baseplateColor, stepGroupMode: state.stepGroupMode, bricks: state.bricks }, null, 2);
+    const payload = JSON.stringify({
+      app: 'BrickCraft3D', version: 4,
+      gridSize: state.gridSize,
+      baseplateColor: state.baseplateColor,
+      stepGroupMode: state.stepGroupMode,
+      lightingPreset: state.lightingPreset,
+      stepNotes: state.stepNotes,
+      bricks: state.bricks,
+    }, null, 2);
     const a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([payload], { type: 'application/json' }));
     a.download = 'brickcraft-model.json'; a.click();
@@ -3874,7 +4762,9 @@
         if (data.gridSize && [16, 24, 32].includes(data.gridSize)) setGridSize(data.gridSize, false);
         if (data.baseplateColor) state.baseplateColor = data.baseplateColor;
         if (data.stepGroupMode) { state.stepGroupMode = data.stepGroupMode; $('step-group-mode').value = data.stepGroupMode; }
-        state.bricks = data.bricks.filter(b => BRICK_DEFS[b.type]).map(b => makeBrick(b.type, b.x|0, b.y|0, b.z|0, b.rot|0, b.color||'#D01012', b.alpha??null, b.metal??null, b.step|0));
+        if (data.lightingPreset && LIGHTING_PRESETS[data.lightingPreset]) state.lightingPreset = data.lightingPreset;
+        state.stepNotes = data.stepNotes && typeof data.stepNotes === 'object' ? { ...data.stepNotes } : {};
+        state.bricks = data.bricks.filter(b => BRICK_DEFS[b.type]).map(b => makeBrick(b.type, b.x|0, b.y|0, b.z|0, b.rot|0, b.color||'#D01012', b.alpha??null, b.metal??null, b.step|0, b.custom||null));
         state.visibleStep = getAssemblySteps().length;
         fitCameraToModel(); syncUI();
         showToast(`${state.bricks.length}개 브릭을 불러왔습니다`);
@@ -3904,7 +4794,7 @@
   });
 
   // =========================================================================
-  // 11. OFFICIAL-STYLE PARTS CALLOUT OVERLAY + EXPORT STUDIO (GIF / VIDEO / PNG)
+  // 11. OFFICIAL-STYLE PARTS CALLOUT OVERLAY + EXPORT STUDIO (GIF / VIDEO / PNG / 3D)
   // =========================================================================
   let currentExportUrl = null, isExporting = false, activeExpTab = 'gif';
 
@@ -3914,9 +4804,13 @@
       const act = btn.dataset.exptab === tab;
       btn.className = `exptab-btn px-2.5 py-1 rounded-md font-semibold cursor-pointer ${act ? 'bg-[var(--primary)] text-[var(--primary-foreground)]' : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)]'}`;
     });
-    $('exp-anim-options').classList.toggle('hidden', tab === 'png');
+    $('exp-res-wrap').classList.toggle('hidden', tab === 'model3d');
+    $('exp-anim-options').classList.toggle('hidden', tab === 'png' || tab === 'model3d');
     $('exp-png-options').classList.toggle('hidden', tab !== 'png');
-    $('btn-run-export-text').textContent = tab === 'gif' ? 'GIF 생성하기' : (tab === 'video' ? '60fps 영상 녹화하기' : 'PNG 이미지 렌더링');
+    $('exp-3d-options').classList.toggle('hidden', tab !== 'model3d');
+    $('btn-run-export-text').textContent = tab === 'gif' ? 'GIF 생성하기'
+      : (tab === 'video' ? '60fps 영상 녹화하기'
+      : (tab === 'png' ? 'PNG 이미지 렌더링' : '3D 메쉬 파일 추출하기'));
   }
   document.querySelectorAll('.exptab-btn').forEach(btn => btn.addEventListener('click', () => setExportTab(btn.dataset.exptab)));
   setExportTab('gif');
@@ -3941,7 +4835,8 @@
     if (opts.showHud) {
       // Top-left Step Pill (+ Optional Lego Parts Callout Card below it)
       ctx.font = `700 ${fontSize}px system-ui, -apple-system, sans-serif`;
-      const titleText = opts.labelText || `STEP ${stepNum} / ${totalSteps}`;
+      const note = !opts.labelText && stepNum > 0 && state.stepNotes[stepNum] ? ` · ${state.stepNotes[stepNum]}` : '';
+      const titleText = opts.labelText || `STEP ${stepNum} / ${totalSteps}${note}`;
       const parts = (opts.showCallout && stepBricks && stepBricks.length) ? tallyParts(stepBricks).slice(0, 4) : [];
 
       const pillMinW = ctx.measureText(titleText).width + pad * 1.4;
@@ -4009,7 +4904,7 @@
     $('exp-progress-label').textContent = label;
   }
 
-  function showExportPreview(type, url, downloadName, sizeStr, metaStr) {
+  function showExportPreview(type, url, downloadName, sizeStr, metaStr, previewImgUrl = null) {
     if (currentExportUrl && currentExportUrl !== url) URL.revokeObjectURL(currentExportUrl);
     currentExportUrl = url;
     $('exp-placeholder').classList.add('hidden');
@@ -4019,14 +4914,111 @@
       $('exp-preview-video').src = url;
       $('exp-preview-video').play().catch(() => {});
     } else {
-      $('exp-preview-img').src = url;
+      $('exp-preview-img').src = previewImgUrl || url;
     }
     $('exp-download-bar').classList.remove('hidden');
     $('exp-download-link').href = url;
     $('exp-download-link').download = downloadName;
-    $('exp-download-label').textContent = type === 'gif' ? 'GIF 다운로드' : (type === 'video' ? '영상 다운로드' : 'PNG 다운로드');
+    $('exp-download-label').textContent = type === 'gif' ? 'GIF 다운로드'
+      : (type === 'video' ? '영상 다운로드'
+      : (type === 'png' ? 'PNG 다운로드'
+      : (downloadName.endsWith('.stl') ? '.STL 다운로드' : '.OBJ 다운로드')));
     $('exp-size-badge').textContent = sizeStr;
     $('exp-meta').textContent = metaStr;
+  }
+
+  // Real-world Lego scale 3D Mesh Extractor (1 stud = 8.0 mm, 1 plate = 3.2 mm)
+  function collectWorldTriangles(includeBaseplate = false) {
+    const SCALE_MM = 8.0;
+    const half = state.gridSize * 0.5;
+    const groups = [];
+    let totalTris = 0;
+
+    if (includeBaseplate && baseplateMesh && baseplateMesh.verts) {
+      const tris = baseplateMesh.verts.length / 21;
+      groups.push({ name: 'baseplate', verts: baseplateMesh.verts, ox: 0, oy: 0, oz: 0, cos: 1, sin: 0 });
+      totalTris += tris;
+    }
+    for (let i = 0; i < state.bricks.length; i++) {
+      const b = state.bricks[i];
+      const dims = getBrickDims(b.type, b.rot);
+      const mesh = getBrickMesh(b.type, b.custom);
+      const ox = (b.x + dims.w * 0.5) - half;
+      const oy = b.y * PLATE_H;
+      const oz = (b.z + dims.d * 0.5) - half;
+      const rotY = b.rot * Math.PI * 0.5;
+      const cos = Math.cos(rotY), sin = Math.sin(rotY);
+      for (let p = 0; p < mesh.parts.length; p++) {
+        const part = mesh.parts[p];
+        if (!part.verts) continue;
+        groups.push({ name: `brick_${i + 1}_${b.type}`, verts: part.verts, ox, oy, oz, cos, sin });
+        totalTris += part.verts.length / 21;
+      }
+    }
+    return { groups, totalTris: Math.floor(totalTris), scale: SCALE_MM };
+  }
+
+  function exportBinarySTL(includeBaseplate = false) {
+    const { groups, totalTris, scale } = collectWorldTriangles(includeBaseplate);
+    const buf = new ArrayBuffer(84 + totalTris * 50);
+    const view = new DataView(buf);
+    const hdr = 'BrickCraft 3D - Lego Scale Binary STL (1 stud = 8.0mm, Z-up)';
+    for (let i = 0; i < hdr.length && i < 80; i++) view.setUint8(i, hdr.charCodeAt(i));
+    view.setUint32(80, totalTris, true);
+
+    let off = 84;
+    for (const g of groups) {
+      const v = g.verts;
+      for (let i = 0; i + 20 < v.length; i += 21) {
+        // Transform 3 vertices: WebGL Y-up -> Slicer Z-up (x, -z, y) preserves right-handed winding
+        const pts = [];
+        for (let k = 0; k < 3; k++) {
+          const base = i + k * 7;
+          const lx = v[base], ly = v[base + 1], lz = v[base + 2];
+          const wx = (lx * g.cos + lz * g.sin + g.ox) * scale;
+          const wy = (ly + g.oy) * scale;
+          const wz = (-lx * g.sin + lz * g.cos + g.oz) * scale;
+          pts.push([wx, -wz, wy]);
+        }
+        const [p0, p1, p2] = pts;
+        const ax = p1[0] - p0[0], ay = p1[1] - p0[1], az = p1[2] - p0[2];
+        const bx = p2[0] - p0[0], by = p2[1] - p0[1], bz = p2[2] - p0[2];
+        let nx = ay * bz - az * by, ny = az * bx - ax * bz, nz = ax * by - ay * bx;
+        const nl = Math.hypot(nx, ny, nz) || 1;
+        nx /= nl; ny /= nl; nz /= nl;
+
+        view.setFloat32(off, nx, true); view.setFloat32(off + 4, ny, true); view.setFloat32(off + 8, nz, true);
+        view.setFloat32(off + 12, p0[0], true); view.setFloat32(off + 16, p0[1], true); view.setFloat32(off + 20, p0[2], true);
+        view.setFloat32(off + 24, p1[0], true); view.setFloat32(off + 28, p1[1], true); view.setFloat32(off + 32, p1[2], true);
+        view.setFloat32(off + 36, p2[0], true); view.setFloat32(off + 40, p2[1], true); view.setFloat32(off + 44, p2[2], true);
+        view.setUint16(off + 48, 0, true);
+        off += 50;
+      }
+    }
+    return { blob: new Blob([buf], { type: 'application/octet-stream' }), triCount: totalTris };
+  }
+
+  function exportWavefrontOBJ(includeBaseplate = false) {
+    const { groups, totalTris, scale } = collectWorldTriangles(includeBaseplate);
+    const lines = ['# BrickCraft 3D Wavefront OBJ (1 stud = 8.0mm, Y-up)'];
+    let vIdx = 1;
+    for (const g of groups) {
+      lines.push(`o ${g.name}`);
+      const v = g.verts;
+      for (let i = 0; i + 20 < v.length; i += 21) {
+        for (let k = 0; k < 3; k++) {
+          const base = i + k * 7;
+          const lx = v[base], ly = v[base + 1], lz = v[base + 2];
+          const wx = (lx * g.cos + lz * g.sin + g.ox) * scale;
+          const wy = (ly + g.oy) * scale;
+          const wz = (-lx * g.sin + lz * g.cos + g.oz) * scale;
+          lines.push(`v ${wx.toFixed(3)} ${wy.toFixed(3)} ${wz.toFixed(3)}`);
+        }
+        lines.push(`f ${vIdx} ${vIdx + 1} ${vIdx + 2}`);
+        vIdx += 3;
+      }
+    }
+    return { blob: new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' }), triCount: totalTris };
   }
 
   $('btn-run-export').addEventListener('click', async () => {
@@ -4045,6 +5037,29 @@
     const ctx2d = compCanvas.getContext('2d', { willReadFrequently: true });
 
     try {
+      // --- MODE 3D: BINARY .STL / WAVEFRONT .OBJ MESH EXPORT ---
+      if (activeExpTab === 'model3d') {
+        const fmt = $('exp-3d-format').value;
+        const incBp = $('exp-3d-baseplate').checked;
+        setExpProgress(30, '3D 삼각형 메쉬 변환 중...');
+        await new Promise(r => setTimeout(r, 0));
+        const res = fmt === 'obj' ? exportWavefrontOBJ(incBp) : exportBinarySTL(incBp);
+        setExpProgress(80, '미리보기 렌더링 중...');
+        const pvW = 480, pvH = 360;
+        canvas.width = pvW; canvas.height = pvH;
+        const pvCam = { ...state.cam };
+        fitCameraToModel(pvCam);
+        renderScene({ width: pvW, height: pvH, cam: pvCam, showGhost: false, noHighlight: true, outline: true, ignoreCutaway: true });
+        const previewDataUrl = canvas.toDataURL('image/png');
+        const url = URL.createObjectURL(res.blob);
+        const sz = res.blob.size >= 1024 * 1024 ? `${(res.blob.size / (1024 * 1024)).toFixed(2)} MB` : `${Math.round(res.blob.size / 1024)} KB`;
+        const ext = fmt === 'obj' ? 'obj' : 'stl';
+        showExportPreview('model3d', url, `brickcraft-${$('preset-select').value}.${ext}`, `${sz} · ${res.triCount.toLocaleString()} 삼각형`, `${ext.toUpperCase()} · mm 실측`, previewDataUrl);
+        setExpProgress(100, `3D ${ext.toUpperCase()} 추출 완료!`);
+        showToast(`${ext.toUpperCase()} 생성 완료 (${res.triCount.toLocaleString()} tris · ${sz})`);
+        return;
+      }
+
       canvas.width = expW; canvas.height = expH;
 
       // --- MODE A: TRANSPARENT / STUDIO PNG SNAPSHOT ---
@@ -4053,7 +5068,7 @@
         const outl = $('exp-png-outline').checked || state.outlineEnabled;
         setExpProgress(40, '고해상도 3D 이미지 렌더링 중...');
         await new Promise(r => setTimeout(r, 0));
-        renderScene({ width: expW, height: expH, showGhost: false, noHighlight: true, transparentBg: trans, outline: outl });
+        renderScene({ width: expW, height: expH, showGhost: false, noHighlight: true, transparentBg: trans, outline: outl, ignoreCutaway: true });
         ctx2d.clearRect(0, 0, expW, expH);
         ctx2d.drawImage(canvas, 0, 0, expW, expH);
         const blob = await new Promise(res => compCanvas.toBlob(res, 'image/png'));
@@ -4106,7 +5121,7 @@
             setExpProgress(Math.round(frac * 95), `60fps 영상 녹화 중 (${Math.round(elapsed / 1000 * 10) / 10}s)...`);
 
             if (elapsed < introMs) {
-              renderScene({ width: expW, height: expH, cam: expCam, steps, stepCount: 0, animStepIdx: -1, dropProg: 1, showGhost: false, noHighlight: true });
+              renderScene({ width: expW, height: expH, cam: expCam, steps, stepCount: 0, animStepIdx: -1, dropProg: 1, showGhost: false, noHighlight: true, ignoreCutaway: true });
               ctx2d.drawImage(canvas, 0, 0, expW, expH);
               drawInstructionOverlay(ctx2d, expW, expH, 0, total, null, { showHud, showCallout, labelText: `STEP 0 / ${total}` });
             } else if (elapsed < introMs + total * stepMs) {
@@ -4114,17 +5129,17 @@
               const sIdx = Math.min(total - 1, Math.floor(rel / stepMs));
               const localT = (rel - sIdx * stepMs) / stepMs;
               const dropP = style === 'snap' ? 1.0 : Math.min(1.0, localT / 0.62);
-              renderScene({ width: expW, height: expH, cam: expCam, steps, stepCount: sIdx + 1, animStepIdx: sIdx, dropProg: dropP, showGhost: false, noHighlight: true });
+              renderScene({ width: expW, height: expH, cam: expCam, steps, stepCount: sIdx + 1, animStepIdx: sIdx, dropProg: dropP, showGhost: false, noHighlight: true, ignoreCutaway: true });
               ctx2d.drawImage(canvas, 0, 0, expW, expH);
               drawInstructionOverlay(ctx2d, expW, expH, sIdx + 1, total, steps[sIdx].bricks, { showHud, showCallout });
             } else if (turnMs > 0 && elapsed < totalDur) {
               const tFrac = (elapsed - (introMs + total * stepMs)) / turnMs;
               const rotCam = { ...expCam, yaw: expCam.yaw + tFrac * Math.PI * 2 };
-              renderScene({ width: expW, height: expH, cam: rotCam, steps, stepCount: total, animStepIdx: -1, dropProg: 1, showGhost: false, noHighlight: true });
+              renderScene({ width: expW, height: expH, cam: rotCam, steps, stepCount: total, animStepIdx: -1, dropProg: 1, showGhost: false, noHighlight: true, ignoreCutaway: true });
               ctx2d.drawImage(canvas, 0, 0, expW, expH);
               drawInstructionOverlay(ctx2d, expW, expH, total, total, null, { showHud, showCallout: false, labelText: 'COMPLETE!' });
             } else {
-              renderScene({ width: expW, height: expH, cam: expCam, steps, stepCount: total, animStepIdx: -1, dropProg: 1, showGhost: false, noHighlight: true });
+              renderScene({ width: expW, height: expH, cam: expCam, steps, stepCount: total, animStepIdx: -1, dropProg: 1, showGhost: false, noHighlight: true, ignoreCutaway: true });
               ctx2d.drawImage(canvas, 0, 0, expW, expH);
               drawInstructionOverlay(ctx2d, expW, expH, total, total, null, { showHud, showCallout: false, labelText: 'COMPLETE!' });
             }
@@ -4149,7 +5164,7 @@
       // --- MODE C: GIF89a EXPORT ---
       const frames = [];
       const captureFrame = (stepCount, animStepIdx, dropProg, delayMs, camObj, stepBricks, labelText) => {
-        renderScene({ width: expW, height: expH, cam: camObj, steps, stepCount, animStepIdx, dropProg, showGhost: false, noHighlight: true });
+        renderScene({ width: expW, height: expH, cam: camObj, steps, stepCount, animStepIdx, dropProg, showGhost: false, noHighlight: true, ignoreCutaway: true });
         ctx2d.drawImage(canvas, 0, 0, expW, expH);
         drawInstructionOverlay(ctx2d, expW, expH, stepCount, total, stepBricks, { showHud, showCallout, labelText });
         frames.push({ rgba: new Uint8ClampedArray(ctx2d.getImageData(0, 0, expW, expH).data), delayMs });
@@ -4257,10 +5272,11 @@
     try {
       canvas.width = snapW; canvas.height = snapH;
       for (let i = 0; i < steps.length; i++) {
-        renderScene({ width: snapW, height: snapH, cam: manCam, steps, stepCount: i + 1, animStepIdx: -1, dropProg: 1, showGhost: false, noHighlight: true, outline: true });
+        renderScene({ width: snapW, height: snapH, cam: manCam, steps, stepCount: i + 1, animStepIdx: -1, dropProg: 1, showGhost: false, noHighlight: true, outline: true, ignoreCutaway: true });
         sCtx.drawImage(canvas, 0, 0, snapW, snapH);
         stepSnaps.push({
           stepNum: i + 1,
+          note: state.stepNotes[i + 1] || '',
           parts: tallyParts(steps[i].bricks),
           dataUrl: snapCanvas.toDataURL('image/png'),
         });
@@ -4272,11 +5288,12 @@
 
     lastManualData = { bom, stepSnaps, totalBricks: state.bricks.length };
 
+    const escHtml = str => (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     $('manual-steps-grid').innerHTML = stepSnaps.map(s => `
       <div class="bg-[var(--background)] border border-[var(--border)] rounded-lg overflow-hidden">
-        <div class="px-2.5 py-1.5 border-b border-[var(--border)] flex items-center justify-between text-xs">
-          <span class="font-bold text-[var(--primary)]">STEP ${s.stepNum}</span>
-          <div class="flex items-center gap-1 flex-wrap justify-end">
+        <div class="px-2.5 py-1.5 border-b border-[var(--border)] flex items-center justify-between gap-2 text-xs">
+          <span class="font-bold text-[var(--primary)] truncate">STEP ${s.stepNum}${s.note ? ` · ${escHtml(s.note)}` : ''}</span>
+          <div class="flex items-center gap-1 flex-wrap justify-end shrink-0">
             ${s.parts.slice(0, 4).map(p => `<span class="inline-flex items-center gap-1 bg-[var(--card)] border border-[var(--border)] rounded px-1.5 py-0.5 text-[11px]"><span class="w-2 h-2 rounded-xs" style="background:${p.color}"></span>${BRICK_DEFS[p.type].short} <b>×${p.count}</b></span>`).join('')}
           </div>
         </div>
@@ -4294,6 +5311,7 @@
   $('btn-manual-print').addEventListener('click', () => {
     if (!lastManualData) return;
     const { bom, stepSnaps, totalBricks } = lastManualData;
+    const escHtml = str => (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     const root = $('print-manual-root');
     root.innerHTML = `
       <div class="print-break">
@@ -4313,8 +5331,8 @@
       <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
         ${stepSnaps.map(s => `
           <div class="print-card" style="border:1px solid #d4d4d8;border-radius:8px;overflow:hidden;">
-            <div style="padding:6px 10px;background:#f4f5f7;border-bottom:1px solid #e4e4e7;font-size:12px;display:flex;justify-content:space-between;align-items:center;">
-              <strong style="color:#E3000B;">STEP ${s.stepNum}</strong>
+            <div style="padding:6px 10px;background:#f4f5f7;border-bottom:1px solid #e4e4e7;font-size:12px;display:flex;justify-content:space-between;align-items:center;gap:6px;">
+              <strong style="color:#E3000B;">STEP ${s.stepNum}${s.note ? ` · ${escHtml(s.note)}` : ''}</strong>
               <span style="font-size:10px;color:#333;">${s.parts.map(p => `${BRICK_DEFS[p.type].short}×${p.count}`).join(' · ')}</span>
             </div>
             <img src="${s.dataUrl}" style="width:100%;display:block;" />
@@ -4349,11 +5367,13 @@
       ctx.strokeStyle = '#e2e5ea'; ctx.lineWidth = 1.5;
       ctx.strokeRect(x, y, cardW, cardH);
       ctx.fillStyle = '#f8fafc'; ctx.fillRect(x, y, cardW, 34);
-      ctx.fillStyle = '#e3000b'; ctx.font = '800 14px system-ui, sans-serif';
-      ctx.fillText(`STEP ${s.stepNum}`, x + 12, y + 22);
+      ctx.fillStyle = '#e3000b'; ctx.font = '800 13px system-ui, sans-serif';
+      const stepLabel = s.note ? `STEP ${s.stepNum} · ${s.note.slice(0, 14)}` : `STEP ${s.stepNum}`;
+      ctx.fillText(stepLabel, x + 12, y + 22);
       ctx.fillStyle = '#334155'; ctx.font = '600 11px system-ui, sans-serif';
-      const txt = s.parts.slice(0, 4).map(p => `${BRICK_DEFS[p.type].short} ×${p.count}`).join('  |  ');
-      ctx.fillText(txt, x + 90, y + 21);
+      const txt = s.parts.slice(0, 3).map(p => `${BRICK_DEFS[p.type].short} ×${p.count}`).join('  |  ');
+      const tw = ctx.measureText(txt).width;
+      ctx.fillText(txt, x + cardW - tw - 10, y + 21);
       const img = await new Promise(res => { const im = new Image(); im.onload = () => res(im); im.src = s.dataUrl; });
       ctx.drawImage(img, x + 10, y + 38, cardW - 20, cardH - 44);
     }
@@ -4365,6 +5385,409 @@
     setTimeout(() => URL.revokeObjectURL(a.href), 2000);
     showToast('설명서 PNG 시트가 저장되었습니다');
   });
+
+  // =========================================================================
+  // 12.5 AUTO-SAVE, MY GALLERY, NEW PROJECT, PHOTO MOSAIC, CUSTOM MINIFIG & HELP
+  // =========================================================================
+  const AUTOSAVE_KEY = 'brickcraft-autosave';
+  const GALLERY_KEY = 'brickcraft-gallery';
+  let autoSaveTimer = null;
+
+  function serializeProjectData() {
+    return {
+      v: 4,
+      gridSize: state.gridSize,
+      baseplateColor: state.baseplateColor,
+      stepGroupMode: state.stepGroupMode,
+      lightingPreset: state.lightingPreset,
+      stepNotes: state.stepNotes,
+      bricks: state.bricks.map(b => ({
+        type: b.type, x: b.x, y: b.y, z: b.z, rot: b.rot,
+        color: b.color, alpha: b.alpha, metal: b.metal, step: b.step || 0,
+        ...(b.custom ? { custom: b.custom } : {}),
+      })),
+    };
+  }
+
+  function applyProjectData(data) {
+    if (!data || !Array.isArray(data.bricks)) return false;
+    if (data.gridSize && [16, 24, 32].includes(data.gridSize)) setGridSize(data.gridSize, false);
+    if (data.baseplateColor) state.baseplateColor = data.baseplateColor;
+    if (data.stepGroupMode) { state.stepGroupMode = data.stepGroupMode; $('step-group-mode').value = data.stepGroupMode; }
+    state.lightingPreset = (data.lightingPreset && LIGHTING_PRESETS[data.lightingPreset]) ? data.lightingPreset : 'day';
+    state.stepNotes = data.stepNotes && typeof data.stepNotes === 'object' ? { ...data.stepNotes } : {};
+    state.bricks = data.bricks
+      .filter(b => BRICK_DEFS[b.type])
+      .map(b => makeBrick(b.type, b.x | 0, b.y | 0, b.z | 0, b.rot | 0, b.color || '#D01012', b.alpha ?? null, b.metal ?? null, b.step | 0, b.custom || null));
+    state.selectedIds.clear();
+    state.selectedStepIdx = null;
+    state.visibleStep = getAssemblySteps().length;
+    return true;
+  }
+
+  function scheduleAutoSave() {
+    clearTimeout(autoSaveTimer);
+    autoSaveTimer = setTimeout(() => {
+      try {
+        localStorage.setItem(AUTOSAVE_KEY, JSON.stringify(serializeProjectData()));
+      } catch {}
+    }, 350);
+  }
+
+  function tryRestoreAutoSave() {
+    try {
+      const raw = localStorage.getItem(AUTOSAVE_KEY);
+      if (!raw) return false;
+      const data = JSON.parse(raw);
+      return applyProjectData(data);
+    } catch { return false; }
+  }
+
+  function captureThumbnailDataUrl(tw = 320, th = 220) {
+    const origW = canvas.width, origH = canvas.height;
+    const prevExp = isExporting;
+    isExporting = true;
+    try {
+      canvas.width = tw; canvas.height = th;
+      const tCam = { ...state.cam };
+      fitCameraToModel(tCam);
+      renderScene({ width: tw, height: th, cam: tCam, showGhost: false, noHighlight: true, ignoreCutaway: true });
+      return canvas.toDataURL('image/jpeg', 0.82);
+    } finally {
+      canvas.width = origW; canvas.height = origH;
+      isExporting = prevExp;
+    }
+  }
+
+  // --- My Gallery Modal ---
+  function loadGalleryList() {
+    try {
+      const raw = localStorage.getItem(GALLERY_KEY);
+      const arr = raw ? JSON.parse(raw) : [];
+      return Array.isArray(arr) ? arr : [];
+    } catch { return []; }
+  }
+
+  function saveGalleryList(arr) {
+    try { localStorage.setItem(GALLERY_KEY, JSON.stringify(arr)); }
+    catch { showToast('브라우저 저장 공간이 부족합니다. 오래된 작품을 정리해 주세요.'); }
+  }
+
+  function renderGalleryGrid() {
+    const grid = $('gallery-grid');
+    const items = loadGalleryList();
+    if (!items.length) {
+      grid.innerHTML = `<div class="col-span-full text-center py-10 text-xs text-[var(--muted-foreground)]">저장된 작품이 아직 없습니다.<br/>위 입력창에 이름을 적고 <b>현재 작품 저장</b>을 눌러보세요!</div>`;
+      return;
+    }
+    grid.innerHTML = '';
+    items.forEach((item, idx) => {
+      const card = document.createElement('div');
+      card.className = 'bg-[var(--background)] border border-[var(--border)] rounded-lg overflow-hidden flex flex-col';
+      const escName = (item.name || '이름 없음').replace(/&/g, '&amp;').replace(/</g, '&lt;');
+      const dateStr = item.savedAt ? new Date(item.savedAt).toLocaleDateString('ko-KR', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
+      card.innerHTML = `
+        <div class="aspect-[16/11] bg-black/5 overflow-hidden border-b border-[var(--border)]">
+          ${item.thumb ? `<img src="${item.thumb}" class="w-full h-full object-cover" alt="${escName}" />` : ''}
+        </div>
+        <div class="p-2 flex-1 flex flex-col justify-between gap-1.5 text-xs">
+          <div>
+            <div class="font-semibold truncate">${escName}</div>
+            <div class="text-[11px] text-[var(--muted-foreground)] flex justify-between">
+              <span>${item.data.bricks.length} 브릭 · ${item.data.gridSize || 16}×${item.data.gridSize || 16}</span>
+              <span>${dateStr}</span>
+            </div>
+          </div>
+          <div class="flex gap-1.5 pt-1">
+            <button data-gact="load" class="tool-btn flex-1 py-1 rounded bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold hover:opacity-90 cursor-pointer">열기</button>
+            <button data-gact="del" class="tool-btn px-2 py-1 rounded border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--error)] hover:bg-[var(--accent)] cursor-pointer">삭제</button>
+          </div>
+        </div>
+      `;
+      card.querySelector('[data-gact="load"]').addEventListener('click', () => {
+        stopPlayback(); pushUndo();
+        applyProjectData(item.data);
+        fitCameraToModel(); syncUI();
+        $('gallery-modal').classList.add('hidden');
+        SoundFX.playSnap();
+        showToast(`'${item.name}' 작품을 불러왔습니다`);
+      });
+      card.querySelector('[data-gact="del"]').addEventListener('click', () => {
+        const list = loadGalleryList();
+        list.splice(idx, 1);
+        saveGalleryList(list);
+        renderGalleryGrid();
+        SoundFX.playDelete();
+        showToast('작품이 삭제되었습니다');
+      });
+      grid.appendChild(card);
+    });
+  }
+
+  $('btn-open-gallery').addEventListener('click', () => {
+    renderGalleryGrid();
+    $('gallery-modal').classList.remove('hidden');
+  });
+  $('btn-close-gallery').addEventListener('click', () => $('gallery-modal').classList.add('hidden'));
+  $('gallery-modal').addEventListener('click', e => { if (e.target === $('gallery-modal')) $('gallery-modal').classList.add('hidden'); });
+  $('btn-gallery-save').addEventListener('click', () => {
+    const nameInput = $('gallery-save-name');
+    const name = nameInput.value.trim() || `나의 레고 작품 #${loadGalleryList().length + 1}`;
+    const thumb = captureThumbnailDataUrl(320, 220);
+    const list = loadGalleryList();
+    list.unshift({ id: Date.now(), name, savedAt: Date.now(), thumb, data: serializeProjectData() });
+    if (list.length > 24) list.length = 24;
+    saveGalleryList(list);
+    nameInput.value = '';
+    renderGalleryGrid();
+    SoundFX.playSnap();
+    showToast(`'${name}' 작품이 갤러리에 저장되었습니다`);
+  });
+
+  // --- New Project Modal ---
+  $('btn-new-project').addEventListener('click', () => {
+    $('new-size').value = String(state.gridSize);
+    $('new-bp-color').value = state.baseplateColor;
+    $('new-lighting').value = state.lightingPreset;
+    $('new-modal').classList.remove('hidden');
+  });
+  $('btn-close-new').addEventListener('click', () => $('new-modal').classList.add('hidden'));
+  $('btn-cancel-new').addEventListener('click', () => $('new-modal').classList.add('hidden'));
+  $('new-modal').addEventListener('click', e => { if (e.target === $('new-modal')) $('new-modal').classList.add('hidden'); });
+  $('btn-confirm-new').addEventListener('click', () => {
+    stopPlayback(); pushUndo();
+    const sz = parseInt($('new-size').value, 10);
+    const bp = $('new-bp-color').value;
+    const lp = $('new-lighting').value;
+    state.bricks = [];
+    state.stepNotes = {};
+    state.selectedIds.clear();
+    state.selectedStepIdx = null;
+    state.cutawayEnabled = false;
+    state.baseplateColor = bp;
+    state.lightingPreset = lp;
+    $('preset-select').value = 'empty';
+    if (sz !== state.gridSize) setGridSize(sz, false);
+    state.visibleStep = 0;
+    fitCameraToModel();
+    syncUI();
+    $('new-modal').classList.add('hidden');
+    SoundFX.playTick();
+    showToast(`새 ${sz}×${sz} 프로젝트를 시작했습니다`);
+  });
+
+  // --- Photo to Lego Mosaic Converter ---
+  let mosaicImage = null;
+  let mosaicGridColors = null; // Array<Array<colorObj>>
+
+  const SOLID_LEGO_COLORS = LEGO_COLORS.filter(c => c.alpha >= 0.99).map(c => {
+    const n = parseInt(c.hex.slice(1), 16);
+    return { ...c, r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
+  });
+
+  function nearestLegoColor(r, g, b) {
+    let best = SOLID_LEGO_COLORS[0], bestD = Infinity;
+    for (let i = 0; i < SOLID_LEGO_COLORS.length; i++) {
+      const c = SOLID_LEGO_COLORS[i];
+      const dr = r - c.r, dg = g - c.g, db = b - c.b;
+      const d = dr * dr * 2 + dg * dg * 4 + db * db * 3;
+      if (d < bestD) { bestD = d; best = c; }
+    }
+    return best;
+  }
+
+  function updateMosaicPreview() {
+    if (!mosaicImage) return;
+    const N = parseInt($('mosaic-size').value, 10);
+    const useDither = $('mosaic-dither').checked;
+    const tmp = document.createElement('canvas');
+    tmp.width = N; tmp.height = N;
+    const tCtx = tmp.getContext('2d', { willReadFrequently: true });
+    // Center-crop image to square
+    const iw = mosaicImage.width, ih = mosaicImage.height;
+    const side = Math.min(iw, ih);
+    const sx = (iw - side) * 0.5, sy = (ih - side) * 0.5;
+    tCtx.fillStyle = '#F4F4F4';
+    tCtx.fillRect(0, 0, N, N);
+    tCtx.drawImage(mosaicImage, sx, sy, side, side, 0, 0, N, N);
+    const imgData = tCtx.getImageData(0, 0, N, N).data;
+
+    // Copy to float RGB buffer for optional Floyd-Steinberg error diffusion
+    const buf = new Float32Array(N * N * 3);
+    for (let i = 0; i < N * N; i++) {
+      buf[i * 3] = imgData[i * 4];
+      buf[i * 3 + 1] = imgData[i * 4 + 1];
+      buf[i * 3 + 2] = imgData[i * 4 + 2];
+    }
+
+    const grid = [];
+    for (let y = 0; y < N; y++) {
+      const row = [];
+      for (let x = 0; x < N; x++) {
+        const idx = (y * N + x) * 3;
+        const r = Math.max(0, Math.min(255, buf[idx]));
+        const g = Math.max(0, Math.min(255, buf[idx + 1]));
+        const b = Math.max(0, Math.min(255, buf[idx + 2]));
+        const col = nearestLegoColor(r, g, b);
+        row.push(col);
+        if (useDither) {
+          const er = r - col.r, eg = g - col.g, eb = b - col.b;
+          const pushErr = (nx, ny, w) => {
+            if (nx < 0 || nx >= N || ny < 0 || ny >= N) return;
+            const ni = (ny * N + nx) * 3;
+            buf[ni] += er * w; buf[ni + 1] += eg * w; buf[ni + 2] += eb * w;
+          };
+          pushErr(x + 1, y, 7 / 16);
+          pushErr(x - 1, y + 1, 3 / 16);
+          pushErr(x, y + 1, 5 / 16);
+          pushErr(x + 1, y + 1, 1 / 16);
+        }
+      }
+      grid.push(row);
+    }
+    mosaicGridColors = grid;
+
+    // Draw crisp studded preview onto #mosaic-preview
+    const pv = $('mosaic-preview');
+    const pCtx = pv.getContext('2d');
+    const cell = pv.width / N;
+    const isRound = $('mosaic-brick').value === 'tround_1x1';
+    const isStud = $('mosaic-brick').value === 'plate_1x1';
+    pCtx.fillStyle = '#18181b';
+    pCtx.fillRect(0, 0, pv.width, pv.height);
+    for (let y = 0; y < N; y++) {
+      for (let x = 0; x < N; x++) {
+        const c = grid[y][x];
+        const px = x * cell, py = y * cell;
+        pCtx.fillStyle = c.hex;
+        if (isRound) {
+          pCtx.beginPath();
+          pCtx.arc(px + cell * 0.5, py + cell * 0.5, cell * 0.45, 0, Math.PI * 2);
+          pCtx.fill();
+        } else {
+          pCtx.fillRect(px + 0.5, py + 0.5, cell - 1, cell - 1);
+          if (isStud) {
+            pCtx.fillStyle = 'rgba(255,255,255,0.22)';
+            pCtx.beginPath();
+            pCtx.arc(px + cell * 0.5, py + cell * 0.5, cell * 0.24, 0, Math.PI * 2);
+            pCtx.fill();
+          }
+        }
+      }
+    }
+    pv.classList.remove('hidden');
+    $('mosaic-empty-hint').classList.add('hidden');
+    $('btn-apply-mosaic').disabled = false;
+  }
+
+  $('btn-open-mosaic').addEventListener('click', () => $('mosaic-modal').classList.remove('hidden'));
+  $('btn-close-mosaic').addEventListener('click', () => $('mosaic-modal').classList.add('hidden'));
+  $('mosaic-modal').addEventListener('click', e => { if (e.target === $('mosaic-modal')) $('mosaic-modal').classList.add('hidden'); });
+  $('mosaic-file').addEventListener('change', e => {
+    const file = e.target.files[0]; if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => { mosaicImage = img; updateMosaicPreview(); };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+  ['mosaic-size', 'mosaic-brick', 'mosaic-dither'].forEach(id => $(id).addEventListener('change', updateMosaicPreview));
+
+  $('btn-apply-mosaic').addEventListener('click', () => {
+    if (!mosaicGridColors) return;
+    const N = mosaicGridColors.length;
+    const orient = $('mosaic-orient').value;
+    const brickType = orient === 'wall' ? 'brick_1x1' : $('mosaic-brick').value;
+    stopPlayback(); pushUndo();
+    if (state.gridSize !== N) setGridSize(N, false);
+    state.baseplateColor = '#1B2A34';
+    state.stepNotes = {};
+    state.selectedIds.clear();
+    const out = [];
+    if (orient === 'flat') {
+      for (let z = 0; z < N; z++) {
+        for (let x = 0; x < N; x++) {
+          const c = mosaicGridColors[z][x];
+          out.push(makeBrick(brickType, x, 0, z, 0, c.hex, c.alpha, c.metal, z + 1));
+        }
+      }
+    } else {
+      const wallZ = Math.floor(N / 2);
+      for (let row = N - 1; row >= 0; row--) {
+        const y = (N - 1 - row) * 3;
+        for (let x = 0; x < N; x++) {
+          const c = mosaicGridColors[row][x];
+          out.push(makeBrick('brick_1x1', x, y, wallZ, 0, c.hex, c.alpha, c.metal, (N - row)));
+        }
+      }
+    }
+    state.bricks = out;
+    state.visibleStep = getAssemblySteps().length;
+    fitCameraToModel();
+    if (orient === 'flat') { state.cam.yaw = 0; state.cam.pitch = 1.28; }
+    else { state.cam.yaw = 0.22; state.cam.pitch = 0.28; }
+    syncUI();
+    $('mosaic-modal').classList.add('hidden');
+    SoundFX.playSnap();
+    showToast(`${N}×${N} 레고 모자이크 (${out.length}개 브릭) 생성 완료!`);
+  });
+
+  // --- Custom Minifigure Builder Modal ---
+  function initCustomFigSelectors() {
+    const optsHtml = SOLID_LEGO_COLORS.map(c => `<option value="${c.hex}">${c.name}</option>`).join('');
+    document.querySelectorAll('.cfig-col-sel').forEach(sel => { sel.innerHTML = optsHtml; });
+  }
+  initCustomFigSelectors();
+
+  function syncCustomFigPreview() {
+    const cfg = state.customFigConfig;
+    cfg.hat = $('cfig-hat').value;
+    cfg.face = $('cfig-face').value;
+    cfg.acc = $('cfig-acc').value;
+    cfg.hatCol = $('cfig-hat-col').value;
+    cfg.headCol = $('cfig-head-col').value;
+    cfg.torsoCol = $('cfig-torso-col').value;
+    cfg.legsCol = $('cfig-legs-col').value;
+    $('cfig-preview-svg').innerHTML = customFigSVG(cfg, 'w-36 h-36');
+  }
+
+  function openCustomFigModal() {
+    const cfg = state.customFigConfig;
+    $('cfig-hat').value = cfg.hat;
+    $('cfig-face').value = cfg.face;
+    $('cfig-acc').value = cfg.acc;
+    $('cfig-hat-col').value = cfg.hatCol;
+    $('cfig-head-col').value = cfg.headCol;
+    $('cfig-torso-col').value = cfg.torsoCol;
+    $('cfig-legs-col').value = cfg.legsCol;
+    syncCustomFigPreview();
+    $('custom-fig-modal').classList.remove('hidden');
+  }
+
+  ['cfig-hat', 'cfig-face', 'cfig-acc', 'cfig-hat-col', 'cfig-head-col', 'cfig-torso-col', 'cfig-legs-col'].forEach(id => {
+    $(id).addEventListener('change', () => { syncCustomFigPreview(); SoundFX.playTick(); });
+  });
+  $('btn-close-cfig').addEventListener('click', () => $('custom-fig-modal').classList.add('hidden'));
+  $('custom-fig-modal').addEventListener('click', e => { if (e.target === $('custom-fig-modal')) $('custom-fig-modal').classList.add('hidden'); });
+  $('btn-use-cfig').addEventListener('click', () => {
+    syncCustomFigPreview();
+    state.selectedType = 'fig_custom';
+    state.selectedColor = state.customFigConfig.torsoCol;
+    setMode('build');
+    renderBrickLibrary();
+    updateHUD();
+    $('custom-fig-modal').classList.add('hidden');
+    closeDrawers();
+    SoundFX.playSnap();
+    showToast('커스텀 미니피규어 준비 완료! 원하는 곳을 클릭해 배치하세요');
+  });
+
+  // --- Shortcut Cheatsheet Modal (?) ---
+  $('btn-open-help').addEventListener('click', () => $('help-modal').classList.remove('hidden'));
+  $('btn-close-help').addEventListener('click', () => $('help-modal').classList.add('hidden'));
+  $('help-modal').addEventListener('click', e => { if (e.target === $('help-modal')) $('help-modal').classList.add('hidden'); });
 
   // =========================================================================
   // 13. THEME SYNC, RESIZE & MAIN ANIMATION LOOP
@@ -4445,11 +5868,11 @@
   }
 
   // =========================================================================
-  // 14. BOOTSTRAP (WITH AUTOMATIC SHARED URL HASH RESTORE)
+  // 14. BOOTSTRAP (URL HASH SHARE -> AUTO-SAVE RESTORE -> DEFAULT PRESET)
   // =========================================================================
   async function bootstrap() {
     syncTheme();
-    let loadedFromUrl = false;
+    let loaded = false;
     if (location.hash && location.hash.startsWith('#m=')) {
       try {
         const shared = await decodeModelFromHash(location.hash.slice(3));
@@ -4458,13 +5881,19 @@
           state.baseplateColor = shared.baseplateColor;
           state.stepGroupMode = shared.stepGroupMode;
           $('step-group-mode').value = shared.stepGroupMode;
+          state.lightingPreset = (shared.lightingPreset && LIGHTING_PRESETS[shared.lightingPreset]) ? shared.lightingPreset : 'day';
+          state.stepNotes = shared.stepNotes || {};
           state.bricks = shared.bricks;
-          loadedFromUrl = true;
+          loaded = true;
           showToast(`공유된 모델 (${shared.bricks.length}개 브릭)을 불러왔습니다`);
         }
       } catch (e) { console.warn('Failed to decode shared URL:', e); }
     }
-    if (!loadedFromUrl) {
+    if (!loaded && tryRestoreAutoSave()) {
+      loaded = true;
+      showToast(`이전 작업 (${state.bricks.length}개 브릭)이 자동 복원되었습니다`);
+    }
+    if (!loaded) {
       state.bricks = buildPresetModel('house');
     }
     state.visibleStep = getAssemblySteps().length;
