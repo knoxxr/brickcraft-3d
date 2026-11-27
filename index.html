@@ -905,7 +905,7 @@
     playSpeedMs: 380,
     dropAnimEnabled: true,
     dropProgress: 1.0,
-    animatingStepIdx: -1,
+    animatingBrickIds: new Set(),
 
     undoStack: [],
     redoStack: [],
@@ -2363,7 +2363,8 @@
     const cam = opts.cam || state.cam;
     const steps = opts.steps || getAssemblySteps();
     const visibleStepCount = opts.stepCount !== undefined ? opts.stepCount : state.visibleStep;
-    const animStepIdx = opts.animStepIdx !== undefined ? opts.animStepIdx : state.animatingStepIdx;
+    const useStepAnim = opts.animStepIdx !== undefined;
+    const animStepIdx = useStepAnim ? opts.animStepIdx : -1;
     const dropProg = opts.dropProg !== undefined ? opts.dropProg : state.dropProgress;
     const transparentBg = !!opts.transparentBg;
     const useShadows = shadowSupported && (opts.shadows !== undefined ? opts.shadows : state.shadowsEnabled);
@@ -2372,18 +2373,18 @@
 
     const half = state.gridSize * 0.5;
 
-    // Collect draw items with drop-in animation per step
+    // Collect draw items with per-brick (live) or per-step (export) drop-in animation
     const opaque = [];
     const trans = [];
     const lim = Math.min(visibleStepCount, steps.length);
     for (let s = 0; s < lim; s++) {
       const bs = steps[s].bricks;
-      const isDropping = s === animStepIdx && dropProg < 1.0;
-      const ease = isDropping ? (1 - Math.pow(1 - dropProg, 3)) : 1.0;
-      const yExtra = isDropping ? (1 - ease) * 3.4 : 0;
-      const alphaMul = isDropping ? (0.25 + 0.75 * ease) : 1.0;
       for (let j = 0; j < bs.length; j++) {
         const b = bs[j];
+        const isDropping = dropProg < 1.0 && (useStepAnim ? (s === animStepIdx) : state.animatingBrickIds.has(b.id));
+        const ease = isDropping ? (1 - Math.pow(1 - dropProg, 3)) : 1.0;
+        const yExtra = isDropping ? (1 - ease) * 3.4 : 0;
+        const alphaMul = isDropping ? (0.25 + 0.75 * ease) : 1.0;
         const dims = getBrickDims(b.type, b.rot);
         const item = {
           b, stepIdx: s, yExtra,
@@ -3172,11 +3173,11 @@
     const prev = state.visibleStep;
     state.visibleStep = Math.max(0, Math.min(steps.length, n));
     if (triggerDrop && state.dropAnimEnabled && state.visibleStep > prev && state.visibleStep > 0) {
-      state.animatingStepIdx = state.visibleStep - 1;
+      state.animatingBrickIds = new Set(steps[state.visibleStep - 1].bricks.map(b => b.id));
       state.dropProgress = 0.0;
       SoundFX.playSnap(0.95 + Math.random() * 0.15);
     } else {
-      state.animatingStepIdx = -1;
+      state.animatingBrickIds.clear();
       state.dropProgress = 1.0;
     }
     updateTimelineUI();
@@ -3464,12 +3465,15 @@
           pushUndo();
           const maxStep = state.bricks.reduce((m, b) => Math.max(m, b.step || 0), 0);
           const groupStep = maxStep + 1;
+          const addedIds = new Set();
           for (const c of validToPlace) {
-            state.bricks.push(makeBrick(c.type, c.x, c.y, c.z, c.rot, state.selectedColor, state.selectedAlpha, state.selectedMetal, groupStep));
+            const nb = makeBrick(c.type, c.x, c.y, c.z, c.rot, state.selectedColor, state.selectedAlpha, state.selectedMetal, groupStep);
+            state.bricks.push(nb);
+            addedIds.add(nb.id);
           }
           const nextSteps = getAssemblySteps();
           state.visibleStep = nextSteps.length;
-          state.animatingStepIdx = nextSteps.length - 1;
+          state.animatingBrickIds = state.dropAnimEnabled ? addedIds : new Set();
           state.dropProgress = state.dropAnimEnabled ? 0.35 : 1.0;
           state.selectedStepIdx = null;
           SoundFX.playSnap();
@@ -4423,7 +4427,7 @@
     if (!isExporting) {
       if (state.dropProgress < 1.0) {
         state.dropProgress = Math.min(1.0, state.dropProgress + dt / Math.min(260, state.playSpeedMs * 0.85));
-        if (state.dropProgress >= 1.0) state.animatingStepIdx = -1;
+        if (state.dropProgress >= 1.0) state.animatingBrickIds.clear();
       }
       if (state.isPlaying) {
         state.playTimer += dt;
